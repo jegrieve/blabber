@@ -8,10 +8,18 @@ const Routes = () => {
   return (
     <Router>
       <Navbar />
-      <SideNav />
-      <Switch>
-        <Route path="/" exact component={Home} />
-      </Switch>
+      <div className = "container-fluid">
+        <div className = "row">
+          <div className = "col-4">
+            <SideNav />
+          </div>
+          <div className = "col-8">
+            <Switch>
+              <Route path="/" exact component={Home} />
+            </Switch>
+          </div>
+        </div>
+      </div>
   </Router>
   )
 };
