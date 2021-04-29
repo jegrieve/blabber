@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
-    <div>
-      Navbar
-    </div>
+      <div className = "site-navbar d-flex justify-content-around align-items-center">
+          <div>User Sign In</div>
+          <div>User Sign up</div>
+      </div>
   )
 }
 
