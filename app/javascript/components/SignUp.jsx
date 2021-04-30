@@ -1,15 +1,11 @@
 import React from "react";
-
+import SignUpForm from "./SignUpForm";
 
 const SignUp = (props) => {
   return (
       <div>
-          <form>
-              <input type = "text"></input>
-              <input type = "email"></input>
-              <input></input>
-              <input></input>
-          </form>
+        Create a new Account.
+        <SignUpForm />
       </div>
   )
 }
