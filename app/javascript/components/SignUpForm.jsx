@@ -44,7 +44,7 @@ const SignUpForm = (props) => {
             console.log(response) 
             if (response.id) {
                 // exitSignUpForm();
-                // props.setCurrentUser(response)
+                props.setCurrentUser(response)
             } else {
                 // setFormErrors(response);
                 console.log("form errors")
@@ -52,8 +52,6 @@ const SignUpForm = (props) => {
         })
         .catch(error => console.log(error.message))
     }
-
-
 
   return (
       <div>

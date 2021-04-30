@@ -7,6 +7,8 @@ import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 
 const Routes = () => {
+  const [currentUser, setCurrentUser] = useState(null);
+
   return (
     <Router>
       <Navbar />
@@ -18,7 +20,16 @@ const Routes = () => {
           <div className = "col-8">
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/sign-up" exact component={SignUp} />
+              <Route
+                  exact
+                  path="/sign-up"
+                  render={(props) => (
+                    <SignUp
+                      {...props}
+                      setCurrentUser={setCurrentUser}
+                    />
+                  )}
+              />
               <Route path="/sign-in" exact component={SignIn} />
             </Switch>
           </div>
