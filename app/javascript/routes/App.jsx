@@ -29,7 +29,7 @@ const Routes = () => {
 
   return (
     <Router>
-      <Navbar />
+      <Navbar currentUser = {currentUser} />
       <div className = "container-fluid">
         <div className = "row">
           <div className = "col-4">
