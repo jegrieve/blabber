@@ -5,7 +5,7 @@ const SignUp = (props) => {
   return (
       <div>
         Create a new Account.
-        <SignUpForm />
+        <SignUpForm setCurrentUser = {props.setCurrentUser} />
       </div>
   )
 }

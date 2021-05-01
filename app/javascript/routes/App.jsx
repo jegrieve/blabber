@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "../components/Home";
 import Navbar from "../components/Navbar";
@@ -8,7 +8,26 @@ import SignUp from "../components/SignUp";
 
 const Routes = () => {
   const [currentUser, setCurrentUser] = useState(null);
+  console.log(currentUser)
+  
+  useEffect(() => {
+    getUserSession();
+  }, [])
 
+  const getUserSession = () => {
+    const url = "/api/v1/sessions/index";
+    fetch(url)
+      .then(response => {
+        if (response.ok) { 
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .then(response => setCurrentUser(response))
+      .catch(() => console.error("No user session exists"))
+  }
+
+  console.log(currentUser);
   return (
     <Router>
       <Navbar />

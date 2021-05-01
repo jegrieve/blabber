@@ -23,4 +23,5 @@ class Api::V1::SessionsController < ApplicationController
         else
             render json: false
         end
+    end
 end
