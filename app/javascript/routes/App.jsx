@@ -29,7 +29,7 @@ const Routes = () => {
 
   return (
     <Router>
-      <Navbar currentUser = {currentUser} />
+      <Navbar currentUser = {currentUser} setCurrentUser = {setCurrentUser} />
       <div className = "container-fluid">
         <div className = "row">
           <div className = "col-4">

@@ -19,9 +19,7 @@ class Api::V1::SessionsController < ApplicationController
     def destroy
         session[:user_id] = nil
         if (!session[:user_id])
-            render json: true
-        else
-            render json: false
+            render json: {message: "User Signed Out"}
         end
     end
 end
