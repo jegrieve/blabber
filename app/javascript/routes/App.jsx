@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "../components/Home";
 import Navbar from "../components/Navbar";
 import SideNav from "../components/SideNav";
-import SignIn from "../components/SignIn";
-import SignUp from "../components/SignUp";
+import SignIn from "../components/UserRegistration/SignIn";
+import SignUp from "../components/UserRegistration/SignUp";
 
 const Routes = () => {
   const [currentUser, setCurrentUser] = useState(null);
