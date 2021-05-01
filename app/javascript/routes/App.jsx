@@ -24,10 +24,9 @@ const Routes = () => {
         throw new Error("Network response was not ok.");
       })
       .then(response => setCurrentUser(response))
-      .catch(() => console.error("No user session exists"))
+      .catch(() => console.error("No user session exists."))
   }
 
-  console.log(currentUser);
   return (
     <Router>
       <Navbar />

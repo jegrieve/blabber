@@ -18,6 +18,10 @@ const SignUpForm = (props) => {
 
     const submitSignUpForm = (e) => {
         e.preventDefault();
+        postSignUpData();
+    }
+
+    const postSignUpData = () => {
         const body = {
             email: createUserInputs["email"],
             username: createUserInputs["username"],
@@ -43,11 +47,9 @@ const SignUpForm = (props) => {
         .then(response => {
             console.log(response) 
             if (response.id) {
-                // exitSignUpForm();
                 props.setCurrentUser(response)
             } else {
-                // setFormErrors(response);
-                console.log("form errors")
+                console.error("Did not create user due to invalid inputs.")
             }
         })
         .catch(error => console.log(error.message))
