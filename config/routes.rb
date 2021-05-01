@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   namespace :api do 
     namespace :v1 do
-      post 'registrations/create';
+      post 'registrations/create', to: 'registrations#create';
 
-      get 'sessions/index';
-      post 'sessions/create';
+      get 'sessions/index', to: 'sessions#index';
+      post 'sessions/create', to: 'sessions#create';
       delete 'sessions/destroy/:id', to: 'sessions#destroy';
-
     end
   end
   root 'homepage#index'
