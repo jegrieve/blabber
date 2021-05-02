@@ -48,7 +48,16 @@ const Routes = () => {
                     />
                   )}
               />
-              <Route path="/sign-in" exact component={SignIn} />
+              <Route
+                  exact
+                  path="/sign-in"
+                  render={(props) => (
+                    <SignIn
+                      {...props}
+                      setCurrentUser={setCurrentUser}
+                    />
+                  )}
+              />
             </Switch>
           </div>
         </div>
