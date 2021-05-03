@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "../components/Home";
 import Navbar from "../components/Navbar";
-import SideNav from "../components/SideNav";
+import SideNav from "../components/SideNavComps/SideNav";
 import SignIn from "../components/UserRegistration/SignIn";
 import SignUp from "../components/UserRegistration/SignUp";
 
@@ -79,8 +79,3 @@ const Routes = () => {
 
 
 export default Routes;
-
-//make sure it goes to homepage on successful load
-//then work on homepage abit
-//then tests?
-//then work on servers stuff
