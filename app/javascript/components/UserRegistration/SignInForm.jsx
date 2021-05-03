@@ -7,6 +7,13 @@ const SignInForm = (props) => {
         password: "",
     });
 
+    useEffect(() => {
+        if (props.currentUser) {
+            props.history.push("/");
+        };
+    })
+
+
     const submitSignInForm = (e) => {
         e.preventDefault();
         postSignInData();

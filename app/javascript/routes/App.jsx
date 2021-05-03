@@ -29,7 +29,7 @@ const Routes = () => {
 
   return (
     <Router>
-      <Navbar currentUser = {currentUser} setCurrentUser = {setCurrentUser} />
+      <Navbar history = {history} currentUser = {currentUser} setCurrentUser = {setCurrentUser} />
       <div className = "container-fluid">
         <div className = "row">
           <div className = "col-4">
@@ -37,7 +37,16 @@ const Routes = () => {
           </div>
           <div className = "col-8">
             <Switch>
-              <Route path="/" exact component={Home} />
+            <Route
+                  exact
+                  path="/"
+                  render={(props) => (
+                    <Home
+                      {...props}
+                      currentUser={currentUser}
+                    />
+                  )}
+              />
               <Route
                   exact
                   path="/sign-up"
@@ -45,6 +54,7 @@ const Routes = () => {
                     <SignUp
                       {...props}
                       setCurrentUser={setCurrentUser}
+                      currentUser = {currentUser}
                     />
                   )}
               />
@@ -55,6 +65,7 @@ const Routes = () => {
                     <SignIn
                       {...props}
                       setCurrentUser={setCurrentUser}
+                      currentUser = {currentUser}
                     />
                   )}
               />
@@ -69,3 +80,10 @@ const Routes = () => {
 
 export default Routes;
 
+
+//so heres the plan:
+//just go through all the signin/singup stuff
+//make sure it goes to homepage on successful load
+//then work on homepage abit
+//then tests?
+//then work on servers stuff

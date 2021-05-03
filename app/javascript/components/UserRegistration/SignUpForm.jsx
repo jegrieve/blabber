@@ -9,6 +9,12 @@ const SignUpForm = (props) => {
         passwordConfirm: "",
     });
 
+    useEffect(() => {
+        if (props.currentUser) {
+            props.history.push("/");
+        };
+    })
+
     const enterSignUpInputs = (e) => {
         setCreateUserInputs((prev) => ({
             ...prev,

@@ -5,7 +5,7 @@ const SignIn = (props) => {
   return (
       <div>
           Sign in to your Account.
-          <SignInForm setCurrentUser = {props.setCurrentUser} />
+          <SignInForm history = {props.history} setCurrentUser = {props.setCurrentUser} currentUser = {props.currentUser} />
       </div>
   )
 }
