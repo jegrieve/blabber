@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Servers from "./Servers";
-import Channels from "./Channels";
+import ServerFeed from "./ServerFeed";
+import ChannelFeed from "./ChannelFeed";
 
 const SideNav = (props) => {
   return (

@@ -1,12 +1,12 @@
 import React from "react";
 
-const Servers = (props) => {
+const ServerFeed = (props) => {
   return (
       <div>
-          Servers
+          ServerFeed
       </div>
   )
 }
 
 
-export default Servers;
+export default ServerFeed;
