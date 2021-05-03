@@ -80,9 +80,6 @@ const Routes = () => {
 
 export default Routes;
 
-
-//so heres the plan:
-//just go through all the signin/singup stuff
 //make sure it goes to homepage on successful load
 //then work on homepage abit
 //then tests?
