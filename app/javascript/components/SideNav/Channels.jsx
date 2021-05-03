@@ -1,12 +1,12 @@
 import React from "react";
 
-const Servers = (props) => {
+const Channels = (props) => {
   return (
       <div>
-          Servers
+          Channels
       </div>
   )
 }
 
 
-export default Servers;
+export default Channels;
