@@ -14,16 +14,6 @@ const SideNav = (props) => {
   )
 }
 
-//Create a Server model
-// The model will have name (server name, no duplicate)
-// and body (info about server), 
-// and optional img (server banner/img)
-// has_many :channels
-// belongs_to :user (for admin purposes), maybe?
-//SO basically, its literally the exact same as board
-//except for board is board and has posts, while this
-//is server and has channels
-
 //Create a channel model
 //This model follows the same general ideas as the post BUT:
 //the comments will actually be the "messages"
