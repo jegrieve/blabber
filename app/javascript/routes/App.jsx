@@ -8,8 +8,10 @@ import SignUp from "../components/UserRegistration/SignUp";
 import ServerPage from "../components/ServerPage";
 const Routes = () => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [showServers, setShowServers] = useState(true); 
+
   console.log(currentUser)
-  
+
   useEffect(() => {
     getUserSession();
   }, [])
@@ -33,7 +35,7 @@ const Routes = () => {
       <div className = "container-fluid">
         <div className = "row">
           <div className = "col-4">
-            <SideNav />
+            <SideNav showServers = {showServers} />
           </div>
           <div className = "col-8">
             <Switch>
@@ -76,6 +78,7 @@ const Routes = () => {
                     <ServerPage
                       {...props}
                       currentUser={currentUser}
+                      setShowServers = {setShowServers}
                     />
                   )}
               />

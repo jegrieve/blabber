@@ -7,6 +7,10 @@ const ServerPage = (props) => {
       getServerData();
   }, [])
 
+  useEffect(() => {
+    props.setShowServers(false);
+  }, [])
+
   const getServerData = () => {
     const id = props.match.params.id
     const url = `/api/v1/servers/show/${id}`;
