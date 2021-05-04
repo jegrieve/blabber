@@ -7,7 +7,7 @@ const ServerFeed = (props) => {
 
   useEffect(() => {
     getServers();
-  })
+  }, [])
 
   const getServers = () => {
     const url = "/api/v1/servers/index";
@@ -19,17 +19,18 @@ const ServerFeed = (props) => {
         throw new Error("Network response was not ok.");
       })
       .then(response => {
+        console.log(response)
         setLoadedServers(response)
       })
       .catch((error) => console.log(error.message));
   }
 
-
+//key needs to be different when loading channels + messages
   return (
       <div>
          {loadedServers.map((serverData) => {
            return (
-             <div key = {serverData.id}>
+             <div key = {serverData.id}> 
                <Server data = {serverData} />
              </div>
            )
