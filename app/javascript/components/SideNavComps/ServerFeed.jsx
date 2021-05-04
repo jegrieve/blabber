@@ -1,5 +1,6 @@
 import React from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect, useState } from "react/cjs/react.development";
+import Server from "./Server";
 
 const ServerFeed = (props) => {
   const [loadedServers, setLoadedServers] = useState([]);
@@ -26,7 +27,13 @@ const ServerFeed = (props) => {
 
   return (
       <div>
-          ServerFeed
+         {loadedServers.map((serverData) => {
+           return (
+             <div key = {serverData.id}>
+               <Server data = {serverData} />
+             </div>
+           )
+         })}
       </div>
   )
 }
