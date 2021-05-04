@@ -69,6 +69,16 @@ const Routes = () => {
                     />
                   )}
               />
+              <Route
+                  exact
+                  path="/server/:id"
+                  render={(props) => (
+                    <ServerPage
+                      {...props}
+                      currentUser={currentUser}
+                    />
+                  )}
+              />
             </Switch>
           </div>
         </div>
