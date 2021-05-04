@@ -14,12 +14,4 @@ const SideNav = (props) => {
   )
 }
 
-//Create a channel model
-//This model follows the same general ideas as the post BUT:
-//the comments will actually be the "messages"
-//So i'll figure this out when  I get to it
-//so dont confuse this with the comments
-//this will have many comments (messages)
-//the messages will be the one with videos/images/texts etc.
-
 export default SideNav;

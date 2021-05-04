@@ -8,5 +8,4 @@ const ServerFeed = (props) => {
   )
 }
 
-
 export default ServerFeed;
