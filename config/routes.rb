@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       delete 'sessions/destroy/:id', to: 'sessions#destroy';
 
       get 'servers/index', to: 'servers#index';
+      get 'servers/show/:id', to: 'servers#show';
       post 'servers/create', to: 'servers#create';
       delete 'servers/destroy/:id', to: 'servers#destroy';
     end

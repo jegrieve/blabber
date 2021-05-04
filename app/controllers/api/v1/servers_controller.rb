@@ -6,6 +6,10 @@ class Api::V1::ServersController < ApplicationController
     end
 
     def show
+        server = Server.find(params[:id])
+        if server
+            render json: server
+        end
     end
 
     def create

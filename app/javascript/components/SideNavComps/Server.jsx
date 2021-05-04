@@ -4,7 +4,7 @@ const Server = (props) => {
 
   return (
       <div>
-          <NavLink to = {`/servers/${props.data.id}`}>
+          <NavLink to = {`/server/${props.data.id}`}>
             {props.data.name}
           </NavLink>
       </div>
