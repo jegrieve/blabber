@@ -6,6 +6,10 @@ Rails.application.routes.draw do
       get 'sessions/index', to: 'sessions#index';
       post 'sessions/create', to: 'sessions#create';
       delete 'sessions/destroy/:id', to: 'sessions#destroy';
+
+      get 'servers/index', to: 'servers#index';
+      post 'servers/create', to: 'servers#create';
+      delete 'servers/destroy/:id', to: 'servers#destroy';
     end
   end
   root 'homepage#index'
