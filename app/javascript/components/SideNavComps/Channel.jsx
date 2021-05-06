@@ -4,13 +4,12 @@ const Channel = (props) => {
 
   return (
       <div>
-        {/* <NavLink to = {`/channel/${props.datastuff.id}`}>
+        <NavLink to = {`/channel/${props.data.id}`}>
             go to specific channel
-        </NavLink> */}
+        </NavLink>
         channel
       </div>
   )
 }
-
 
 export default Channel;

@@ -82,6 +82,16 @@ const Routes = () => {
                     />
                   )}
               />
+              <Route
+                  exact
+                  path="/channel/:id"
+                  render={(props) => (
+                    <ChannelPage
+                      {...props}
+                      currentUser={currentUser}
+                    />
+                  )}
+              />             
             </Switch>
           </div>
         </div>
