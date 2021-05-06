@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react/cjs/react.development";
-
+import Channel from "./Channel"
 const ChannelFeed = (props) => {
-  const [serverChannels, setServerChannels] = useState(null);
+  const [serverChannels, setServerChannels] = useState([]);
 
   useEffect(() => {
     getServerData();
@@ -32,8 +32,13 @@ const ChannelFeed = (props) => {
 
   return (
       <div>
-          ChannelFeed
-          {console.log(serverChannels)}
+          {serverChannels.map((channelData) => {
+           return (
+             <div key = {channelData.id}> 
+               <Channel data = {channelData} />
+             </div>
+           )
+         })}
       </div>
   )
 }

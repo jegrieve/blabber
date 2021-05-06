@@ -9,5 +9,4 @@ const Channel = (props) => {
   )
 }
 
-
 export default Channel;
