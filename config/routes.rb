@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       get 'servers/show/:id', to: 'servers#show';
       post 'servers/create', to: 'servers#create';
       delete 'servers/destroy/:id', to: 'servers#destroy';
+
+      get 'channels/show/:id', to: 'channels#show';
     end
   end
   root 'homepage#index'
