@@ -4,10 +4,10 @@ import ServerFeed from "./ServerFeed";
 import ChannelFeed from "./ChannelFeed";
 
 const SideNav = (props) => {
-  console.log(props.showServers)
+
   return (
       <div className = "side-nav">
-        {props.showServers ? <ServerFeed /> : <ChannelFeed/> }
+        {props.currentServer ? <ChannelFeed currentServer = {props.currentServer}/> : <ServerFeed /> }
       </div>
   )
 }

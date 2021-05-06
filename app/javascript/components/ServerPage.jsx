@@ -8,8 +8,10 @@ const ServerPage = (props) => {
   }, [])
 
   useEffect(() => {
-    props.setShowServers(false);
-  }, [])
+    if (serverData) {
+      props.setCurrentServer(serverData);
+    }
+  }, [serverData])
 
   const getServerData = () => {
     const id = props.match.params.id
@@ -23,7 +25,6 @@ const ServerPage = (props) => {
         throw new Error("Network response was not ok.");
       })
       .then(response => {
-        console.log(response)
         setServerData(response)
       }
         )
