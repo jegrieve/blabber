@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       delete 'servers/destroy/:id', to: 'servers#destroy';
 
       get 'channels/show/:id', to: 'channels#show';
+
+      get "messages/index", to: "messages#index"
     end
   end
   root 'homepage#index'
