@@ -25,7 +25,6 @@ const ChannelPage = (props) => {
           .catch((error) => console.log(error.message));
       }
     
-
   return (
       <div>
           ChannelPage
