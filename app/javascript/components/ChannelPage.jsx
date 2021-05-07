@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-
+import MessageFeed from "./MessageFeed";
 const ChannelPage = (props) => {
     const [channelData, setChannelData] = useState(null);
     console.log(channelData);
@@ -28,7 +28,7 @@ const ChannelPage = (props) => {
   return (
       <div>
           ChannelPage
-          {/* <MessageFeed /> */}
+          {channelData ? <MessageFeed channelMessageData = {channelData.messages} /> : false }
           {/* <MessageCreate /> */}
       </div>
   )
