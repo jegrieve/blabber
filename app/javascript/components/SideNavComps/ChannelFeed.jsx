@@ -34,7 +34,7 @@ const ChannelFeed = (props) => {
       <div>
           {serverChannels.map((channelData) => {
            return (
-             <div key = {channelData.id}> 
+             <div key = {"c" + channelData.id}> 
                <Channel data = {channelData} />
              </div>
            )
