@@ -6,6 +6,8 @@ import SideNav from "../components/SideNavComps/SideNav";
 import SignIn from "../components/UserRegistration/SignIn";
 import SignUp from "../components/UserRegistration/SignUp";
 import ServerPage from "../components/ServerPage";
+import ChannelPage from "../components/ChannelPage";
+
 const Routes = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [currentServer, setCurrentServer] = useState(null); 

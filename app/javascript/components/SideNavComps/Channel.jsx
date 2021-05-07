@@ -5,9 +5,8 @@ const Channel = (props) => {
   return (
       <div>
         <NavLink to = {`/channel/${props.data.id}`}>
-            go to specific channel
+            channel
         </NavLink>
-        channel
       </div>
   )
 }
