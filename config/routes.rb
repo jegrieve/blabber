@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get 'channels/show/:id', to: 'channels#show';
 
       get "messages/index", to: "messages#index"
+      post 'messages/create/:id', to: 'messages#create';
     end
   end
   root 'homepage#index'
