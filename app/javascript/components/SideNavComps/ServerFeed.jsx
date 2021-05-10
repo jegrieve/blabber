@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import Server from "./Server";
 
@@ -25,6 +26,7 @@ const ServerFeed = (props) => {
       .catch((error) => console.log(error.message));
   }
 
+
   return (
       <div>
          {loadedServers.map((serverData) => {
@@ -34,6 +36,9 @@ const ServerFeed = (props) => {
              </div>
            )
          })}
+          <NavLink to = {"/create-new-server"}>
+            <button>Create Server</button>
+          </NavLink>
       </div>
   )
 }
