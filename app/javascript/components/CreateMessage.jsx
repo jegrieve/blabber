@@ -25,8 +25,16 @@ const CreateMessage = (props) => {
             throw new Error("Network response was not ok.");
         })
         .then(response => {
-            console.log(response)
+            props.getChannelData()
             // props.setLoadedFeedComments(false);
+            //deal with this next to reload
+            //feed once posted/ in general
+
+            //when we get a response we can just
+            //call a method on the channelpage
+            //to api call to get new messages
+            //instead of doing anything with
+            //the response
         })
         .catch(error => console.log(error.message))
     }
@@ -47,3 +55,4 @@ const CreateMessage = (props) => {
 
 
 export default CreateMessage;
+

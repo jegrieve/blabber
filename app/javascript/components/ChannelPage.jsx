@@ -9,6 +9,13 @@ const ChannelPage = (props) => {
         getChannelData();
     }, [])
 
+    useEffect(() => {
+        const refresher = setTimeout(() => {
+            getChannelData();
+          }, 10000);
+          return () => clearTimeout(refresher);
+    })
+
     const getChannelData = () => {
         const id = props.match.params.id
         const url = `/api/v1/channels/show/${id}`;
@@ -31,7 +38,7 @@ const ChannelPage = (props) => {
       <div>
           ChannelPage
           {channelData ? <MessageFeed channelMessageData = {channelData.messages} /> : false }
-          {channelData ? <CreateMessage channelId = {channelData.id} /> : false}
+          {channelData ? <CreateMessage channelId = {channelData.id} getChannelData = {getChannelData} /> : false}
       </div>
   )
 }
