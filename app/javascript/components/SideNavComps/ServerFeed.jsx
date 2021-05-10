@@ -25,7 +25,6 @@ const ServerFeed = (props) => {
       .catch((error) => console.log(error.message));
   }
 
-//key needs to be different when loading channels + messages
   return (
       <div>
          {loadedServers.map((serverData) => {

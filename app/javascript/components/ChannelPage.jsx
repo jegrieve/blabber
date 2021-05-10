@@ -12,7 +12,7 @@ const ChannelPage = (props) => {
     useEffect(() => {
         const refresher = setTimeout(() => {
             getChannelData();
-          }, 10000);
+          }, 1000);
           return () => clearTimeout(refresher);
     })
 
