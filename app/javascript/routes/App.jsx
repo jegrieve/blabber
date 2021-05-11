@@ -95,7 +95,15 @@ const Routes = () => {
                     />
                   )}
               /> 
-              <Route exact path = "/create-new-server" component = {CreateNewServer} />            
+              <Route
+                  exact
+                  path="/create-new-server"
+                  render={(props) => (
+                    <CreateNewServer
+                      {...props}
+                    />
+                  )}
+              />       
             </Switch>
           </div>
         </div>
