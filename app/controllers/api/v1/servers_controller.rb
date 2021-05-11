@@ -13,8 +13,16 @@ class Api::V1::ServersController < ApplicationController
     end
 
     def create
+        user = User.find_by(id: session[:user_id])
+        server = user.servers.create(server_params)
+        render json: server
     end
 
     def delete
+    end
+
+    private
+    def server_params
+        params.permit(:name, :info)
     end
 end
