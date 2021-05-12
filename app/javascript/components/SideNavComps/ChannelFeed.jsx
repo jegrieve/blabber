@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import Channel from "./Channel"
 const ChannelFeed = (props) => {
@@ -39,6 +40,9 @@ const ChannelFeed = (props) => {
              </div>
            )
          })}
+          <NavLink to = {"/create-new-channel"}>
+            <button>Create Channel</button>
+          </NavLink>
       </div>
   )
 }

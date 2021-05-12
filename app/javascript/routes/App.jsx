@@ -7,13 +7,15 @@ import SignIn from "../components/UserRegistration/SignIn";
 import SignUp from "../components/UserRegistration/SignUp";
 import ServerPage from "../components/ServerPage";
 import ChannelPage from "../components/ChannelPage";
-import CreateNewServer from "../components/CreateNewServer";
+import CreateNewServer from "../components/SideNavComps/CreateNewServer";
+import CreateNewChannel from "../components/SideNavComps/CreateNewChannel";
 
 const Routes = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [currentServer, setCurrentServer] = useState(null); 
 
   console.log(currentUser)
+  console.log(currentServer)
 
   useEffect(() => {
     getUserSession();
@@ -103,7 +105,16 @@ const Routes = () => {
                       {...props}
                     />
                   )}
-              />       
+              />      
+              <Route
+                  exact
+                  path="/create-new-channel"
+                  render={(props) => (
+                    <CreateNewChannel
+                      {...props}
+                    />
+                  )}
+              />      
             </Switch>
           </div>
         </div>

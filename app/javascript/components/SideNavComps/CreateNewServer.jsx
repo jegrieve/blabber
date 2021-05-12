@@ -16,6 +16,10 @@ const CreateNewServer = (props) => {
 
   const submitCreateServerForm = (e) => {
     e.preventDefault();
+    postCreateServerData();
+}
+
+  const postCreateServerData = () => {
       const body = {
           name: createServerInputs["serverName"],
           info: createServerInputs["serverInfo"]

@@ -20,7 +20,6 @@ const ServerFeed = (props) => {
         throw new Error("Network response was not ok.");
       })
       .then(response => {
-        console.log(response)
         setLoadedServers(response)
       })
       .catch((error) => console.log(error.message));
