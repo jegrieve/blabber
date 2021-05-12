@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       delete 'servers/destroy/:id', to: 'servers#destroy';
 
       get 'channels/show/:id', to: 'channels#show';
+      post 'channels/create', to: 'channels#create';
 
       get "messages/index", to: "messages#index"
       post 'messages/create/:id', to: 'messages#create';
