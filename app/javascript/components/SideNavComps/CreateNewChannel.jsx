@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 const CreateNewChannel = (props) => {
     const [createChannelInputs, setCreateChannelInputs] = useState({
@@ -21,7 +21,7 @@ const CreateNewChannel = (props) => {
         const body = {
             name: createChannelInputs["channelName"],
         }
-        const url = "/api/v1/channels/create"
+        const url = `/api/v1/channels/create?server_id=${props.serverId}`
         const token = document.querySelector('meta[name="csrf-token"]').content;
         fetch(url, {
         method: "POST",

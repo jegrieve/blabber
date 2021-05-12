@@ -7,13 +7,13 @@ class Api::V1::ChannelsController < ApplicationController
     end
 
     def create
-        server = Server.find(:id)
+        server = Server.find(params[:server_id])
         channel = server.channels.create(channel_params)
         render json: channel
     end
 
     private
     def channel_params
-        params.permit(:name, :id)
+        params.permit(:name)
     end
 end

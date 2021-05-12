@@ -112,6 +112,7 @@ const Routes = () => {
                   render={(props) => (
                     <CreateNewChannel
                       {...props}
+                      serverId={currentServer.id}
                     />
                   )}
               />      
