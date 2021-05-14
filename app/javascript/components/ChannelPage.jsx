@@ -8,6 +8,10 @@ const ChannelPage = (props) => {
     useEffect(() => {
         getChannelData();
     }, [])
+    
+    useEffect(() => {
+      window.scrollTo(0,document.body.scrollHeight);
+    })
 
     // this will keep refreshing messagefeed for new messages
     // useEffect(() => {
