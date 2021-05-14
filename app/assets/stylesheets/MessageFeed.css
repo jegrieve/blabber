@@ -1,4 +1,4 @@
 .channel-message {
   border: 1px solid black;
-  height: 400px;
+  max-height: 400px;
 }

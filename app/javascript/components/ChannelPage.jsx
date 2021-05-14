@@ -18,13 +18,13 @@ const ChannelPage = (props) => {
 
     useEffect(() => {
       window.scrollTo(0,document.body.scrollHeight);
-    })
+    }, [channelData])
 
     // this will keep refreshing messagefeed for new messages
     // useEffect(() => {
     //     const refresher = setTimeout(() => {
     //         getChannelData();
-    //       }, 1000);
+    //       }, 15000);
     //       return () => clearTimeout(refresher);
     // })
 
