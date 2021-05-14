@@ -9,12 +9,13 @@ const ChannelPage = (props) => {
         getChannelData();
     }, [])
 
-    useEffect(() => {
-        const refresher = setTimeout(() => {
-            getChannelData();
-          }, 1000);
-          return () => clearTimeout(refresher);
-    })
+    // this will keep refreshing messagefeed for new messages
+    // useEffect(() => {
+    //     const refresher = setTimeout(() => {
+    //         getChannelData();
+    //       }, 1000);
+    //       return () => clearTimeout(refresher);
+    // })
 
     const getChannelData = () => {
         const id = props.match.params.id

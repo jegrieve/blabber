@@ -6,7 +6,7 @@ import ChannelFeed from "./ChannelFeed";
 const SideNav = (props) => {
 
   return (
-      <div>
+      <div className = "side-nav">
         {props.currentServer ? <ChannelFeed currentServer = {props.currentServer} /> : <ServerFeed /> }
       </div>
   )

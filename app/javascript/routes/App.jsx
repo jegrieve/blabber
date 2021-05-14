@@ -39,7 +39,7 @@ const Routes = () => {
       <Navbar history = {history} currentUser = {currentUser} setCurrentUser = {setCurrentUser} />
       <div className = "container-fluid">
         <div className = "row">
-          <div className = "side-nav col-3">
+          <div className = "col-3">
             <SideNav currentServer = {currentServer}/>
           </div>
           <div className = "app-page col-9">

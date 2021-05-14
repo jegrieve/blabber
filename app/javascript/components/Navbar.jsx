@@ -4,14 +4,14 @@ import SignOut from "./UserRegistration/SignOut";
 
 const Navbar = (props) => {
   return (
-    <div>
+    <div className = "site-navbar d-flex justify-content-around align-items-center">
       {props.currentUser ?       
-        <div className = "site-navbar d-flex justify-content-around align-items-center">
+        <div>
           <NavLink to={"/"}>Current User</NavLink>
           <SignOut history = {props.history} currentUser = {props.currentUser} setCurrentUser = {props.setCurrentUser} />
         </div> 
           : 
-        <div className = "site-navbar d-flex justify-content-around align-items-center">
+        <div>
           <NavLink history = {props.history} to={"/sign-up"}>Sign Up</NavLink>
           <NavLink history = {props.history} to = {"/sign-in"}>Sign In</NavLink>
         </div>
