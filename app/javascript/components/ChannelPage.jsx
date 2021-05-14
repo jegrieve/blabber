@@ -4,11 +4,18 @@ import CreateMessage from "./CreateMessage";
 
 const ChannelPage = (props) => {
     const [channelData, setChannelData] = useState(null);
+    const [currentChannelId, setCurrentChannelId] = useState(null);
+
+    useEffect(() => {
+      if (props.match.params.id !== currentChannelId) {
+        setCurrentChannelId(props.match.params.id);
+      }
+    })
 
     useEffect(() => {
         getChannelData();
-    }, [])
-    
+    }, [currentChannelId])
+
     useEffect(() => {
       window.scrollTo(0,document.body.scrollHeight);
     })
