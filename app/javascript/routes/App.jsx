@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "../components/Home";
 import Navbar from "../components/Navbar";
 import SideNav from "../components/SideNavComps/SideNav";
@@ -40,7 +40,7 @@ const Routes = () => {
       <div className = "container-fluid">
         <div className = "row">
           <div className = "side-nav col-3">
-            <SideNav currentServer = {currentServer} />
+            <SideNav currentServer = {currentServer}/>
           </div>
           <div className = "app-page col-9">
             <Switch>
@@ -51,6 +51,7 @@ const Routes = () => {
                     <Home
                       {...props}
                       currentUser={currentUser}
+                      setCurrentServer = {setCurrentServer}
                     />
                   )}
               />

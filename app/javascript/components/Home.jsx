@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 
 const Home = (props) => {
+  useEffect(() => {
+    props.setCurrentServer(null);
+  },[])
+  
   return (
     <div>
         <div>Welcome to MessageApp!</div>

@@ -33,6 +33,10 @@ const ChannelFeed = (props) => {
 
   return (
       <div>
+        <NavLink to = {"/"}>
+          Return to servers
+        </NavLink>
+        <div>Current Server: test (or on navbar)</div>
           {serverChannels.map((channelData) => {
            return (
              <div key = {"c" + channelData.id}> 
