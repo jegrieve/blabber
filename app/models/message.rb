@@ -4,6 +4,6 @@ class Message < ApplicationRecord
     validates :body, presence: true
 
     def created_at
-        attributes['created_at'].strftime("%^b %d %Y at %l:%M%p")
+        attributes['created_at'].strftime("%b %d %Y at %l:%M%p")
     end
 end
