@@ -1,4 +1,8 @@
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+
+
 
 const Message = (props) => {
   return (
@@ -6,6 +10,7 @@ const Message = (props) => {
       <div className = "message-avatar">
         {/* {props.messageData.user.username} 
         eventually use link to img*/}
+        <FontAwesomeIcon icon={faUserCircle} />
       </div>
       <div className = "message-username">
         {props.messageData.user.username}
