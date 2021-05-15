@@ -25,7 +25,7 @@ const CreateMessage = (props) => {
             throw new Error("Network response was not ok.");
         })
         .then(response => {
-            props.getChannelData()
+            props.getChannelMessages()
             // props.setLoadedFeedComments(false);
             //deal with this next to reload
             //feed once posted/ in general

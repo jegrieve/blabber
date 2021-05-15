@@ -1,6 +1,8 @@
 class Api::V1::MessagesController < ApplicationController
     def index
-        messages = Channel.find(params[:id]).messages.order(created_at: :desc)
+        messages = Message.where(channel_id: params[:channel_id])
+        #.limit(10)
+            #Channel.find(params[:channel_id]).messages.order(created_at: :desc)
         if messages
             render json: messages
         end

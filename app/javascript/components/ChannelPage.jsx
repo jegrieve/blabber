@@ -3,7 +3,7 @@ import MessageFeed from "./MessageFeed";
 import CreateMessage from "./CreateMessage";
 
 const ChannelPage = (props) => {
-    const [channelData, setChannelData] = useState(null);
+    const [channelMessages, setChannelMessages] = useState(null);
     const [currentChannelId, setCurrentChannelId] = useState(null);
 
     useEffect(() => {
@@ -13,24 +13,24 @@ const ChannelPage = (props) => {
     })
 
     useEffect(() => {
-        getChannelData();
+        getChannelMessages();
     }, [currentChannelId])
 
     useEffect(() => {
       window.scrollTo(0,document.body.scrollHeight);
-    }, [channelData])
+    }, [channelMessages])
 
     // this will keep refreshing messagefeed for new messages
     // useEffect(() => {
     //     const refresher = setTimeout(() => {
-    //         getChannelData();
+    //         getChannelMessages();
     //       }, 15000);
     //       return () => clearTimeout(refresher);
     // })
 
-    const getChannelData = () => {
+    const getChannelMessages = () => {
         const id = props.match.params.id
-        const url = `/api/v1/channels/show/${id}`;
+        const url = `/api/v1/messages/index?channel_id=${id}`;
     
         fetch(url)
           .then(response => {
@@ -40,7 +40,8 @@ const ChannelPage = (props) => {
             throw new Error("Network response was not ok.");
           })
           .then(response => {
-            setChannelData(response)
+            console.log(response)
+            setChannelMessages(response)
           }
             )
           .catch((error) => console.log(error.message));
@@ -49,8 +50,9 @@ const ChannelPage = (props) => {
   return (
       <div>
           ChannelPage
-          {channelData ? <MessageFeed channelMessageData = {channelData.messages} /> : false }
-          {channelData ? <CreateMessage channelId = {channelData.id} getChannelData = {getChannelData} /> : false}
+          {/* put the channelpage data here plus the messagefeed and create message*/}
+          {channelMessages ? <MessageFeed channelMessageData = {channelMessages} /> : false }
+          {channelMessages ? <CreateMessage channelId = {currentChannelId} getChannelMessages = {getChannelMessages} /> : false}
       </div>
   )
 }
