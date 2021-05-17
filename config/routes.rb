@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  default_url_options :host => "localhost:3000"
+  #change before pushing to production
+  #missing host to linkto! error when GET images
   namespace :api do 
     namespace :v1 do
       post 'registrations/create', to: 'registrations#create';
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
     end
   end
   root 'homepage#index'
-  get '/*path' => 'homepage#index'
+  # get '/*path' => 'homepage#index'
+  #When using /*path the image GET doesnt work
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -27,7 +27,9 @@ const Message = (props) => {
       <div className = "message-body">
         {props.messageData.body}
       </div>
-
+        {props.messageData.message_image ? <div>
+          <img src = {props.messageData.message_image.url} />
+        </div> : false}
     </div>
   )
 }
