@@ -11,10 +11,6 @@ const CreateMessage = (props) => {
         const formData =  new FormData();
         formData.append('body', messageData["body"]);
         formData.append('message_image', messageData["image"]);
-        // const body = {
-        //     body: messageData["body"],
-        //     image: messageData["image"]
-        // }
         const url = `/api/v1/messages/create/${props.channelId}`;
         const token = document.querySelector('meta[name="csrf-token"]').content;
         fetch(url, {
@@ -32,15 +28,6 @@ const CreateMessage = (props) => {
         })
         .then(response => {
             props.getChannelMessages()
-            // props.setLoadedFeedComments(false);
-            //deal with this next to reload
-            //feed once posted/ in general
-
-            //when we get a response we can just
-            //call a method on the channelpage
-            //to api call to get new messages
-            //instead of doing anything with
-            //the response
         })
         .catch(error => console.log(error.message))
     }
