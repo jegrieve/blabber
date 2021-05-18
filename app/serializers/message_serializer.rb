@@ -1,6 +1,6 @@
 class MessageSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :body, :user, :created_at, :message_image
+  attributes :id, :body, :user, :created_at, :message_image, :video_link
   def message_image
     if object.message_image.attached?
       {
