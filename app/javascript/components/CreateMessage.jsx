@@ -3,10 +3,39 @@ import React, {useState, useEffect} from "react";
 const CreateMessage = (props) => {
     const [messageData, setMessageData] = useState({
         body: "",
-        image: null
+        image: null,
+        video: null
     });
 
-    const submitMessageData = (e) => {
+    // const submitMessageData = (e) => {
+    //     e.preventDefault();
+    //     const body = {
+    //         body: postContent["body"],
+    //         video: postContent["video"]
+    //     }
+    //     const url = `/api/v1/messages/create/${props.channelId}`;
+    //     const token = document.querySelector('meta[name="csrf-token"]').content;
+    //     fetch(url, {
+    //     method: "POST",
+    //     headers: {
+    //     "X-CSRF-Token": token, 
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify(body)
+    // })
+    //     .then(response => {
+    //         if (response.ok) {
+    //             return response.json()
+    //         }
+    //         throw new Error("Network response was not ok.");
+    //     })
+    //     .then(response => {
+    //         props.getChannelMessages()
+    //     })
+    //     .catch(error => console.log('did not post'))
+    // }
+
+    const submitMessageData = (e) => { //submitMessageDataWithImage
         e.preventDefault();
         const formData =  new FormData();
         formData.append('body', messageData["body"]);
