@@ -6,11 +6,11 @@ const CreateMessage = (props) => {
         image: null,
         video: null
     });
-    const [submitImage, setSubmitImage] = useState(false);
+    const [submitType, setSubmitType] = useState("text");
 
     const submitMessage = (e) => {
         e.preventDefault();
-        if (!submitImage) {
+        if (submitType === "text" || submitType === "video") {
             submitMessageDataNoImage()
         } else {
             submitMessageDataWithImage()
@@ -76,6 +76,14 @@ const CreateMessage = (props) => {
         }));
     }
 
+    
+    const onVideoLinkChange = (e) => {
+        // setMessageData((prev) => ({
+        //     ...prev,
+        //     [e.target.name]: e.target.value
+        // }));
+    }
+
     const onImageChange = (e) => {
         setMessageData((prev) => ({
             ...prev,
@@ -83,12 +91,38 @@ const CreateMessage = (props) => {
         }))
     };
 
+    const changeSubmitType = (e) => {
+        e.preventDefault();
+        if (e.target.id === "add-img-btn") {
+            setSubmitType("image")
+        } else if (e.target.id === "add-video-btn") {
+            setSubmitType("video")
+        } else {
+            setSubmitType("text")
+        }
+    }
+
     return (
         <div>
             <form onSubmit = {submitMessage}>
                 <input onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} />
-                <input type="file" accept="image/*" multiple={false} onChange={onImageChange} />
-                <button>Post</button>
+                <span>
+                    <button id = "add-img-btn" onClick = {changeSubmitType} >Add Image</button>
+                    <span>or</span>
+                    <button id = "add-video-btn" onClick = {changeSubmitType} >Add Video</button>
+                    {submitType === "image" ? 
+                        <div>
+                            <input name = "image-link" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
+                            <button id = "remove-link-btn" onClick = {changeSubmitType} > Cancel (X) </button>
+                        </div> 
+                    : submitType === "video" ? 
+                        <div>
+                            <input name = "video-link" type="text" onChange={onVideoLinkChange} />
+                            <button id = "remove-link-btn" onClick = {changeSubmitType} > Cancel (X) </button>  
+                        </div> 
+                    : false}
+                    <button>Post</button>
+                </span>
             </form>
         </div>
     )
