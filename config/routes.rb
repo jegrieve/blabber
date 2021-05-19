@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     end
   end
   root 'homepage#index'
+  get '/channel/*path' => 'homepage#index'
   # get '/*path' => 'homepage#index'
   #When using /*path the image GET doesnt work
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
