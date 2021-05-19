@@ -6,37 +6,45 @@ const CreateMessage = (props) => {
         image: null,
         video: null
     });
+    const [submitImage, setSubmitImage] = useState(false);
 
-    // const submitMessageData = (e) => {
-    //     e.preventDefault();
-    //     const body = {
-    //         body: postContent["body"],
-    //         video: postContent["video"]
-    //     }
-    //     const url = `/api/v1/messages/create/${props.channelId}`;
-    //     const token = document.querySelector('meta[name="csrf-token"]').content;
-    //     fetch(url, {
-    //     method: "POST",
-    //     headers: {
-    //     "X-CSRF-Token": token, 
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify(body)
-    // })
-    //     .then(response => {
-    //         if (response.ok) {
-    //             return response.json()
-    //         }
-    //         throw new Error("Network response was not ok.");
-    //     })
-    //     .then(response => {
-    //         props.getChannelMessages()
-    //     })
-    //     .catch(error => console.log('did not post'))
-    // }
-
-    const submitMessageData = (e) => { //submitMessageDataWithImage
+    const submitMessage = (e) => {
         e.preventDefault();
+        if (!submitImage) {
+            submitMessageDataNoImage()
+        } else {
+            submitMessageDataWithImage()
+        }
+    }
+
+    const submitMessageDataNoImage = () => {
+        const body = {
+            body: messageData["body"],
+            video_link: messageData["video"]
+        }
+        const url = `/api/v1/messages/create/${props.channelId}`;
+        const token = document.querySelector('meta[name="csrf-token"]').content;
+        fetch(url, {
+        method: "POST",
+        headers: {
+        "X-CSRF-Token": token, 
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json()
+            }
+            throw new Error("Network response was not ok.");
+        })
+        .then(response => {
+            props.getChannelMessages()
+        })
+        .catch(error => console.log(error.message))
+    }
+
+    const submitMessageDataWithImage = () => {
         const formData =  new FormData();
         formData.append('body', messageData["body"]);
         formData.append('message_image', messageData["image"]);
@@ -77,7 +85,7 @@ const CreateMessage = (props) => {
 
     return (
         <div>
-            <form onSubmit = {submitMessageData}>
+            <form onSubmit = {submitMessage}>
                 <input onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} />
                 <input type="file" accept="image/*" multiple={false} onChange={onImageChange} />
                 <button>Post</button>
@@ -85,7 +93,6 @@ const CreateMessage = (props) => {
         </div>
     )
 }
-
 
 export default CreateMessage;
 
