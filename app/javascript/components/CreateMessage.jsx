@@ -78,10 +78,10 @@ const CreateMessage = (props) => {
 
     
     const onVideoLinkChange = (e) => {
-        // setMessageData((prev) => ({
-        //     ...prev,
-        //     [e.target.name]: e.target.value
-        // }));
+        setMessageData((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        }));
     }
 
     const onImageChange = (e) => {
@@ -112,12 +112,12 @@ const CreateMessage = (props) => {
                     <button id = "add-video-btn" onClick = {changeSubmitType} >Add Video</button>
                     {submitType === "image" ? 
                         <div>
-                            <input name = "image-link" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
+                            <input name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
                             <button id = "remove-link-btn" onClick = {changeSubmitType} > Cancel (X) </button>
                         </div> 
                     : submitType === "video" ? 
                         <div>
-                            <input name = "video-link" type="text" onChange={onVideoLinkChange} />
+                            <input name = "video" type="text" onChange={onVideoLinkChange} />
                             <button id = "remove-link-btn" onClick = {changeSubmitType} > Cancel (X) </button>  
                         </div> 
                     : false}

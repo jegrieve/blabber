@@ -30,6 +30,9 @@ const Message = (props) => {
         {props.messageData.message_image ? <div className = "message-img">
           <img src = {props.messageData.message_image.url} width = {200} height = {200}  />
         </div> : false}
+        {props.messageData.video_link ? <div className = "message-video">
+          {props.messageData.video_link}
+        </div> : false}
     </div>
   )
 }
