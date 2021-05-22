@@ -102,6 +102,7 @@ const CreateMessage = (props) => {
         }
     }
 
+
     return (
         <div>
             <form onSubmit = {submitMessage}>
@@ -129,4 +130,3 @@ const CreateMessage = (props) => {
 }
 
 export default CreateMessage;
-
