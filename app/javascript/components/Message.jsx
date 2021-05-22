@@ -47,7 +47,7 @@ const formatVideoUrl = (url) => {
           <img src = {props.messageData.message_image.url} width = {200} height = {200}  />
         </div> : false}
         {props.messageData.video_link ? <div className = "message-video">
-        <iframe width="420" height="315" src={videoLinkFormatted} />
+        <iframe width="250" height="250" src={videoLinkFormatted} />
         </div> : false}
     </div>
   )
