@@ -17,6 +17,15 @@ class Api::V1::MessagesController < ApplicationController
         end
     end
 
+    
+    def destroy
+        message = Message.find(params[:id])
+        if (session[:user_id] && session[:user_id] === message.user_id)
+            message.destroy
+            render json: {message: "Message deleted"}
+        end
+    end
+
     private
 
     def message_params
