@@ -47,9 +47,10 @@ const deleteMessage = () => {
 }
   return (
     <div className = "message-contents">
-      <div className = "message-delete">
-        <button onClick = {deleteMessage}>Delete</button>
-      </div>
+      {props.currentUser && props.messageData.user_id === props.currentUser.id ?       
+        <div className = "message-delete">
+          <button onClick = {deleteMessage}>Delete</button>
+        </div> : false}
       <div className = "message-info d-flex align-items-center justify-content-around">
         <div className = "message-avatar">
         {/* {props.messageData.user.username} 

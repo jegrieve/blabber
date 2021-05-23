@@ -7,7 +7,7 @@ const MessageFeed = (props) => {
         {props.channelMessageData.map((messageData) => {
            return (
              <div className = "channel-message" key = {"m" + messageData.id}> 
-               <Message messageData = {messageData} />
+               <Message currentUser = {props.currentUser} messageData = {messageData} />
              </div>
            )
          })}
