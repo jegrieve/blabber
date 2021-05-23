@@ -51,7 +51,7 @@ const ChannelPage = (props) => {
       <div>
           ChannelPage
           {/* put the channelpage data here plus the messagefeed and create message*/}
-          {channelMessages ? <MessageFeed currentUser= {props.currentUser} channelMessageData = {channelMessages} /> : false }
+          {channelMessages ? <MessageFeed currentUser= {props.currentUser} getChannelMessages = {getChannelMessages} channelMessageData = {channelMessages} /> : false }
           {channelMessages ? <CreateMessage channelId = {currentChannelId} getChannelMessages = {getChannelMessages} /> : false}
       </div>
   )
