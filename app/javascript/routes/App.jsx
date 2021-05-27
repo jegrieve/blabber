@@ -39,10 +39,10 @@ const Routes = () => {
       <Navbar history = {history} currentUser = {currentUser} setCurrentUser = {setCurrentUser} />
       <div className = "container-fluid">
         <div className = "row">
-          <div className = "col-3">
+          <div className = "d-none d-md-block col-md-3">
             <SideNav currentServer = {currentServer}/>
           </div>
-          <div className = "app-page col-9">
+          <div className = "app-page col-md-9 col-sm-12">
             <Switch>
             <Route
                   exact
