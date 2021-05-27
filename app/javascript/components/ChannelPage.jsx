@@ -4,17 +4,31 @@ import CreateMessage from "./CreateMessage";
 
 const ChannelPage = (props) => {
     const [channelMessages, setChannelMessages] = useState(null);
-    const [currentChannelId, setCurrentChannelId] = useState(null);
-
+    const [currentChannel, setCurrentChannel] = useState(null);
+ 
     useEffect(() => {
-      if (props.match.params.id !== currentChannelId) {
-        setCurrentChannelId(props.match.params.id);
+      if (!currentChannel || Number(props.match.params.id) !== currentChannel.id) {
+          getCurrentChannel();
       }
     })
 
+    useEffect(() => { 
+      return (() => {
+        props.setCurrentChannel(null)
+      })
+    },[])
+
     useEffect(() => {
+      if (currentChannel) {
+        props.setCurrentChannel(currentChannel)
+      }
+    }, [currentChannel])
+
+    useEffect(() => {
+      if (currentChannel) {
         getChannelMessages();
-    }, [currentChannelId])
+      }
+    }, [currentChannel])
 
     useEffect(() => {
       window.scrollTo(0,document.body.scrollHeight);
@@ -27,6 +41,24 @@ const ChannelPage = (props) => {
     //       }, 15000);
     //       return () => clearTimeout(refresher);
     // })
+
+    const getCurrentChannel = () => {
+      const id = props.match.params.id
+      const url = `/api/v1/channels/show/${id}`;
+  
+      fetch(url)
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error("Network response was not ok.");
+        })
+        .then(response => {
+          setCurrentChannel(response)
+        }
+          )
+        .catch((error) => console.log(error.message));
+    }
 
     const getChannelMessages = () => {
         const id = props.match.params.id
@@ -52,7 +84,7 @@ const ChannelPage = (props) => {
           ChannelPage
           {/* put the channelpage data here plus the messagefeed and create message*/}
           {channelMessages ? <MessageFeed currentUser= {props.currentUser} getChannelMessages = {getChannelMessages} channelMessageData = {channelMessages} /> : false }
-          {channelMessages ? <CreateMessage channelId = {currentChannelId} getChannelMessages = {getChannelMessages} /> : false}
+          {currentChannel ? <CreateMessage channelId = {currentChannel.id} getChannelMessages = {getChannelMessages} /> : false}
       </div>
   )
 }

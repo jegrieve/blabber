@@ -13,9 +13,12 @@ import CreateNewChannel from "../components/SideNavComps/CreateNewChannel";
 const Routes = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [currentServer, setCurrentServer] = useState(null); 
+  const [currentChannel, setCurrentChannel] = useState(null); 
+
 
   console.log(currentUser)
   console.log(currentServer)
+  console.log(currentChannel)
 
   useEffect(() => {
     getUserSession();
@@ -39,9 +42,15 @@ const Routes = () => {
       <Navbar history = {history} currentUser = {currentUser} setCurrentUser = {setCurrentUser} />
       <div className = "container-fluid">
         <div className = "row">
-          <div className = "d-none d-md-block col-md-3">
-            <SideNav currentServer = {currentServer}/>
-          </div>
+          {!currentChannel?
+            <div className = "d-none d-md-block col-md-3">
+              <SideNav currentServer = {currentServer}/>
+            </div>
+            :
+            <div className = "d-none d-md-block col-md-3">
+              <SideNav currentServer = {currentServer}/>
+            </div> }
+
           <div className = "app-page col-md-9 col-sm-12">
             <Switch>
             <Route
@@ -95,6 +104,7 @@ const Routes = () => {
                     <ChannelPage
                       {...props}
                       currentUser={currentUser}
+                      setCurrentChannel = {setCurrentChannel}
                     />
                   )}
               /> 
