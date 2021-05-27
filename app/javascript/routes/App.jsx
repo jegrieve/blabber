@@ -44,11 +44,11 @@ const Routes = () => {
         <div className = "row">
           {!currentChannel?
             <div className = "d-none d-md-block col-md-3">
-              <SideNav currentServer = {currentServer}/>
+              <SideNav currentServer = {currentServer} sticky = {false}/>
             </div>
             :
             <div className = "d-none d-md-block col-md-3">
-              <SideNav currentServer = {currentServer}/>
+              <SideNav currentServer = {currentServer} sticky = {true} />
             </div> }
 
           <div className = "app-page col-md-9 col-sm-12">

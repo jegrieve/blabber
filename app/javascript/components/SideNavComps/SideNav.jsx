@@ -5,6 +5,14 @@ import ChannelFeed from "./ChannelFeed";
 
 const SideNav = (props) => {
 
+  useEffect(() => {
+    if (props.sticky) {
+      document.querySelector(".side-nav").classList.add("fixed-nav")
+    } else {
+      document.querySelector(".side-nav").classList.remove("fixed-nav")
+    }
+  })
+
   return (
       <div className = "side-nav">
         {props.currentServer ? <ChannelFeed currentServer = {props.currentServer} /> : <ServerFeed /> }
