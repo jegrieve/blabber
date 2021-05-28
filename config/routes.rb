@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       post 'servers/create', to: 'servers#create';
       delete 'servers/destroy/:id', to: 'servers#destroy';
 
+      get 'channels/index', to: 'channels#index';
       get 'channels/show/:id', to: 'channels#show';
       post 'channels/create', to: 'channels#create';
 
