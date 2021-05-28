@@ -36,7 +36,6 @@ const ChannelFeed = (props) => {
         <NavLink to = {"/"}>
           Return to servers
         </NavLink>
-        <div>Current Server: test (or on navbar)</div>
           {serverChannels.map((channelData) => {
            return (
              <div key = {"c" + channelData.id}> 
@@ -44,9 +43,11 @@ const ChannelFeed = (props) => {
              </div>
            )
          })}
-          <NavLink to = {"/create-new-channel"}>
-            <button>Create Channel</button>
-          </NavLink>
+          <div>
+            <NavLink to = {"/create-new-channel"}>
+              <button>Create Channel</button>
+            </NavLink>
+          </div>
       </div>
   )
 }

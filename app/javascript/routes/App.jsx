@@ -42,16 +42,10 @@ const Routes = () => {
       <Navbar history = {history} currentUser = {currentUser} setCurrentUser = {setCurrentUser} />
       <div className = "container-fluid">
         <div className = "row">
-          {!currentChannel?
-            <div className = "d-none d-md-block col-md-3">
-              <SideNav currentServer = {currentServer} sticky = {false}/>
+            <div className = "d-none d-lg-block col-lg-2">
+              <SideNav currentServer = {currentServer} currentChannel = {currentChannel} />
             </div>
-            :
-            <div className = "d-none d-md-block col-md-3">
-              <SideNav currentServer = {currentServer} sticky = {true} />
-            </div> }
-
-          <div className = "app-page col-md-9 col-sm-12">
+          <div className = "app-page col-lg-10 col-md-12"> {/* put the border on the specific page-div comps and not on channel */}
             <Switch>
             <Route
                   exact

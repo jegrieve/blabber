@@ -6,7 +6,7 @@ import ChannelFeed from "./ChannelFeed";
 const SideNav = (props) => {
 
   useEffect(() => {
-    if (props.sticky) {
+    if (props.currentChannel) {
       document.querySelector(".side-nav").classList.add("fixed-nav")
     } else {
       document.querySelector(".side-nav").classList.remove("fixed-nav")
