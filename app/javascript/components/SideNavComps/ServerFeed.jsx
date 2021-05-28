@@ -24,7 +24,11 @@ console.log(offsetNum)
         throw new Error("Network response was not ok.");
       })
       .then(response => {
-        setLoadedServers(response)
+        if (response.length > 0) {
+          setLoadedServers(response)
+        } else {
+          setOffsetNum(offsetNum - 15);
+        }
       })
       .catch((error) => console.log(error.message));
   }
