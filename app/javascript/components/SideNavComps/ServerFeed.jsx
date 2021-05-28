@@ -55,7 +55,7 @@ console.log(offsetNum)
           </NavLink>
           <div>
             <button id = "server-decrement" onClick = {handleOffsetNum}>Left</button>
-            <button id = "server-increment" onClick = {handleOffsetNum}>Right</button> {/* not DRY make these into one function that uses id/name/etc to either increase/dec */}
+            <button id = "server-increment" onClick = {handleOffsetNum}>Right</button> 
           </div>
       </div>
   )
