@@ -57,10 +57,10 @@ const ChannelFeed = (props) => {
 
 
   const handleOffsetNum = (e) => {
-    if (e.target.id === "channel-decrement" && offsetNum >= 2) {
-      setOffsetNum(offsetNum - 2)
+    if (e.target.id === "channel-decrement" && offsetNum >= 15) {
+      setOffsetNum(offsetNum - 15)
     } else if (e.target.id === "channel-increment") {
-      setOffsetNum(offsetNum + 2)
+      setOffsetNum(offsetNum + 15)
     }
   }
 
