@@ -5,13 +5,17 @@ import Server from "./Server";
 
 const ServerFeed = (props) => {
   const [loadedServers, setLoadedServers] = useState([]);
+  const [offsetNum, setOffsetNum] = useState(0);
+
+console.log(loadedServers)
+console.log(offsetNum)
 
   useEffect(() => {
     getServers();
-  }, [])
+  }, [offsetNum])
 
   const getServers = () => {
-    const url = "/api/v1/servers/index";
+    const url = `/api/v1/servers/index?offset_num=${offsetNum}`;
     fetch(url)
       .then(response => {
         if (response.ok) {
@@ -25,6 +29,13 @@ const ServerFeed = (props) => {
       .catch((error) => console.log(error.message));
   }
 
+  const handleOffsetNum = (e) => {
+    if (e.target.id === "server-decrement" && offsetNum >= 15) {
+      setOffsetNum(offsetNum - 15)
+    } else if (e.target.id === "server-increment") {
+      setOffsetNum(offsetNum + 15)
+    }
+  }
 
   return (
       <div>
@@ -38,6 +49,10 @@ const ServerFeed = (props) => {
           <NavLink to = {"/create-new-server"}>
             <button>Create Server</button>
           </NavLink>
+          <div>
+            <button id = "server-decrement" onClick = {handleOffsetNum}>Left</button>
+            <button id = "server-increment" onClick = {handleOffsetNum}>Right</button> {/* not DRY make these into one function that uses id/name/etc to either increase/dec */}
+          </div>
       </div>
   )
 }

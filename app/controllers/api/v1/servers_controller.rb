@@ -1,7 +1,8 @@
 class Api::V1::ServersController < ApplicationController
     #use serializer later when using image attachment
     def index
-        servers = Server.all
+        servers = Server.all.offset(params[:offset_num]).limit(15)
+        # servers = Server.all
         render json: servers
     end
 
