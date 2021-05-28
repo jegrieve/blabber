@@ -49,7 +49,7 @@ const ChannelFeed = (props) => {
         if (response.length > 0) {
           setServerChannels(response)
         } else {
-          setOffsetNum(offsetNum - 2);
+          setOffsetNum(offsetNum - 15);
         }
       })
       .catch((error) => console.log(error.message));
