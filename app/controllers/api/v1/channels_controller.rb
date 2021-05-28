@@ -1,4 +1,11 @@
 class Api::V1::ChannelsController < ApplicationController
+    def index
+        channels = Server.find(params[:server_id]).channels.offset(params[:offset_num]).limit(2);
+        # servers = Server.all.offset(params[:offset_num]).limit(15)
+        # servers = Server.all
+        render json: channels
+    end
+
     def show
         channel = Channel.find(params[:id])
         if channel
