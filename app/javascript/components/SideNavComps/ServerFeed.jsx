@@ -26,7 +26,7 @@ console.log(offsetNum)
       .then(response => {
         if (response.length > 0) {
           setLoadedServers(response)
-        } else {
+        } else if (offsetNum >= 15) {
           setOffsetNum(offsetNum - 15);
         }
       })

@@ -48,7 +48,7 @@ const ChannelFeed = (props) => {
       .then(response => {
         if (response.length > 0) {
           setServerChannels(response)
-        } else {
+        } else if (offsetNum >= 15){
           setOffsetNum(offsetNum - 15);
         }
       })
