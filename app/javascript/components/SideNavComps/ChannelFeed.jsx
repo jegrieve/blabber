@@ -2,6 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import Channel from "./Channel"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight, faChevronLeft, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+
 const ChannelFeed = (props) => {
   const [currentServer, setCurrentServer] = useState(null);
   const [serverChannels, setServerChannels] = useState(null); 
@@ -55,17 +58,21 @@ const ChannelFeed = (props) => {
       .catch((error) => console.log(error.message));
   }
 
-
-  const handleOffsetNum = (e) => {
-    if (e.target.id === "channel-decrement" && offsetNum >= 15) {
+  const decrementOffsetNum = () => {
+    if (offsetNum >= 15) {
       setOffsetNum(offsetNum - 15)
-    } else if (e.target.id === "channel-increment") {
-      setOffsetNum(offsetNum + 15)
-    }
+    } 
   }
 
+  const incrementOffsetNum = () => {
+      setOffsetNum(offsetNum + 15)
+  }
+  
   return (
       <div>
+        <div>
+          Channels
+        </div>
         <NavLink to = {"/"}>
           Return to servers
         </NavLink>
@@ -79,15 +86,18 @@ const ChannelFeed = (props) => {
            )
          })}
           </div> : false}
-
+         <div>
+          <NavLink to = {"/create-new-channel"}>
+            <FontAwesomeIcon icon = {faPlusCircle} /> 
+          </NavLink>
+         </div>
           <div>
-            <NavLink to = {"/create-new-channel"}>
-              <button>Create Channel</button>
-            </NavLink>
-          </div>
-          <div>
-            <button id = "channel-decrement" onClick = {handleOffsetNum}>Left</button>
-            <button id = "channel-increment" onClick = {handleOffsetNum}>Right</button> 
+            <div className = "chevron-btn" onClick = {decrementOffsetNum}>
+              <FontAwesomeIcon icon = {faChevronLeft} /> 
+            </div>
+            <div className = "chevron-btn" onClick = {incrementOffsetNum}>
+              <FontAwesomeIcon icon = {faChevronRight} /> 
+            </div> 
           </div>
       </div>
   )

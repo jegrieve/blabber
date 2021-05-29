@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import Server from "./Server";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight, faChevronLeft, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
 const ServerFeed = (props) => {
   const [loadedServers, setLoadedServers] = useState([]);
@@ -33,16 +35,21 @@ console.log(offsetNum)
       .catch((error) => console.log(error.message));
   }
 
-  const handleOffsetNum = (e) => {
-    if (e.target.id === "server-decrement" && offsetNum >= 15) {
+  const decrementOffsetNum = () => {
+    if (offsetNum >= 15) {
       setOffsetNum(offsetNum - 15)
-    } else if (e.target.id === "server-increment") {
+    } 
+  }
+
+  const incrementOffsetNum = () => {
       setOffsetNum(offsetNum + 15)
-    }
   }
 
   return (
       <div>
+        <div>
+          Servers
+        </div>
          {loadedServers.map((serverData) => {
            return (
              <div key = {serverData.id}> 
@@ -50,12 +57,19 @@ console.log(offsetNum)
              </div>
            )
          })}
+         <div>
           <NavLink to = {"/create-new-server"}>
-            <button>Create Server</button>
+            <FontAwesomeIcon icon = {faPlusCircle} /> 
           </NavLink>
+         </div>
+
           <div>
-            <button id = "server-decrement" onClick = {handleOffsetNum}>Left</button>
-            <button id = "server-increment" onClick = {handleOffsetNum}>Right</button> 
+            <div className = "chevron-btn" id = "server-decrement" onClick = {decrementOffsetNum}>
+              <FontAwesomeIcon icon = {faChevronLeft} /> 
+            </div>
+            <div className = "chevron-btn" id = "server-increment" onClick = {incrementOffsetNum}>
+              <FontAwesomeIcon icon = {faChevronRight} /> 
+            </div> 
           </div>
       </div>
   )

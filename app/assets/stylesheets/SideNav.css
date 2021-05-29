@@ -6,3 +6,14 @@
 .fixed-nav {
   position: fixed;
 }
+
+.chevron-btn {
+  display: inline;
+}
+
+.chevron-btn {
+  cursor: pointer;
+  display: inline;
+  padding-left: 30px;
+  padding-right: 30px;
+}
