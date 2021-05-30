@@ -1,5 +1,5 @@
 .app-page {
-  border-left: 1px solid black;
+  /* border-left: 1px solid black; */
 }
 
 .side-nav {
@@ -7,4 +7,18 @@
   font-size: 24px;
   left: 0;
   position: sticky;
+}
+
+@media only screen and (min-width: 576px) {
+  .page-display {
+    border-left: none;
+    min-height: 654px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .page-display {
+    border-left: 1px solid black;
+    min-height: 674px;
+  }
 }
