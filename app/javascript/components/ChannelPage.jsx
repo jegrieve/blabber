@@ -81,7 +81,6 @@ const ChannelPage = (props) => {
     
   return (
       <div>
-          ChannelPage
           {/* put the channelpage data here plus the messagefeed and create message*/}
           {/* so i need to load messagefeed with createmessage at the sametime cause im getting
           a weird looking page where the createmessage stuff loads before the messagefeed then its normal */}

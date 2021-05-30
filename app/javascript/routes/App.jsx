@@ -53,6 +53,7 @@ const Routes = () => {
                   render={(props) => (
                     <Home
                       {...props}
+                      history = {history}
                       currentUser={currentUser}
                       setCurrentServer = {setCurrentServer}
                     />
