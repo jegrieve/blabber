@@ -45,7 +45,7 @@ const Routes = () => {
             <div className = "d-none d-lg-block col-lg-2">
               <SideNav currentServer = {currentServer} currentChannel = {currentChannel} />
             </div>
-          <div className = "app-page col-lg-10 col-md-12"> {/* put the border on the specific page-div comps and not on channel */}
+          <div className = "app-page col-lg-10 col-md-12">
             <Switch>
             <Route
                   exact

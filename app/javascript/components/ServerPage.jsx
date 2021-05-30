@@ -32,7 +32,7 @@ const ServerPage = (props) => {
   }
 
   return (
-      <div>
+      <div className = "page-display">
           ServerPage
       </div>
   )
