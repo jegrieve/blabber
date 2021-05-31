@@ -18,10 +18,11 @@ const Home = (props) => {
         : 
         <div>
           <span>Please 
-            <NavLink history = {props.history} to = {"/sign-in"}> Sign In</NavLink>
+            <NavLink history = {props.history} to = {"/sign-in"}> sign in</NavLink>
           </span>
-          <span> Or
-            <NavLink history = {props.history} to={"/sign-up"}> Sign Up</NavLink>
+          <span> or
+            <NavLink history = {props.history} to={"/sign-up"}> sign up </NavLink>
+            to begin chatting
           </span>
         </div>}
     </div>
