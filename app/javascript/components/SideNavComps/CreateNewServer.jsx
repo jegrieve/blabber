@@ -45,18 +45,29 @@ const CreateNewServer = (props) => {
       })
       .catch(error => console.log('did not post'))
   }
+
+  const onImageChange = () => {
+    
+  }
   
 
   return (
-      <div>
-        <form onSubmit = {submitCreateServerForm}>
-          <label>Server Name:
-            <input name = "serverName" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverName"]} />
+      <div className = "page-display create-server-container d-flex justify-content-center">
+        <form className = "create-server-form form-group" onSubmit = {submitCreateServerForm}>
+        <div className = "form-group">
+          <label className = "server-inputs" for = "server-name-value">Server Name:
+            <input id = "server-name-value" name = "serverName" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverName"]} />
           </label>
-          <label>Server Info:
-            <input name = "serverInfo" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverInfo"]} />
+        </div>
+        <div className = "form-group">
+          <label className = "server-inputs" for = "server-info-value">Server Info:
+            <input id = "server-info-value" name = "serverInfo" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverInfo"]} />
           </label>
-          <button type = "submit">Create</button>
+        </div>
+        <div className = "form-group">
+            <input id = "server-image-value" className = "form-control" type = "file" accept = "image/*" multiple = {false} onChange = {onImageChange} />
+        </div>
+          <button type = "submit" className = "btn btn-success">Create</button>
         </form>
       </div>
   )
