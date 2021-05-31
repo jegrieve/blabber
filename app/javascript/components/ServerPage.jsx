@@ -32,8 +32,11 @@ const ServerPage = (props) => {
   }
 
   return (
-      <div className = "page-display">
-          ServerPage
+      <div className = "page-display serverpage">
+          <div className = "server-banner">banner</div>
+          <div className = "server-title">title</div>
+          <div className = "server-info">info</div>
+          <div className = "server-data">data</div>
       </div>
   )
 }
