@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   get '/server/*path' => 'homepage#index'
   get '/create-new-server' => 'homepage#index'
   get '/create-new-channel' => 'homepage#index'
+  get '/sign-in' => 'homepage#index'
+  get '/sign-up' => 'homepage#index'
   # get '/*path' => 'homepage#index'
   #When using /*path the image GET doesnt work
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
