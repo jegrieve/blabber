@@ -3,8 +3,7 @@ import SignUpForm from "./SignUpForm";
 
 const SignUp = (props) => {
   return (
-      <div>
-        Create a new Account.
+      <div className = "page-display sign-up-container d-flex justify-content-center">
         <SignUpForm history = {props.history} setCurrentUser = {props.setCurrentUser} currentUser = {props.currentUser}/>
       </div>
   )

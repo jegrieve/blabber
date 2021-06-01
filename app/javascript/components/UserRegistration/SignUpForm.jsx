@@ -63,20 +63,30 @@ const SignUpForm = (props) => {
 
   return (
       <div>
-          <form onSubmit = {submitSignUpForm}>
+          <form className = "sign-up-inputs" onSubmit = {submitSignUpForm}>
+            <div className = "form-group">
             <label>Email:
-                <input name = "email" type="email" onChange = {enterSignUpInputs} value = {createUserInputs["email"]} />
+                <input id="sign-up-email" name = "email" type="email" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["email"]} />
             </label>
+            </div>
+            <div className = "form-group">
             <label>Username:
-                <input name = "username" type="text" onChange = {enterSignUpInputs} value = {createUserInputs["username"]} minLength = "5"/>
+                <input id="sign-up-username" name = "username" type="text" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["username"]} minLength = "5"/>
             </label>
+            </div>
+            <div className = "form-group">
             <label>Password:
-                <input name = "password" type="password" onChange = {enterSignUpInputs} value = {createUserInputs["password"]} minLength = "5"/>
+                <input id="sign-up-password" name = "password" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["password"]} minLength = "5"/>
             </label>
+            </div>
+            <div className = "form-group">
             <label>Password Confirmation:
-                <input name = "passwordConfirm" type="password" onChange = {enterSignUpInputs} value = {createUserInputs["passwordConfirm"]} minLength = "5"/>
+                <input id="sign-up-confirm" name = "passwordConfirm" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["passwordConfirm"]} minLength = "5"/>
             </label>
-            <button type = "submit">Create</button>
+            </div>
+            <div>
+                <button type = "submit" className = "btn btn-success">Create</button>
+            </div>
           </form>
       </div>
   )

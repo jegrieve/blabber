@@ -49,7 +49,7 @@ const CreateNewChannel = (props) => {
         <form className = "create-channel-form form-group" onSubmit = {submitCreateChannelForm}>
         <div className = "form-group">
           <label className = "channel-inputs" for = "channel-name-value">Channel Name:
-            <input id = "channel-name-value" name = "channelName" className = "form-control form-control-lg channel-inputs" type = "text" onChange = {enterChannelInputs} value = {createChannelInputs["channelName"]} />
+            <input id = "channel-name-value" name = "channelName" className = "form-control form-control-lg channel-inputs" type = "text" onChange = {enterChannelInputs} value = {createChannelInputs["channelName"]} maxlength="17"/>
           </label>
         </div>
         {/* <div className = "form-group">

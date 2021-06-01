@@ -59,17 +59,34 @@ const SignInForm = (props) => {
 
 
   return (
-      <div>
-        <form onSubmit = {submitSignInForm}>
-            <label>Username:
-                <input name = "username" type="text" onChange = {enterSignInInputs} value = {setSignInUserInputs["username"]}/>
-            </label>
-            <label>Password:
-                <input name = "password" type="password" onChange = {enterSignInInputs} value = {setSignInUserInputs["password"]}/>
-            </label>
-            <button type = "submit">Sign In</button>
+    <div>
+        <form className = "sign-in-inputs" onSubmit = {submitSignInForm}>
+            <div className = "form-group">
+                <label>Username:
+                    <input id="sign-in-username" name = "username" type="text" className = "form-control" onChange = {enterSignInInputs} value = {signInUserInputs["username"]}/>
+                </label>
+            </div>
+            <div className = "form-group">
+                <label>Password:
+                    <input id="sign-in-user-password" name = "password" className = "form-control" type="password" onChange = {enterSignInInputs} value = {signInUserInputs["password"]}/>
+                </label>
+            </div>
+            <div className = "sign-in-btn">
+                <button className = "btn btn-success" type = "submit">Log In</button>
+            </div>
         </form>
-      </div>
+    </div>
+    //   <div>
+    //     <form onSubmit = {submitSignInForm}>
+    //         <label>Username:
+    //             <input name = "username" type="text" onChange = {enterSignInInputs} value = {setSignInUserInputs["username"]}/>
+    //         </label>
+    //         <label>Password:
+    //             <input name = "password" type="password" onChange = {enterSignInInputs} value = {setSignInUserInputs["password"]}/>
+    //         </label>
+    //         <button type = "submit">Sign In</button>
+    //     </form>
+    //   </div>
   )
 }
 

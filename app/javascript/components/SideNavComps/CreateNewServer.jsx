@@ -56,7 +56,7 @@ const CreateNewServer = (props) => {
         <form className = "create-server-form form-group" onSubmit = {submitCreateServerForm}>
         <div className = "form-group">
           <label className = "server-inputs" for = "server-name-value">Server Name:
-            <input id = "server-name-value" name = "serverName" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverName"]} />
+            <input id = "server-name-value" name = "serverName" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverName"]} maxlength="12"/>
           </label>
         </div>
         <div className = "form-group">
