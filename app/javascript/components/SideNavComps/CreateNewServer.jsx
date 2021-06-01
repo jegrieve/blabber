@@ -65,7 +65,7 @@ const CreateNewServer = (props) => {
           </label>
         </div>
         <div className = "form-group">
-            <input id = "server-image-value" className = "form-control" type = "file" accept = "image/*" multiple = {false} onChange = {onImageChange} />
+            <input id = "server-image-value" className = "form-control-file" type = "file" accept = "image/*" multiple = {false} onChange = {onImageChange} />
         </div>
           <button type = "submit" className = "btn btn-success">Create</button>
         </form>
