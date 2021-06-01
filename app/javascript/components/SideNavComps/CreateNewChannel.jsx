@@ -45,14 +45,29 @@ const CreateNewChannel = (props) => {
     
   
     return (
-        <div>
-          <form onSubmit = {submitCreateChannelForm}>
-            <label>Channel Name:
-              <input name = "channelName" type = "text" onChange = {enterChannelInputs} value = {createChannelInputs["channelName"]} />
-            </label>
-            <button type = "submit">Create</button>
-          </form>
+      <div className = "page-display create-channel-container d-flex justify-content-center">
+        <form className = "create-channel-form form-group" onSubmit = {submitCreateChannelForm}>
+        <div className = "form-group">
+          <label className = "channel-inputs" for = "channel-name-value">Channel Name:
+            <input id = "channel-name-value" name = "channelName" className = "form-control form-control-lg channel-inputs" type = "text" onChange = {enterChannelInputs} value = {createChannelInputs["channelName"]} />
+          </label>
         </div>
+        {/* <div className = "form-group">
+          <label className = "channel-inputs" for = "channel-info-value">Channel Info:
+            <input id = "channel-info-value" name = "channelInfo" className = "form-control form-control-lg channel-inputs" type = "text" onChange = {enterChannelInputs} value = {createChannelInputs["channelInfo"]} />
+          </label>
+        </div> */}
+          <button type = "submit" className = "btn btn-success">Create</button>
+        </form>
+      </div>  
+        // <div>
+        //   <form onSubmit = {submitCreateChannelForm}>
+        //     <label>Channel Name:
+        //       <input name = "channelName" type = "text" onChange = {enterChannelInputs} value = {createChannelInputs["channelName"]} />
+        //     </label>
+        //     <button type = "submit">Create</button>
+        //   </form>
+        // </div>
     )
   }
 
