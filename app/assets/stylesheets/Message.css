@@ -4,3 +4,13 @@
   padding-bottom: 15px;
   width: 100%;
 }
+
+.edit-msg-btn {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.delete-msg-btn {
+  font-size: 25px;
+  cursor: pointer;
+}

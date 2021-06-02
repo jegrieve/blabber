@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -50,8 +50,12 @@ const formatVideoUrl = (url) => {
         </div>
         {props.currentUser && props.messageData.user_id === props.currentUser.id ?       
           <div className = "message-modifiers">
-            <button onClick = {editMessage}>Edit</button> 
-            <button onClick = {deleteMessage}>Delete</button> 
+            <span className = "edit-msg-btn" onClick = {editMessage}>
+              <FontAwesomeIcon icon={faEdit} />
+            </span> 
+            <span className = "delete-msg-btn" onClick = {deleteMessage}>
+              <FontAwesomeIcon icon={faTrashAlt} />
+            </span> 
          </div> : false}
       </div>
       <div className = "message-body">
