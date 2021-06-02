@@ -2,8 +2,11 @@ import React from "react";
 import Message from "./Message";
 
 const MessageFeed = (props) => {
-  const deleteMessage = (e) => {
-    const url = `/api/v1/messages/destroy/${e.target.id}`;
+
+  //const editMessage = () => {}
+
+  const deleteMessage = (messageId) => {
+    const url = `/api/v1/messages/destroy/${messageId}`;
     const token = document.querySelector('meta[name="csrf-token"]').content;
   
     fetch(url, {
@@ -28,19 +31,25 @@ const MessageFeed = (props) => {
   return (
     <div>
         {props.channelMessageData.map((messageData) => {
-           return (
-             <div className = "channel-message" key = {"m" + messageData.id}> 
-                {props.currentUser && messageData.user_id === props.currentUser.id ?       
-                  <div className = "message-delete">
-                    <button id = {messageData.id} onClick = {deleteMessage}>Delete</button> {/* change id eventually */}
-                  </div> : false}
-               <Message messageData = {messageData} />
-             </div>
-           )
-         })}
+          return (
+            <div className = "channel-message" key = {"m" + messageData.id}> 
+              <Message currentUser = {props.currentUser} messageData = {messageData} deleteMessage = {deleteMessage} /> 
+            </div>
+          )
+        })}
     </div>
   )
 }
-
+// {props.channelMessageData.map((messageData) => {
+//   return (
+//     <div className = "channel-message" key = {"m" + messageData.id}> 
+//        {props.currentUser && messageData.user_id === props.currentUser.id ?       
+//          <div className = "message-delete d-flex justify-content-end">
+//            <button id = {messageData.id} onClick = {deleteMessage}>Delete</button> {/* change id eventually */}
+//          </div> : false}
+//       <Message messageData = {messageData} />
+//     </div>
+//   )
+// })}
 
 export default MessageFeed;
