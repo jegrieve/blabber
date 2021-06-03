@@ -1,27 +1,19 @@
-/* .create-message {
-  border-left: 2px solid black;
-  border-radius: 50px;
-} */
-/* 
-.main-input {
-  width: 85%;
-}
-
 .message-text-input {
-  width: 95%;
+  width: 100%;
 }
 
-.message-text-input {
-  width: 95%;
+.create-message-form {
+  height: 90px;
 }
 
-.extra-inputs {
-  width: 15%;
-}  */
-
-.message-text-input {
-  min-width: 89%;
-}
 .message-post-btn {
-  min-width: 11%;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.extra-input-btn {
+  cursor: pointer;
 }

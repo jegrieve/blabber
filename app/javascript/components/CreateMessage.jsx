@@ -1,4 +1,7 @@
 import React, {useState, useEffect} from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane, faImage, faFileVideo } from '@fortawesome/free-solid-svg-icons'
+import {faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 const CreateMessage = (props) => {
     const [messageData, setMessageData] = useState({
@@ -91,38 +94,51 @@ const CreateMessage = (props) => {
         }))
     };
 
-    const changeSubmitType = (e) => {
-        e.preventDefault();
-        if (e.target.id === "add-img-btn") {
-            setSubmitType("image")
-        } else if (e.target.id === "add-video-btn") {
-            setSubmitType("video")
-        } else {
-            setSubmitType("text")
-        }
+    const addImgSubmit = () => {
+        setSubmitType("image")
+    }
+    const addVideoSubmit = () => {
+        setSubmitType("video")
+    }
+    const addGifSubmit = () => {
+        //setSubmitType("gif")
+    }
+    const addTextSubmit = () => {
+        setSubmitType("text")
     }
 
 
     return (
         <div className = "create-message container-fluid">
-            <form className = "row" onSubmit = {submitMessage}>
-                <div className = "main-input col-md-8">
-                    <input className = "message-text-input" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} />
-                    <button className = "message-post-btn">Post</button>
+            <form className = "create-message-form row form-group d-flex align-items-center" onSubmit = {submitMessage}>
+                <div className = "main-input col-md-8 form-group">
+                    <input className = "message-text-input form-control form-control-lg" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} />
                 </div>
                 <span className = "extra-inputs col-md-4">
-                    <button id = "add-img-btn" onClick = {changeSubmitType} >Image</button>
-                    <button id = "add-video-btn" onClick = {changeSubmitType} >Video</button>
-                    <button id = "add-gif-btn" onClick = {changeSubmitType} >Gif</button>
+                    <button type = "submit" className = "message-post-btn">
+                        <FontAwesomeIcon icon={faPaperPlane} />
+                    </button>
+                    <span id = "add-img-btn" className = "extra-input-btn" onClick = {addImgSubmit}>
+                        <FontAwesomeIcon icon={faImage} />
+                    </span>
+                    <span id = "add-video-btn" className = "extra-input-btn" onClick = {addVideoSubmit}>
+                        <FontAwesomeIcon icon={faYoutube} />
+                    </span>
+                    <span id = "add-gif-btn" className = "extra-input-btn" onClick = {addGifSubmit}>
+                        <FontAwesomeIcon icon={faFileVideo} />
+                    </span>
+                    {/* <button id = "add-img-btn" onClick = {changeSubmitType} >Image</button>
+                    <button id = "add-video-btn" onClick = {changeSubmitType} >Video</button> */}
+                    {/* <button id = "add-gif-btn" onClick = {changeSubmitType} >Gif</button> */}
                     {submitType === "image" ? 
-                        <div>
-                            <input name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
-                            <button id = "remove-link-btn" onClick = {changeSubmitType} > Cancel (X) </button>
+                        <div className = "form-group">
+                            <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
+                            <button id = "remove-link-btn" onClick = {addTextSubmit} > Cancel (X) </button>
                         </div> 
                     : submitType === "video" ? 
-                        <div>
-                            <input name = "video" type="text" onChange={onVideoLinkChange} />
-                            <button id = "remove-link-btn" onClick = {changeSubmitType} > Cancel (X) </button>  
+                        <div className = "form-group">
+                            <input className = "form-control" name = "video" type="text" onChange={onVideoLinkChange} />
+                            <button id = "remove-link-btn" onClick = {addTextSubmit} > Cancel (X) </button>  
                         </div> 
                     : false}
                 </span>
