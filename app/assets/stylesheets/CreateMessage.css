@@ -1,0 +1,27 @@
+/* .create-message {
+  border-left: 2px solid black;
+  border-radius: 50px;
+} */
+/* 
+.main-input {
+  width: 85%;
+}
+
+.message-text-input {
+  width: 95%;
+}
+
+.message-text-input {
+  width: 95%;
+}
+
+.extra-inputs {
+  width: 15%;
+}  */
+
+.message-text-input {
+  min-width: 89%;
+}
+.message-post-btn {
+  min-width: 11%;
+}

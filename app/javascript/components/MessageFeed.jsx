@@ -40,16 +40,5 @@ const MessageFeed = (props) => {
     </div>
   )
 }
-// {props.channelMessageData.map((messageData) => {
-//   return (
-//     <div className = "channel-message" key = {"m" + messageData.id}> 
-//        {props.currentUser && messageData.user_id === props.currentUser.id ?       
-//          <div className = "message-delete d-flex justify-content-end">
-//            <button id = {messageData.id} onClick = {deleteMessage}>Delete</button> {/* change id eventually */}
-//          </div> : false}
-//       <Message messageData = {messageData} />
-//     </div>
-//   )
-// })}
 
 export default MessageFeed;

@@ -104,13 +104,16 @@ const CreateMessage = (props) => {
 
 
     return (
-        <div>
-            <form onSubmit = {submitMessage}>
-                <input onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} />
-                <span>
-                    <button id = "add-img-btn" onClick = {changeSubmitType} >Add Image</button>
-                    <span>or</span>
-                    <button id = "add-video-btn" onClick = {changeSubmitType} >Add Video</button>
+        <div className = "create-message container-fluid">
+            <form className = "row" onSubmit = {submitMessage}>
+                <div className = "main-input col-md-8">
+                    <input className = "message-text-input" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} />
+                    <button className = "message-post-btn">Post</button>
+                </div>
+                <span className = "extra-inputs col-md-4">
+                    <button id = "add-img-btn" onClick = {changeSubmitType} >Image</button>
+                    <button id = "add-video-btn" onClick = {changeSubmitType} >Video</button>
+                    <button id = "add-gif-btn" onClick = {changeSubmitType} >Gif</button>
                     {submitType === "image" ? 
                         <div>
                             <input name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
@@ -122,7 +125,6 @@ const CreateMessage = (props) => {
                             <button id = "remove-link-btn" onClick = {changeSubmitType} > Cancel (X) </button>  
                         </div> 
                     : false}
-                    <button>Post</button>
                 </span>
             </form>
         </div>
