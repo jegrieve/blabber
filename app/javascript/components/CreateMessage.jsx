@@ -127,20 +127,20 @@ const CreateMessage = (props) => {
                     <span id = "add-gif-btn" className = "extra-input-btn" onClick = {addGifSubmit}>
                         <FontAwesomeIcon icon={faFileVideo} />
                     </span>
-                    {/* <button id = "add-img-btn" onClick = {changeSubmitType} >Image</button>
-                    <button id = "add-video-btn" onClick = {changeSubmitType} >Video</button> */}
-                    {/* <button id = "add-gif-btn" onClick = {changeSubmitType} >Gif</button> */}
+                    <div className = "row">
                     {submitType === "image" ? 
-                        <div className = "form-group">
+                        <div className = "form-group col-md-12">
                             <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
-                            <button id = "remove-link-btn" onClick = {addTextSubmit} > Cancel (X) </button>
+                            <button className = "remove-link-btn btn btn-danger"  onClick = {addTextSubmit} > Cancel (X) </button>
                         </div> 
                     : submitType === "video" ? 
-                        <div className = "form-group">
-                            <input className = "form-control" name = "video" type="text" onChange={onVideoLinkChange} />
-                            <button id = "remove-link-btn" onClick = {addTextSubmit} > Cancel (X) </button>  
+                        <div className = "form-group col-md-12">
+                            <input className = "form-control" name = "video" type="text" onChange={onVideoLinkChange} placeholder = {"Post a valid youtube link"}/>
+                            <button className = "remove-link-btn btn btn-danger" onClick = {addTextSubmit} > Cancel (X) </button>  
                         </div> 
                     : false}
+                    </div>
+
                 </span>
             </form>
         </div>

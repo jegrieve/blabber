@@ -2,18 +2,38 @@
   width: 100%;
 }
 
+.main-input {
+  padding: 0 !important;
+}
+
 .create-message-form {
-  height: 90px;
+  height: 95px;
 }
 
 .message-post-btn {
   background: none;
   border: none;
   margin: 0;
-  padding: 0;
+  padding-left: 5px;
   cursor: pointer;
+  font-size: 40px;
+  color: darkblue;
 }
 
 .extra-input-btn {
   cursor: pointer;
+  padding-left: 18px;
+  font-size: 40px;
+}
+
+.extra-inputs {
+  margin-bottom: 12px;
+}
+
+.video-input {
+  width: 90%;
+}
+
+.remove-link-btn {
+  margin-top: 10px;
 }
