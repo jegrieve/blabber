@@ -14,3 +14,36 @@
   font-size: 25px;
   cursor: pointer;
 }
+
+.edit-msg-btn,
+.delete-msg-btn {
+  padding-right: 5px;
+}
+
+.message-avatar,
+.message-username,
+.message-time,
+.message-dot {
+  padding-left: 5px;
+}
+
+.message-body,
+.message-img,
+.message-video {
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+.message-body {
+  word-wrap: break-word;
+}
+
+.message-video-iframe {
+  width: 440px;
+  height: 280px;
+}
+
+.message-img-file {
+  width: 440px;
+  height: 280px;
+}

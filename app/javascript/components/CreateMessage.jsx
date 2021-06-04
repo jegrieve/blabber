@@ -11,6 +11,10 @@ const CreateMessage = (props) => {
     });
     const [submitType, setSubmitType] = useState("text");
 
+    useEffect(() => {
+        window.scrollTo(0,document.body.scrollHeight);
+      }, [submitType])
+
     const submitMessage = (e) => {
         e.preventDefault();
         if (submitType === "text" || submitType === "video") {
@@ -131,12 +135,12 @@ const CreateMessage = (props) => {
                     {submitType === "image" ? 
                         <div className = "form-group col-md-12">
                             <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
-                            <button className = "remove-link-btn btn btn-danger"  onClick = {addTextSubmit} > Cancel (X) </button>
+                            <button className = "remove-link-btn btn btn-danger"  onClick = {addTextSubmit} > Cancel </button>
                         </div> 
                     : submitType === "video" ? 
                         <div className = "form-group col-md-12">
                             <input className = "form-control" name = "video" type="text" onChange={onVideoLinkChange} placeholder = {"Post a valid youtube link"}/>
-                            <button className = "remove-link-btn btn btn-danger" onClick = {addTextSubmit} > Cancel (X) </button>  
+                            <button className = "remove-link-btn btn btn-danger" onClick = {addTextSubmit} > Cancel </button>  
                         </div> 
                     : false}
                     </div>
