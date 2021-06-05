@@ -9,6 +9,7 @@ import ServerPage from "../components/ServerPage";
 import ChannelPage from "../components/ChannelPage";
 import CreateNewServer from "../components/SideNavComps/CreateNewServer";
 import CreateNewChannel from "../components/SideNavComps/CreateNewChannel";
+import UserPage from "../components/UserPage";
 
 const Routes = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -121,7 +122,18 @@ const Routes = () => {
                       serverId={currentServer.id}
                     />
                   )}
-              />      
+              />
+              <Route
+                  exact
+                  path="/user/:id"
+                  render={(props) => (
+                    <UserPage
+                      {...props}
+                      currentUser={currentUser}
+                      setCurrentChannel = {setCurrentChannel}
+                    />
+                  )}
+              />       
             </Switch>
           </div>
         </div>
