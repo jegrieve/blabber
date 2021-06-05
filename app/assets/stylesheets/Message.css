@@ -1,7 +1,6 @@
 .message-header {
   font-size: 14px;
   font-style: italic;
-  padding-bottom: 15px;
   width: 100%;
 }
 
@@ -36,6 +35,8 @@
 
 .message-body {
   word-wrap: break-word;
+  padding-right: 5px;
+  font-size: 18px;
 }
 
 .message-video-iframe {

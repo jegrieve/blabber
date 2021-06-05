@@ -116,7 +116,7 @@ const CreateMessage = (props) => {
         <div className = "create-message container-fluid">
             <form className = "create-message-form row form-group d-flex align-items-center" onSubmit = {submitMessage}>
                 <div className = "main-input col-md-8 form-group">
-                    <input className = "message-text-input form-control form-control-lg" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} />
+                    <input className = "message-text-input form-control form-control-lg" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} maxLength = "750"/>
                 </div>
                 <span className = "extra-inputs col-md-4">
                     <button type = "submit" className = "message-post-btn">
