@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 
@@ -33,11 +34,11 @@ const formatVideoUrl = (url) => {
     <div className = "message-contents">
       <div className = "message-header d-flex justify-content-between">
           <div className = "message-info d-flex align-items-center">
-            <div className = "message-avatar">
-              {/* {props.messageData.user.username} 
-              eventually use link to img*/}
-              <FontAwesomeIcon icon={faUserCircle} />
-            </div>
+              <div className = "message-avatar">
+              <NavLink to = {`/user/${props.messageData.user.id}`}>
+                <FontAwesomeIcon icon={faUserCircle} />
+                </NavLink>
+              </div>
             <div className = "message-username">
               {props.messageData.user.username}
             </div>
