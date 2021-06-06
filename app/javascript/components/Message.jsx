@@ -4,9 +4,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 
+//we'll send down a prop that says this one should be in edit mode
+//then based on this new mode it will look different.
+//then we can pass the changed data into it?
+//gotta think about this more.
+//Basically 2 things:
+//1. We send all the data for the message. so props.messageData has the text/img/vid data
+//2. when we are in edit mode, we will fill the new state ex: [editData, setEditData] = { text: props.data.....}
+//then basically we can send back all this data to update, and if the data is the same in the update it doesnt matter...
+//so basically we change only the text and we send the editData with the newtext/ unchanged video and then the api call updates all of it.
 
+//THEN: if u click the check the commit is saved (call to parent api with the new data)
+//, if u click the X then u change the message type back into the non-edit mode through the parent
+//(also remember to not let use have a bunch of edit messages open)
 const Message = (props) => {
   const [videoLinkFormatted, setVideoLinkFormatted] = useState(null);
+  const [editMessageData, setEditMessageData] = useState(null);
+  const [editMessage, setEditMessage] = useState(false);
+
+  useEffect(() => {
+    setEditMessageData({...props.messageData})
+  },[])
 
   const deleteMessage = () => {
     props.deleteMessage(props.messageData.id)
