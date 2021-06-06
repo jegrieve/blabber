@@ -4,6 +4,7 @@ const UserPage = (props) => {
 
   return (
       <div className = "page-display userpage">
+          Userpage
       </div>
   )
 }
