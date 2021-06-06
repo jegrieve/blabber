@@ -20,7 +20,7 @@ import { faUserCircle, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-ic
 const Message = (props) => {
   const [videoLinkFormatted, setVideoLinkFormatted] = useState(null);
   const [editMessageData, setEditMessageData] = useState(null);
-  const [editMessage, setEditMessage] = useState(false);
+  const [editMessage, setEditMessage] = useState(!false);
 
   useEffect(() => {
     setEditMessageData({...props.messageData})
@@ -29,8 +29,8 @@ const Message = (props) => {
   const deleteMessage = () => {
     props.deleteMessage(props.messageData.id)
   }
-  const editMessage = () => {
-    props.editMessage(props.messageData.id)
+  const toggleEditMessage = () => {
+    setEditMessageData(true);
   }
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const formatVideoUrl = (url) => {
         </div>
         {props.currentUser && props.messageData.user_id === props.currentUser.id ?       
           <div className = "message-modifiers">
-            <span className = "edit-msg-btn" onClick = {editMessage}>
+            <span className = "edit-msg-btn" onClick = {toggleEditMessage}>
               <FontAwesomeIcon icon={faEdit} />
             </span> 
             <span className = "delete-msg-btn" onClick = {deleteMessage}>
@@ -78,15 +78,23 @@ const formatVideoUrl = (url) => {
          </div> : false}
       </div>
       <div className = "message-body">
-        {props.messageData.body}
+        {editMessage ? 
+          <textarea>
+            {props.messageData.body}
+          </textarea> : 
+          <div>
+            {props.messageData.body}
+          </div>}
       </div>
         {props.messageData.message_image ? 
         <div className = "message-img">
           <img className = "message-img-file" src = {props.messageData.message_image.url} />
+          {editMessage ? <div>New Img <input type = "file" /></div> : false}
         </div> : false}
         {props.messageData.video_link ? 
         <div className = "message-video">
           <iframe className = "message-video-iframe" src={videoLinkFormatted} />
+          {editMessage ? <div>New Vid <input type = "text" /></div> : false}
         </div> : false}
     </div>
   )
