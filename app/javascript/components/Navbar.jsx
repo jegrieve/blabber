@@ -8,7 +8,7 @@ const Navbar = (props) => {
       {props.currentUser ?       
         <div className = "nav-elements d-flex justify-content-around">
           <div>
-            <NavLink to={"/"}>Current User</NavLink>
+            <NavLink to={`/user/${props.currentUser.id}`}>Current User</NavLink>
           </div>
           <div>
             <SignOut history = {props.history} currentUser = {props.currentUser} setCurrentUser = {props.setCurrentUser} />
