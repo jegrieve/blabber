@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get "messages/index", to: "messages#index"
       post 'messages/create/:id', to: 'messages#create';
       delete 'messages/destroy/:id', to: 'messages#destroy';
+      patch 'messages/update/:id', to: 'messages#update'
 
       get 'users/show/:id', to: 'users#show'
       delete 'users/destroy/:id', to: 'users#destroy'
