@@ -3,25 +3,9 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 
-
-//we'll send down a prop that says this one should be in edit mode
-//then based on this new mode it will look different.
-//then we can pass the changed data into it?
-//gotta think about this more.
-//Basically 2 things:
-//1. We send all the data for the message. so props.messageData has the text/img/vid data
-//2. when we are in edit mode, we will fill the new state ex: [editData, setEditData] = { text: props.data.....}
-//then basically we can send back all this data to update, and if the data is the same in the update it doesnt matter...
-//so basically we change only the text and we send the editData with the newtext/ unchanged video and then the api call updates all of it.
-
-//THEN: if u click the check the commit is saved (call to parent api with the new data)
-//, if u click the X then u change the message type back into the non-edit mode through the parent
-//(also remember to not let use have a bunch of edit messages open)
 const Message = (props) => {
-  const [videoLinkFormatted, setVideoLinkFormatted] = useState(null);
   const [editMessageData, setEditMessageData] = useState(null);
-  const [editMessage, setEditMessage] = useState(!false);
-
+  const [editMessage, setEditMessage] = useState(false);
   useEffect(() => {
     setEditMessageData({...props.messageData})
   },[])
@@ -29,25 +13,29 @@ const Message = (props) => {
   const deleteMessage = () => {
     props.deleteMessage(props.messageData.id)
   }
+  
   const toggleEditMessage = () => {
-    setEditMessageData(true);
+    setEditMessage(!editMessage);
   }
 
-  useEffect(() => {
-    if (props.messageData.video_link) {
-        setVideoLinkFormatted("https://www.youtube.com/embed/" + formatVideoUrl(props.messageData.video_link))
-    }
-  },[])
+  const submitEditMessageData = () => {
+    props.editMessage(props.messageData.id, editMessageData);
+  }
 
-const formatVideoUrl = (url) => {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
+  const handleEditMessage = (e) => {
+    setEditMessageData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  }
 
-    return (match && match[2].length === 11)
-      ? match[2]
-      : null;
-}
-
+  const onImageChange = (e) => {
+    setEditMessageData((prev) => ({
+        ...prev,
+        message_image: e.target.files[0]
+    }))
+};
+console.log(editMessageData)
   return (
     <div className = "message-contents">
       <div className = "message-header d-flex justify-content-between">
@@ -69,19 +57,27 @@ const formatVideoUrl = (url) => {
         </div>
         {props.currentUser && props.messageData.user_id === props.currentUser.id ?       
           <div className = "message-modifiers">
-            <span className = "edit-msg-btn" onClick = {toggleEditMessage}>
-              <FontAwesomeIcon icon={faEdit} />
-            </span> 
-            <span className = "delete-msg-btn" onClick = {deleteMessage}>
-              <FontAwesomeIcon icon={faTrashAlt} />
-            </span> 
+            {editMessage ? 
+              <div>
+                <button onClick = {submitEditMessageData}>Save</button>
+              </div> :
+              <span className = "edit-msg-btn" onClick = {toggleEditMessage}>
+                <FontAwesomeIcon icon={faEdit} />
+              </span> }
+            {editMessage ? 
+              <div>
+                <button onClick = {toggleEditMessage}>Exit</button>
+              </div> :
+              <span className = "delete-msg-btn" onClick = {deleteMessage}>
+                <FontAwesomeIcon icon={faTrashAlt} />
+              </span>  }
+
          </div> : false}
       </div>
-      <div className = "message-body">
+      <div className = "message-body"> 
         {editMessage ? 
-          <textarea>
-            {props.messageData.body}
-          </textarea> : 
+          <input type = "text" name = "body" value = {editMessageData["body"]} onChange = {handleEditMessage} />
+             : 
           <div>
             {props.messageData.body}
           </div>}
@@ -89,15 +85,14 @@ const formatVideoUrl = (url) => {
         {props.messageData.message_image ? 
         <div className = "message-img">
           <img className = "message-img-file" src = {props.messageData.message_image.url} />
-          {editMessage ? <div>New Img <input type = "file" /></div> : false}
+          {editMessage ? <div><input className = "form-control" name = "message_image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> </div> : false}
         </div> : false}
         {props.messageData.video_link ? 
         <div className = "message-video">
-          <iframe className = "message-video-iframe" src={videoLinkFormatted} />
-          {editMessage ? <div>New Vid <input type = "text" /></div> : false}
+          <iframe className = "message-video-iframe" src={props.messageData.video_link} />
+          {editMessage ? <div>New Vid <input className = "form-control" name = "video_link" type="text" onChange={handleEditMessage} placeholder = {"Post a valid youtube link"}/></div> : false}
         </div> : false}
     </div>
   )
 }
-
 export default Message;

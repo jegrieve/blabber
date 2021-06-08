@@ -26,6 +26,14 @@ class Api::V1::MessagesController < ApplicationController
         end
     end
 
+    def update
+        message = Message.find(params[:id])
+        if message
+            message.update(body: params[:body], video_link: params[:video_link], message_image: params[:message_image])
+            render json: message
+        end
+    end
+
     private
 
     def message_params
