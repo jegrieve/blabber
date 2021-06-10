@@ -1,7 +1,17 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faImage, faFileVideo } from '@fortawesome/free-solid-svg-icons'
 import {faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { GiphyFetch } from '@giphy/js-fetch-api'
+import {
+    SearchBar, 
+    SearchContext, 
+    SearchContextManager, 
+    SuggestionBar, 
+    Grid, 
+    Carousel,
+    Gif
+} from '@giphy/react-components'
 
 const CreateMessage = (props) => {
     const [messageData, setMessageData] = useState({
@@ -10,6 +20,7 @@ const CreateMessage = (props) => {
         video: null
     });
     const [submitType, setSubmitType] = useState("text");
+    const [giffy, setGiffy] = useState(null); //delete this
 
     useEffect(() => {
         window.scrollTo(0,document.body.scrollHeight);
@@ -98,6 +109,10 @@ const CreateMessage = (props) => {
         }))
     };
 
+    const test = (gif,e) => {
+        e.preventDefault();
+        console.log(gif)
+    }
     const addImgSubmit = () => {
         setSubmitType("image")
     }
@@ -110,8 +125,42 @@ const CreateMessage = (props) => {
     const addTextSubmit = () => {
         setSubmitType("text")
     }
+    
+    const gf = new GiphyFetch('gB3rscHDQDNmLTvDhqUmWDw1sli5qesi')
+    const fetchGifs = (offset) => gf.trending({ offset, limit: 10 })
+    // useEffect(() => { //delete this
+    //     gf.gif("5QRmvfdoMKH4cemL4w")
+    //     .then(response => {
+    //         setGiffy(response.data);
+    //     })
+    //     .catch(error => console.log(error.message))
+    // },[])
+    useEffect(() => { //delete this
+        gf.emoji()
+        .then(response => {
+            console.log(response)
+            setGiffy(response.data[0])
+        })
+        .catch(error => console.log(error.message))
+    },[])
 
+    const SearchExperience = () => (
+        <SearchContextManager apiKey={'gB3rscHDQDNmLTvDhqUmWDw1sli5qesi'}>
+            <SearchExperienceComponents />
+        </SearchContextManager>
+    )
 
+    const SearchExperienceComponents = () => {
+        const { fetchGifs, searchKey } = useContext(SearchContext)
+        return (
+            <>
+                <SearchBar />
+                <SuggestionBar />
+                <Carousel key={searchKey} columns={3} width={800} fetchGifs={fetchGifs} onGifClick={test} gifHeight={200} gutter={6} /> 
+            </>
+        )
+    }
+  
     return (
         <div className = "create-message container-fluid">
             <form className = "create-message-form row form-group d-flex align-items-center" onSubmit = {submitMessage}>
@@ -129,7 +178,13 @@ const CreateMessage = (props) => {
                         <FontAwesomeIcon icon={faYoutube} />
                     </span>
                     <span id = "add-gif-btn" className = "extra-input-btn" onClick = {addGifSubmit}>
-                        <FontAwesomeIcon icon={faFileVideo} />
+                        <FontAwesomeIcon icon={faFileVideo} />{/*delete below*/}
+                        {SearchExperience()}
+                        {/* {giffy ? <Gif gif={giffy} onGifClick={test} width={200} />  
+                        : false}      */}
+                        {/* also maybe i should add emojis/stickers (i dont think it would bethat hard/time consuming) */}
+                        {/* <iframe width = "300" height = "300" src = {"https://giphy.com/embed/5QRmvfdoMKH4cemL4w"} /> delete this */} 
+                        {/* <Carousel fetchGifs={fetchGifs} onGifClick={test} gifHeight={200} gutter={6} /> */}
                     </span>
                     <div className = "row">
                     {submitType === "image" ? 
