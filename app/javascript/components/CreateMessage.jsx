@@ -17,10 +17,15 @@ const CreateMessage = (props) => {
     const [messageData, setMessageData] = useState({
         body: "",
         image: null,
-        video: null
+        video: "",
+        gif: ""
     });
     const [submitType, setSubmitType] = useState("text");
-    const [giffy, setGiffy] = useState(null); //delete this
+    const [gifData, setGifData] = useState({
+        title: "",
+        id: ""
+    });
+    // const [giffy, setGiffy] = useState(null); //delete this
 
     useEffect(() => {
         window.scrollTo(0,document.body.scrollHeight);
@@ -30,6 +35,8 @@ const CreateMessage = (props) => {
         e.preventDefault();
         if (submitType === "text" || submitType === "video") {
             submitMessageDataNoImage()
+        } else if (submitType === "gif") {
+            submitMessageDataGif();
         } else {
             submitMessageDataWithImage()
         }
@@ -87,6 +94,33 @@ const CreateMessage = (props) => {
         .catch(error => console.log(error.message))
     }
 
+    const submitMessageDataGif = () => {
+        const body = {
+            body: messageData["body"],
+            gif: messageData["gif"]
+        }
+        const url = `/api/v1/messages/create/${props.channelId}`;
+        const token = document.querySelector('meta[name="csrf-token"]').content;
+        fetch(url, {
+        method: "POST",
+        headers: {
+        "X-CSRF-Token": token, 
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json()
+            }
+            throw new Error("Network response was not ok.");
+        })
+        .then(response => {
+            props.getChannelMessages()
+        })
+        .catch(error => console.log(error.message))
+    };
+
     const handleMessageBody = (e) => {
         setMessageData((prev) => ({
             ...prev,
@@ -102,6 +136,13 @@ const CreateMessage = (props) => {
         }));
     }
 
+    const onGifChange = (e) => {
+        setMessageData((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        }));
+    }
+
     const onImageChange = (e) => {
         setMessageData((prev) => ({
             ...prev,
@@ -109,9 +150,9 @@ const CreateMessage = (props) => {
         }))
     };
 
-    const test = (gif,e) => {
+    const handleGifClick = (gif,e) => {
         e.preventDefault();
-        console.log(gif)
+        setGifData(gif);
     }
     const addImgSubmit = () => {
         setSubmitType("image")
@@ -120,7 +161,7 @@ const CreateMessage = (props) => {
         setSubmitType("video")
     }
     const addGifSubmit = () => {
-        //setSubmitType("gif")
+        setSubmitType("gif")
     }
     const addTextSubmit = () => {
         setSubmitType("text")
@@ -156,7 +197,7 @@ const CreateMessage = (props) => {
             <>
                 <SearchBar />
                 <SuggestionBar />
-                <Carousel key={searchKey} columns={3} width={800} fetchGifs={fetchGifs} onGifClick={test} gifHeight={200} gutter={6} /> 
+                <Carousel key={searchKey} columns={3} width={800} fetchGifs={fetchGifs} onGifClick={handleGifClick} gifHeight={200} gutter={6} /> 
             </>
         )
     }
@@ -178,13 +219,7 @@ const CreateMessage = (props) => {
                         <FontAwesomeIcon icon={faYoutube} />
                     </span>
                     <span id = "add-gif-btn" className = "extra-input-btn" onClick = {addGifSubmit}>
-                        <FontAwesomeIcon icon={faFileVideo} />{/*delete below*/}
-                        {SearchExperience()}
-                        {/* {giffy ? <Gif gif={giffy} onGifClick={test} width={200} />  
-                        : false}      */}
-                        {/* also maybe i should add emojis/stickers (i dont think it would bethat hard/time consuming) */}
-                        {/* <iframe width = "300" height = "300" src = {"https://giphy.com/embed/5QRmvfdoMKH4cemL4w"} /> delete this */} 
-                        {/* <Carousel fetchGifs={fetchGifs} onGifClick={test} gifHeight={200} gutter={6} /> */}
+                        <FontAwesomeIcon icon={faFileVideo} />
                     </span>
                     <div className = "row">
                     {submitType === "image" ? 
@@ -194,10 +229,16 @@ const CreateMessage = (props) => {
                         </div> 
                     : submitType === "video" ? 
                         <div className = "form-group col-md-12">
-                            <input className = "form-control" name = "video" type="text" onChange={onVideoLinkChange} placeholder = {"Post a valid youtube link"}/>
+                            <input className = "form-control" name = "video" type="text" onChange={onVideoLinkChange} placeholder = {"Post a valid youtube link"} value = {messageData['video']}/>
                             <button className = "remove-link-btn btn btn-danger" onClick = {addTextSubmit} > Cancel </button>  
                         </div> 
-                    : false}
+                    : submitType === "gif" ?
+                        <div className = "form-group col-md-12">
+                            <input className = "form-control" name = "gif" type="text" onChange={onGifChange} placeholder = {"Selected Gif Title"} value = {gifData['title']}/>
+                            {SearchExperience()}
+                            <button className = "remove-link-btn btn btn-danger" onClick = {addTextSubmit} > Cancel </button>  
+                        </div>
+                    : false }
                     </div>
 
                 </span>
