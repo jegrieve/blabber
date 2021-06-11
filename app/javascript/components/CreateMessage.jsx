@@ -181,9 +181,15 @@ const CreateMessage = (props) => {
         const { fetchGifs, searchKey } = useContext(SearchContext)
         return (
             <>
-                <SearchBar />
-                <SuggestionBar />
-                <Carousel key={searchKey} columns={3} width={800} fetchGifs={fetchGifs} onGifClick={handleGifClick} gifHeight={200} gutter={6} /> 
+                <div className = "search-gif">
+                    <SearchBar />
+                </div>
+                <div className = "search-suggestion">
+                    <SuggestionBar />
+                </div>
+                <div className = "search-carousel">
+                    <Carousel key={searchKey} columns={3} width={800} fetchGifs={fetchGifs} onGifClick={handleGifClick} gifHeight={200} gutter={6} /> 
+                </div>
             </>
         )
     }

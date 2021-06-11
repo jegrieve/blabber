@@ -41,3 +41,13 @@
 .remove-link-btn {
   margin-top: 10px;
 }
+
+.search-gif {
+  border: 1px solid black;
+}
+
+.search-gif,
+.search-suggestion,
+.search-carousel {
+  margin-top: 1px;
+}
