@@ -190,9 +190,10 @@ const CreateMessage = (props) => {
   
     return (
         <div className = "create-message container-fluid">
-            <form className = "create-message-form row form-group d-flex align-items-center" onSubmit = {submitMessage}>
+            <form className = "create-message-form row form-group d-flex align-items-start" onSubmit = {submitMessage}>
                 <div className = "main-input col-md-8 form-group">
-                    <input className = "message-text-input form-control form-control-lg" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} maxLength = "750"/>
+                    <textarea className = "message-text-input form-control form-control-lg" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} rows="3" maxLength = "750" />
+                    {/* <input className = "message-text-input form-control form-control-lg" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} maxLength = "750"/> */}
                 </div>
                 <span className = "extra-inputs col-md-4">
                     <button type = "submit" className = "message-post-btn">
@@ -220,7 +221,7 @@ const CreateMessage = (props) => {
                         </div> 
                     : submitType === "gif" ?
                         <div className = "form-group col-md-12">
-                            <input className = "form-control" name = "gif" type="text" onChange={onGifChange} placeholder = {"Selected Gif Title"} value = {gifData['title']}/>
+                            <input className = "form-control" name = "gif" type="text" onChange={onGifChange} placeholder = {"Selected Gif Title"} value = {gifData['title']} disabled />
                             {SearchExperience()}
                             <button className = "remove-link-btn btn btn-danger" onClick = {addTextSubmit} > Cancel </button>  
                         </div>

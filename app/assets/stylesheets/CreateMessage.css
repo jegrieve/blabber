@@ -1,4 +1,7 @@
 .message-text-input {
+  margin-top: 2px;
+  min-height: 65px;
+  max-height: 250px;
   width: 100%;
 }
 
@@ -27,6 +30,7 @@
 }
 
 .extra-inputs {
+  padding-top: 15px;
   margin-bottom: 12px;
 }
 
