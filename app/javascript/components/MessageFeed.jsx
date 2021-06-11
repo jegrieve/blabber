@@ -1,5 +1,6 @@
 import React from "react";
 import Message from "./Message";
+import { GiphyFetch } from '@giphy/js-fetch-api';
 
 const MessageFeed = (props) => {
 
@@ -95,6 +96,8 @@ const MessageFeed = (props) => {
       : null;
 }
 
+  const gf = new GiphyFetch('gB3rscHDQDNmLTvDhqUmWDw1sli5qesi')
+
   return (
     <div>
         {props.channelMessageData.map((messageData) => {
@@ -103,7 +106,7 @@ const MessageFeed = (props) => {
           }
           return (
             <div className = "channel-message" key = {"m" + messageData.id}> 
-              <Message currentUser = {props.currentUser} messageData = {messageData} deleteMessage = {deleteMessage} editMessage = {editMessage} /> 
+              <Message currentUser = {props.currentUser} messageData = {messageData} deleteMessage = {deleteMessage} editMessage = {editMessage} fetchGif = {gf} /> 
             </div>
           )
         })}

@@ -1,11 +1,20 @@
 import React, {useState, useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCircle, faTrashAlt, faEdit, faYinYang } from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle, faTrashAlt, faEdit} from '@fortawesome/free-solid-svg-icons'
+import { Gif } from '@giphy/react-components'
+
 
 const Message = (props) => {
   const [editMessageData, setEditMessageData] = useState(null);
   const [editMessage, setEditMessage] = useState(false);
+  const [gifData, setGifData] = useState(null);
+
+  useEffect(() => {
+    if (props.messageData.gif) {
+      fetchGifDataById(props.messageData.gif)
+    }
+  },[])
 
   useEffect(() => {
     setEditMessageData({...props.messageData})
@@ -27,6 +36,14 @@ const Message = (props) => {
     } else {
       setEditMessage(false);
     }
+  }
+
+  const fetchGifDataById = (id) => {
+    props.fetchGif.gif(id)
+    .then((gifObj) => {
+      setGifData(gifObj)
+    })
+    .catch(error => console.log(error.message))
   }
 
   const submitEditMessageData = () => {
@@ -104,6 +121,11 @@ const Message = (props) => {
           <iframe className = "message-video-iframe" src={props.messageData.video_link} />
           {editMessage  === true ? <div>New Vid <input className = "form-control" name = "video_link" type="text" onChange={handleEditMessage} placeholder = {"Post a valid youtube link"}/></div> : false}
         </div> : false}
+        {gifData ? 
+        <div className = "message-gif">
+          <Gif gif={gifData.data} width={200} />
+        </div> 
+        : false}
     </div>
   )
 }

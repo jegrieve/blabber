@@ -8,9 +8,7 @@ import {
     SearchContext, 
     SearchContextManager, 
     SuggestionBar, 
-    Grid, 
-    Carousel,
-    Gif
+    Carousel
 } from '@giphy/react-components'
 
 const CreateMessage = (props) => {
@@ -25,11 +23,17 @@ const CreateMessage = (props) => {
         title: "",
         id: ""
     });
-    // const [giffy, setGiffy] = useState(null); //delete this
 
     useEffect(() => {
         window.scrollTo(0,document.body.scrollHeight);
       }, [submitType])
+
+      useEffect(() => {
+        setMessageData((prev) => ({
+            ...prev,
+            gif: gifData["id"]
+        }))
+      }, [gifData])
 
     const submitMessage = (e) => {
         e.preventDefault();
@@ -166,24 +170,6 @@ const CreateMessage = (props) => {
     const addTextSubmit = () => {
         setSubmitType("text")
     }
-    
-    const gf = new GiphyFetch('gB3rscHDQDNmLTvDhqUmWDw1sli5qesi')
-    const fetchGifs = (offset) => gf.trending({ offset, limit: 10 })
-    // useEffect(() => { //delete this
-    //     gf.gif("5QRmvfdoMKH4cemL4w")
-    //     .then(response => {
-    //         setGiffy(response.data);
-    //     })
-    //     .catch(error => console.log(error.message))
-    // },[])
-    useEffect(() => { //delete this
-        gf.emoji()
-        .then(response => {
-            console.log(response)
-            setGiffy(response.data[0])
-        })
-        .catch(error => console.log(error.message))
-    },[])
 
     const SearchExperience = () => (
         <SearchContextManager apiKey={'gB3rscHDQDNmLTvDhqUmWDw1sli5qesi'}>
