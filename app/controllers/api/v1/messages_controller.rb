@@ -37,6 +37,6 @@ class Api::V1::MessagesController < ApplicationController
     private
 
     def message_params
-        params.permit(:body, :message_image, :video_link)
+        params.permit(:body, :message_image, :video_link, :gif)
     end
 end
