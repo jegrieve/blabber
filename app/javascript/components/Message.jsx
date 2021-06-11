@@ -123,7 +123,7 @@ const Message = (props) => {
         </div> : false}
         {gifData ? 
         <div className = "message-gif">
-          <Gif gif={gifData.data} width={200} />
+          <Gif gif={gifData.data} width = {280} />
         </div> 
         : false}
     </div>
