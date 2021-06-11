@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperPlane, faImage, faFileVideo } from '@fortawesome/free-solid-svg-icons'
+import { faPaperPlane, faImage, faFileVideo, faSmileWink } from '@fortawesome/free-solid-svg-icons'
 import {faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { GiphyFetch } from '@giphy/js-fetch-api'
 import {
@@ -9,7 +9,8 @@ import {
     SearchContextManager, 
     SuggestionBar, 
     Carousel
-} from '@giphy/react-components'
+} from '@giphy/react-components';
+import Picker from 'emoji-picker-react';
 
 const CreateMessage = (props) => {
     const [messageData, setMessageData] = useState({
@@ -23,6 +24,17 @@ const CreateMessage = (props) => {
         title: "",
         id: ""
     });
+    const [emojiInput, setEmojiInput] = useState(null);
+
+    useEffect(() => {
+        if (emojiInput && emojiInput !== true) {
+            console.log(messageData.body)
+            setMessageData((prev) => ({
+                ...prev,
+                body: messageData.body + emojiInput.emoji
+            }))
+        }
+    }, [emojiInput])
 
     useEffect(() => {
         window.scrollTo(0,document.body.scrollHeight);
@@ -34,6 +46,10 @@ const CreateMessage = (props) => {
             gif: gifData["id"]
         }))
       }, [gifData])
+
+      const onEmojiClick = (event, emojiObject) => {
+        setEmojiInput(emojiObject);
+      };
 
     const submitMessage = (e) => {
         e.preventDefault();
@@ -171,6 +187,14 @@ const CreateMessage = (props) => {
         setSubmitType("text")
     }
 
+    const bringUpEmojiInput = () => {
+        setEmojiInput(true);
+    }
+
+    const removeEmojiInput = () => {
+        setEmojiInput(null);
+    }
+
     const SearchExperience = () => (
         <SearchContextManager apiKey={'gB3rscHDQDNmLTvDhqUmWDw1sli5qesi'}>
             <SearchExperienceComponents />
@@ -214,6 +238,9 @@ const CreateMessage = (props) => {
                     <span id = "add-gif-btn" className = "extra-input-btn" onClick = {addGifSubmit}>
                         <FontAwesomeIcon icon={faFileVideo} />
                     </span>
+                    <span id = "add-emoji-btn" className = "extra-input-btn" onClick = {bringUpEmojiInput}>
+                        <FontAwesomeIcon icon={faSmileWink} />
+                    </span>
                     <div className = "row">
                     {submitType === "image" ? 
                         <div className = "form-group col-md-12">
@@ -231,9 +258,13 @@ const CreateMessage = (props) => {
                             {SearchExperience()}
                             <button className = "remove-link-btn btn btn-danger" onClick = {addTextSubmit} > Cancel </button>  
                         </div>
-                    : false }
+                    : emojiInput ? 
+                        <div className = "col-md-12">
+                            <Picker onEmojiClick = {onEmojiClick} />
+                            <button className = "remove-link-btn btn btn-danger" onClick = {removeEmojiInput} > Exit </button>  
+                        </div>
+                    : false}
                     </div>
-
                 </span>
             </form>
         </div>
