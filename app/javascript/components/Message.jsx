@@ -65,6 +65,10 @@ const Message = (props) => {
     }))
 };
 
+const handleGifClick = (gif, e) => {
+  e.preventDefault();
+}
+
   return (
     <div className = "message-contents">
       <div className = "message-header d-flex justify-content-between">
@@ -123,7 +127,7 @@ const Message = (props) => {
         </div> : false}
         {gifData ? 
         <div className = "message-gif">
-          <Gif gif={gifData.data} width = {280} />
+          <Gif gif={gifData.data} width = {280} onGifClick = {handleGifClick}/>
         </div> 
         : false}
     </div>
