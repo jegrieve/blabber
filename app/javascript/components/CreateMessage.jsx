@@ -11,7 +11,7 @@ import {
     Carousel
 } from '@giphy/react-components';
 import Picker from 'emoji-picker-react';
-
+//fix glitch where canceling the gif input will put the emoji input instead.
 const CreateMessage = (props) => {
     const [messageData, setMessageData] = useState({
         body: "",
@@ -38,6 +38,14 @@ const CreateMessage = (props) => {
 
     useEffect(() => {
         window.scrollTo(0,document.body.scrollHeight);
+        if (submitType === "text") {
+            setMessageData((prev) => ({
+                ...prev,
+                video: ""
+            }))
+        } else {
+            setEmojiInput(null);
+        }
       }, [submitType])
 
       useEffect(() => {
@@ -47,9 +55,24 @@ const CreateMessage = (props) => {
         }))
       }, [gifData])
 
+      useEffect(() => {
+          if (!messageData.body && !messageData.image && !messageData.video && !messageData.gif) {
+            props.getChannelMessages();
+          }
+      }, [messageData])
+
       const onEmojiClick = (event, emojiObject) => {
         setEmojiInput(emojiObject);
       };
+
+      const handleSuccessfulPost = () => {
+          setMessageData({
+            body: "",
+            image: null,
+            video: "",
+            gif: ""
+            })
+      }
 
     const submitMessage = (e) => {
         e.preventDefault();
@@ -84,7 +107,7 @@ const CreateMessage = (props) => {
             throw new Error("Network response was not ok.");
         })
         .then(response => {
-            props.getChannelMessages()
+            handleSuccessfulPost();
         })
         .catch(error => console.log(error.message))
     }
@@ -109,7 +132,7 @@ const CreateMessage = (props) => {
             throw new Error("Network response was not ok.");
         })
         .then(response => {
-            props.getChannelMessages()
+            handleSuccessfulPost();
         })
         .catch(error => console.log(error.message))
     }
@@ -136,7 +159,7 @@ const CreateMessage = (props) => {
             throw new Error("Network response was not ok.");
         })
         .then(response => {
-            props.getChannelMessages()
+            handleSuccessfulPost();
         })
         .catch(error => console.log(error.message))
     };
