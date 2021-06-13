@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCircle } from '@fortawesome/free-regular-svg-icons'
 
 const UserPage = (props) => {
     const [userData, setUserData] = useState(null);
@@ -33,7 +35,14 @@ const UserPage = (props) => {
                 {console.log(userData)}
               </div>
               <div>
-                FontAwesomeUserIconPlaceholder
+                {userData.user_image ? 
+                <div>
+                  User Image
+                </div>
+                :
+                <div>
+                  <FontAwesomeIcon icon={faUserCircle} />
+                </div>}
               </div>
               <div>
                 Bio goes here
