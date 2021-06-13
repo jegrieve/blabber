@@ -30,6 +30,7 @@ const UserPage = (props) => {
             <div>
               <div>
                 {userData.username}
+                {console.log(userData)}
               </div>
               <div>
                 FontAwesomeUserIconPlaceholder
