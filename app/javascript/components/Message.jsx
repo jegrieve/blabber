@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCircle, faTrashAlt, faEdit} from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle, faTrashAlt, faEdit, faCheck, faTimes} from '@fortawesome/free-solid-svg-icons'
 import { Gif } from '@giphy/react-components'
 
 
@@ -91,16 +91,18 @@ const handleGifClick = (gif, e) => {
         {props.currentUser && props.messageData.user_id === props.currentUser.id ?       
           <div className = "message-modifiers">
             {editMessage === true ? 
-              <div>
-                <button onClick = {submitEditMessageData}>Save</button>
-              </div> :
+                <span className = "confirm-edit-btn" onClick = {submitEditMessageData}>
+                  <FontAwesomeIcon icon={faCheck} />
+                </span>
+               :
               <span className = "edit-msg-btn" onClick = {toggleEditMessage}>
                 <FontAwesomeIcon icon={faEdit} />
               </span> }
             {editMessage === true ? 
-              <div>
-                <button onClick = {toggleEditMessage}>Exit</button>
-              </div> :
+                <span className = "cancel-edit-btn" onClick = {toggleEditMessage}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </span>
+                :
               <span className = "delete-msg-btn" onClick = {deleteMessage}>
                 <FontAwesomeIcon icon={faTrashAlt} />
               </span>  }

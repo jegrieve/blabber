@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperPlane, faImage, faFileVideo, faSmileWink } from '@fortawesome/free-solid-svg-icons'
+import { faPaperPlane, faImage, faFileVideo, faSmileWink} from '@fortawesome/free-solid-svg-icons'
 import {faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { GiphyFetch } from '@giphy/js-fetch-api'
 import {
@@ -11,7 +11,7 @@ import {
     Carousel
 } from '@giphy/react-components';
 import Picker from 'emoji-picker-react';
-//fix glitch where canceling the gif input will put the emoji input instead.
+
 const CreateMessage = (props) => {
     const [messageData, setMessageData] = useState({
         body: "",
@@ -246,7 +246,6 @@ const CreateMessage = (props) => {
             <form className = "create-message-form row form-group d-flex align-items-start" onSubmit = {submitMessage}>
                 <div className = "main-input col-md-8 form-group">
                     <textarea className = "message-text-input form-control form-control-lg" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} rows="3" maxLength = "750" />
-                    {/* <input className = "message-text-input form-control form-control-lg" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} maxLength = "750"/> */}
                 </div>
                 <span className = "extra-inputs col-md-4">
                     <button type = "submit" className = "message-post-btn">
