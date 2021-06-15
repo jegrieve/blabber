@@ -9,7 +9,7 @@ const ShowUserData = (props) => {
           <div>
               {props.userData.user_image ? 
               <div>
-                  <img src = {props.userData.user_image} />
+                  <img src = {props.userData.user_image.url} />
               </div> 
               :
               <FontAwesomeIcon icon = {faUserCircle} />

@@ -10,6 +10,11 @@ const EditUserData = (props) => {
   const [bioData, setBioData] = useState(null);
   const [editImage, setEditImage] = useState(false);
   const [editBio, setEditBio] = useState(false);
+  useEffect(() => {
+    if (!imageData.image) {
+      setEditImage(false);
+    }
+  }, [imageData])
 
   const handleImage = () => {
     setEditImage(!editImage)
@@ -21,7 +26,19 @@ const EditUserData = (props) => {
     }))
   };
 
+  const saveEditImage = () => {
+    props.updateProfileImage(props.userData.id, imageData);
+  }
+
+  const cancelEditImage = () => {
+    setImageData({
+      image: null
+    })
+  }
+
   //so the button will now submit it or will cancel it once the image is loaded onto it.
+  //SO... now work on the buttons that will show up with the image input
+  //a check button to submit it and reload the new image and a cancel button that puts the image state back to null.
 
 
   return (
@@ -30,14 +47,18 @@ const EditUserData = (props) => {
           <div>
               {props.userData.user_image ? 
               <div>
-                  <img src = {props.userData.user_image} />
+                  <img src = {props.userData.user_image.url} />
               </div> 
               :
               <FontAwesomeIcon icon = {faUserCircle} />
               }
                {editImage ? 
-                 <div className = "form-group">
-                  <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
+                 <div>
+                  <div className = "form-group" >
+                    <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
+                  </div>
+                  <button onClick = {saveEditImage}>Save</button>
+                  <button onClick = {cancelEditImage}>Cancel</button>
                  </div> : 
                  <div>
                    <button onClick = {handleImage}>Edit Image</button>
