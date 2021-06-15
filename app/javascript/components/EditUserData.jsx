@@ -8,7 +8,7 @@ const EditUserData = (props) => {
     image: null
   });
   const [editImage, setEditImage] = useState(false);
-  const [bioData, setBioData] = useState(null);
+  const [bioText, setBioText] = useState("");
   const [editBio, setEditBio] = useState(false);
 
   useEffect(() => {
@@ -17,8 +17,20 @@ const EditUserData = (props) => {
     }
   }, [imageData])
 
+  useEffect(() => {
+    if (!props.userData.bio) {
+      setBioText("This user has not set a bio.")
+    } else {
+      setBioText(props.userData.bio)
+    }
+  },[editBio])
+
   const handleImage = () => {
     setEditImage(!editImage)
+  }
+
+  const handleBio = () => {
+    setEditBio(!editBio)
   }
 
   const onImageChange = (e) => {
@@ -31,16 +43,23 @@ const EditUserData = (props) => {
     props.updateProfileImage(props.userData.id, imageData);
   }
 
-  const cancelEditImage = () => {
+  const exitEditImage = () => {
     setImageData({
       image: null
     })
   }
 
-  //so the button will now submit it or will cancel it once the image is loaded onto it.
-  //SO... now work on the buttons that will show up with the image input
-  //a check button to submit it and reload the new image and a cancel button that puts the image state back to null.
+  const saveEditBio = () => {
+    props.updateProfileBio(props.userData.id, bioText);
+  }
 
+  const exitEditBio = () => {
+    setEditBio(!editBio)
+  }
+
+  const onBioInputChange = (e) => {
+    setBioText(e.target.value);
+  }
 
   return (
       <div>
@@ -59,13 +78,25 @@ const EditUserData = (props) => {
                     <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
                   </div>
                   <button onClick = {saveEditImage}>Save</button>
-                  <button onClick = {cancelEditImage}>Exit</button>
+                  <button onClick = {exitEditImage}>Exit</button>
                  </div> : 
                  <div>
                    <button onClick = {handleImage}>Edit Image</button>
                   </div>}
           </div>
-          <div>{props.userData.bio}</div>
+          <div>
+            {editBio ? 
+            <div>
+              <textarea value = {bioText} onChange = {onBioInputChange} />
+                <button onClick = {saveEditBio}>Save</button>
+                <button onClick = {exitEditBio}>Exit</button>
+            </div> 
+            : 
+            <div>
+                {!props.userData.bio ? <div>This user has not set a bio.</div> : <div>{props.userData.bio}</div>}
+                <button onClick = {handleBio}>Edit Bio</button>
+            </div>}
+          </div>
           <div>Recent Activity:</div>
       </div>
   )

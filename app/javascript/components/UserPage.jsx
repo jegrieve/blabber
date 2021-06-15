@@ -62,13 +62,39 @@ const UserPage = (props) => {
         .catch(error => console.log(error.message))
       }
 
+      const updateProfileBio = (userId, bioText) => {
+        const body = {
+          bio: bioText,
+      }
+        const url = `/api/v1/users/update/${userId}`;
+        const token = document.querySelector('meta[name="csrf-token"]').content;
+        fetch(url, {
+        method: "PATCH",
+        headers: {
+        "X-CSRF-Token": token, 
+        "Content-Type": "application/json"
+      },
+        body: JSON.stringify(body)
+      })
+      .then(response => {
+          if (response.ok) {
+              return response.json()
+          }
+          throw new Error("Network response was not ok.");
+      })
+      .then(response => {
+          getUserData();
+      })
+      .catch(error => console.log(error.message))
+      }
+
   return (
       <div className = "page-display userpage">
         {props.currentUser 
         && userData 
         && props.currentUser.id === userData.id 
         ? 
-        <EditUserData userData = {userData} updateProfileImage = {updateProfileImage} />
+        <EditUserData userData = {userData} updateProfileImage = {updateProfileImage} updateProfileBio = {updateProfileBio} />
         : userData ? 
         <ShowUserData userData = {userData} />
         :

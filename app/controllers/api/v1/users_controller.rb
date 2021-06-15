@@ -11,9 +11,12 @@ class Api::V1::UsersController < ApplicationController
 
     def update
         user = User.find(params[:id])
-        if user
+        if user && params[:user_image]
             user.update(user_image: params[:user_image])
             render json: user
+        elsif user && params[:bio]
+            user.update(bio: params[:bio])
+            render json: user   
         end
     end
 end
