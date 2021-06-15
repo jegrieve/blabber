@@ -57,9 +57,7 @@ const UserPage = (props) => {
             throw new Error("Network response was not ok.");
         })
         .then(response => {
-            console.log(reponse)
-            //setUserData(response);
-            //props.getUserData  since on sucessfull update i dont think it gives back a userdata but i can check
+          getUserData();
         })
         .catch(error => console.log(error.message))
       }

@@ -7,9 +7,10 @@ const EditUserData = (props) => {
   const [imageData, setImageData] = useState({
     image: null
   });
-  const [bioData, setBioData] = useState(null);
   const [editImage, setEditImage] = useState(false);
+  const [bioData, setBioData] = useState(null);
   const [editBio, setEditBio] = useState(false);
+
   useEffect(() => {
     if (!imageData.image) {
       setEditImage(false);
@@ -47,7 +48,7 @@ const EditUserData = (props) => {
           <div>
               {props.userData.user_image ? 
               <div>
-                  <img src = {props.userData.user_image.url} />
+                  <img src = {props.userData.user_image.url} width = {300} />
               </div> 
               :
               <FontAwesomeIcon icon = {faUserCircle} />
@@ -58,7 +59,7 @@ const EditUserData = (props) => {
                     <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
                   </div>
                   <button onClick = {saveEditImage}>Save</button>
-                  <button onClick = {cancelEditImage}>Cancel</button>
+                  <button onClick = {cancelEditImage}>Exit</button>
                  </div> : 
                  <div>
                    <button onClick = {handleImage}>Edit Image</button>
