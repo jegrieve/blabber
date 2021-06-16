@@ -25,12 +25,29 @@ const EditUserData = (props) => {
     }
   },[editBio])
 
+  useEffect(() => {
+    if (editBio === "submitted") {
+      props.updateProfileBio(props.userData.id, bioText);
+    }
+    if (editImage === "submitted") {
+      props.updateProfileImage(props.userData.id, imageData);
+    }
+  }, [editBio, editImage])
+
   const handleImage = () => {
-    setEditImage(!editImage)
+    if (!editImage || editImage === "submitted") {
+      setEditImage(true)
+    } else {
+      setEditImage(false)
+    }
   }
 
   const handleBio = () => {
-    setEditBio(!editBio)
+    if (!editBio || editBio === "submitted") {
+      setEditBio(true)
+    } else {
+      setEditBio(false)
+    }
   }
 
   const onImageChange = (e) => {
@@ -40,7 +57,7 @@ const EditUserData = (props) => {
   };
 
   const saveEditImage = () => {
-    props.updateProfileImage(props.userData.id, imageData);
+    setEditImage("submitted")
   }
 
   const exitEditImage = () => {
@@ -50,7 +67,7 @@ const EditUserData = (props) => {
   }
 
   const saveEditBio = () => {
-    props.updateProfileBio(props.userData.id, bioText);
+    setEditBio("submitted")
   }
 
   const exitEditBio = () => {
@@ -72,24 +89,24 @@ const EditUserData = (props) => {
               :
               <FontAwesomeIcon icon = {faUserCircle} />
               }
-               {editImage ? 
+               {editImage === true ? 
                  <div>
                   <div className = "form-group" >
                     <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
                   </div>
                   <button onClick = {saveEditImage}>Save</button>
-                  <button onClick = {exitEditImage}>Exit</button>
+                  <button onClick = {exitEditImage}>Cancel</button>
                  </div> : 
                  <div>
                    <button onClick = {handleImage}>Edit Image</button>
                   </div>}
           </div>
           <div>
-            {editBio ? 
+            {editBio === true ? 
             <div>
               <textarea value = {bioText} onChange = {onBioInputChange} />
                 <button onClick = {saveEditBio}>Save</button>
-                <button onClick = {exitEditBio}>Exit</button>
+                <button onClick = {exitEditBio}>Cancel</button>
             </div> 
             : 
             <div>
