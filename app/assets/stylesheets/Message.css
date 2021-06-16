@@ -48,3 +48,10 @@
   width: 440px;
   height: 280px;
 }
+
+.message-avatar-img {
+  margin-bottom: 9px;
+  width: 45px;
+  height: 45px;
+  border-radius: 30px;
+}
