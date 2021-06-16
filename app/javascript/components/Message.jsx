@@ -74,9 +74,13 @@ const handleGifClick = (gif, e) => {
       <div className = "message-header d-flex justify-content-between">
           <div className = "message-info d-flex align-items-center">
               <div className = "message-avatar">
-              <NavLink to = {`/user/${props.messageData.user.id}`}>
+                {props.messageData.user.user_image ? 
+                  <img src = {props.messageData.user.user_image.url} width = {50}/>
+                    : 
+                  <NavLink to = {`/user/${props.messageData.user.id}`}>
                 <FontAwesomeIcon icon={faUserCircle} />
-                </NavLink>
+                  </NavLink>
+                  } 
               </div>
             <div className = "message-username">
               {props.messageData.user.username}
