@@ -19,6 +19,12 @@ const SignInForm = (props) => {
         postSignInData();
     };
 
+    const signInErrorHandling = () => {
+        document.getElementById("sign-in-username-error").innerHTML = "Invalid User/Pass"
+        document.getElementById("sign-in-username").classList.add("is-invalid")
+        document.getElementById("sign-in-password").classList.add("is-invalid")
+    }
+
     const postSignInData = () => {
         const body = {
             username: signInUserInputs["username"],
@@ -42,7 +48,7 @@ const SignInForm = (props) => {
         })
         .then(response => {
             if (response === null) {
-                console.error("Invalid Username/Password.")
+                signInErrorHandling();
             } else if (response.id) {
                 props.setCurrentUser(response)
             }
@@ -63,12 +69,13 @@ const SignInForm = (props) => {
         <form className = "sign-in-inputs" onSubmit = {submitSignInForm}>
             <div className = "form-group">
                 <label>Username:
+                    <small id="sign-in-username-error" className="form-text red-text"></small>
                     <input id="sign-in-username" name = "username" type="text" className = "form-control" onChange = {enterSignInInputs} value = {signInUserInputs["username"]}/>
                 </label>
             </div>
             <div className = "form-group">
                 <label>Password:
-                    <input id="sign-in-user-password" name = "password" className = "form-control" type="password" onChange = {enterSignInInputs} value = {signInUserInputs["password"]}/>
+                    <input id="sign-in-password" name = "password" className = "form-control" type="password" onChange = {enterSignInInputs} value = {signInUserInputs["password"]}/>
                 </label>
             </div>
             <div className = "sign-in-btn">
@@ -76,17 +83,6 @@ const SignInForm = (props) => {
             </div>
         </form>
     </div>
-    //   <div>
-    //     <form onSubmit = {submitSignInForm}>
-    //         <label>Username:
-    //             <input name = "username" type="text" onChange = {enterSignInInputs} value = {setSignInUserInputs["username"]}/>
-    //         </label>
-    //         <label>Password:
-    //             <input name = "password" type="password" onChange = {enterSignInInputs} value = {setSignInUserInputs["password"]}/>
-    //         </label>
-    //         <button type = "submit">Sign In</button>
-    //     </form>
-    //   </div>
   )
 }
 
