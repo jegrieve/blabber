@@ -55,12 +55,12 @@ const CreateNewServer = (props) => {
       <div className = "page-display create-server-container d-flex justify-content-center">
         <form className = "create-server-form form-group" onSubmit = {submitCreateServerForm}>
         <div className = "form-group">
-          <label className = "server-inputs" for = "server-name-value">Server Name:
-            <input id = "server-name-value" name = "serverName" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverName"]} maxlength="12"/>
+          <label className = "server-inputs" htmlFor = "server-name-value">Server Name:
+            <input id = "server-name-value" name = "serverName" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverName"]} minLength = "5" maxLength="15"/>
           </label>
         </div>
         <div className = "form-group">
-          <label className = "server-inputs" for = "server-info-value">Server Info:
+          <label className = "server-inputs" htmlFor  = "server-info-value">Server Info:
             <input id = "server-info-value" name = "serverInfo" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverInfo"]} />
           </label>
         </div>

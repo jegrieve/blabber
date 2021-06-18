@@ -8,6 +8,8 @@ const SignUpForm = (props) => {
         password: "",
         passwordConfirm: "",
     });
+    // const [formErrors, setFormErrors] = useState(null)
+    // const [formSuccesses, setFormSuccesses] = useState(null)
 
     useEffect(() => {
         if (props.currentUser) {
@@ -25,6 +27,10 @@ const SignUpForm = (props) => {
     const submitSignUpForm = (e) => {
         e.preventDefault();
         postSignUpData();
+    }
+
+    const setFormErrors = () => {
+
     }
 
     const postSignUpData = () => {
@@ -56,6 +62,7 @@ const SignUpForm = (props) => {
                 props.setCurrentUser(response)
             } else {
                 console.error("Did not create user due to invalid inputs.")
+                // setFormErrors(response);
             }
         })
         .catch(error => console.log(error.message))

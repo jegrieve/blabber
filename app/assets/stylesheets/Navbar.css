@@ -6,6 +6,15 @@
   z-index: 1;
 }
 
+.nav-items {
+  margin-left: 25px;
+  height: 100%;
+}
+
 .nav-elements {
-  width: 100%;
+  width: 180px;
+}
+
+.nav-user {
+  padding-top: 3px;
 }
