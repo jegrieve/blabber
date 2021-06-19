@@ -1,6 +1,14 @@
+.side-nav-container {
+  border-right: 1px solid black;
+  padding: 0 !important;
+}
+
 .side-nav {
-  max-width: 380px;
   text-align: center;
+  max-width: 380px;
+  font-size: 24px;
+  left: 0;
+  position: sticky;
 }
 
 .fixed-nav {
@@ -14,6 +22,23 @@
 .chevron-btn {
   cursor: pointer;
   display: inline;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.servers-title {
+  border-bottom: 1px solid black;
+}
+
+.server-item {
+  padding-top: 4px;
+  border-bottom: 1px solid black;
+}
+
+.server-feed-add-server {
+  display: inline-block;
+}
+
+.server-feed-nav-elements {
+  padding-top: 10px;
 }
