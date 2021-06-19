@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import Server from "./Server";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faChevronLeft, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight, faChevronLeft, faPlusCircle} from '@fortawesome/free-solid-svg-icons'
 
 const ServerFeed = (props) => {
   const [loadedServers, setLoadedServers] = useState([]);
@@ -28,21 +28,21 @@ console.log(offsetNum)
       .then(response => {
         if (response.length > 0) {
           setLoadedServers(response)
-        } else if (offsetNum >= 15) {
-          setOffsetNum(offsetNum - 15);
+        } else if (offsetNum >= 5) {
+          setOffsetNum(offsetNum - 5);
         }
       })
       .catch((error) => console.log(error.message));
   }
 
   const decrementOffsetNum = () => {
-    if (offsetNum >= 15) {
-      setOffsetNum(offsetNum - 15)
+    if (offsetNum >= 5) {
+      setOffsetNum(offsetNum - 5)
     } 
   }
 
   const incrementOffsetNum = () => {
-      setOffsetNum(offsetNum + 15)
+      setOffsetNum(offsetNum + 5)
   }
 
   return (
@@ -76,3 +76,4 @@ console.log(offsetNum)
 }
 
 export default ServerFeed;
+
