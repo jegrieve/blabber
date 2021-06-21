@@ -8,11 +8,11 @@
   max-width: 380px;
   font-size: 24px;
   left: 0;
-  position: sticky;
 }
 
 .fixed-nav {
-  position: fixed;
+  position: sticky !important;
+  top: 70px !important;
 }
 
 .chevron-btn {

@@ -75,4 +75,3 @@ console.log(offsetNum)
 }
 
 export default ServerFeed;
-
