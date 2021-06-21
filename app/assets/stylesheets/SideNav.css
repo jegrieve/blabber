@@ -26,19 +26,24 @@
   padding-right: 25px;
 }
 
-.servers-title {
+.servers-title,
+.channels-title {
   border-bottom: 1px solid black;
 }
 
-.server-item {
+.server-item,
+.channel-item {
   padding-top: 4px;
   border-bottom: 1px solid black;
+  word-wrap: break-word;
 }
 
-.server-feed-add-server {
+.server-feed-add-server,
+.channel-feed-add-channel {
   display: inline-block;
 }
 
-.server-feed-nav-elements {
+.server-feed-nav-elements,
+.channel-feed-nav-elements {
   padding-top: 10px;
 }

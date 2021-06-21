@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import Channel from "./Channel"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faChevronLeft, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight, faChevronLeft, faPlus, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faCircle } from '@fortawesome/free-regular-svg-icons'
 
 const ChannelFeed = (props) => {
   const [currentServer, setCurrentServer] = useState(null);
@@ -51,57 +52,61 @@ const ChannelFeed = (props) => {
       .then(response => {
         if (response.length > 0) {
           setServerChannels(response)
-        } else if (offsetNum >= 15){
-          setOffsetNum(offsetNum - 15);
+        } else if (offsetNum >= 5){
+          setOffsetNum(offsetNum - 5);
         }
       })
       .catch((error) => console.log(error.message));
   }
 
   const decrementOffsetNum = () => {
-    if (offsetNum >= 15) {
-      setOffsetNum(offsetNum - 15)
+    if (offsetNum >= 5) {
+      setOffsetNum(offsetNum - 5)
     } 
   }
 
   const incrementOffsetNum = () => {
-      setOffsetNum(offsetNum + 15)
+      setOffsetNum(offsetNum + 5)
   }
   
   return (
       <div>
-        <div>
-          Channels
+        <div className = "channels-title">
+          <div>
+          <NavLink to = {`/`}>
+            <FontAwesomeIcon icon = {faArrowLeft} />
+          </NavLink>
+          </div>
+          <NavLink to = {`/server/${props.currentServer.id}`}>
+            {props.currentServer.name}'s channels
+          </NavLink>
         </div>
-        <NavLink to = {"/"}>
-          Return to servers
-        </NavLink>
         {serverChannels ? 
           <div>
           {serverChannels.map((channel) => {
            return (
-             <div key = {"c" + channel.id}> 
+             <div className = "channel-item" key = {"c" + channel.id}> 
+               <FontAwesomeIcon icon = {faCircle} />
                <Channel data = {channel} />
              </div>
            )
          })}
           </div> : false}
-         <div>
-          <NavLink to = {"/create-new-channel"}>
-            <FontAwesomeIcon icon = {faPlusCircle} /> 
-          </NavLink>
-         </div>
-          <div>
+          <div className = "channel-feed-nav-elements">
             <div className = "chevron-btn" onClick = {decrementOffsetNum}>
-              <FontAwesomeIcon icon = {faChevronLeft} /> 
+              <FontAwesomeIcon icon = {faChevronLeft} size = "2x" /> 
+            </div>
+            <div className = "channel-feed-add-channel">
+            <NavLink to = {"/create-new-channel"}>
+              <FontAwesomeIcon icon = {faPlus} size = "2x" /> 
+            </NavLink>
             </div>
             <div className = "chevron-btn" onClick = {incrementOffsetNum}>
-              <FontAwesomeIcon icon = {faChevronRight} /> 
+              <FontAwesomeIcon icon = {faChevronRight} size = "2x" /> 
             </div> 
           </div>
       </div>
   )
 }
-
 
 export default ChannelFeed;
