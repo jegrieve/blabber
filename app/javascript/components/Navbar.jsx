@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import SignOut from "./UserRegistration/SignOut";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser} from '@fortawesome/free-solid-svg-icons'
+import { faUser, faQuestionCircle } from '@fortawesome/free-regular-svg-icons'
 
 const Navbar = (props) => {
   return (
@@ -16,6 +16,11 @@ const Navbar = (props) => {
           <div className = "nav-user">
             <NavLink to={`/user/${props.currentUser.id}`}>
               <FontAwesomeIcon icon={faUser} size = '2x' />
+            </NavLink>
+          </div>
+          <div className = "nav-help">
+            <NavLink to={`/help`}>
+              <FontAwesomeIcon icon={faQuestionCircle} size = '2x' />
             </NavLink>
           </div>
           <div className = "nav-sign-out">

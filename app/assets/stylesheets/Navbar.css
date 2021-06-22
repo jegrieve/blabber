@@ -13,9 +13,10 @@
 }
 
 .nav-elements {
-  width: 180px;
+  width: 210px;
 }
 
-.nav-user {
+.nav-user,
+.nav-help {
   padding-top: 3px;
 }

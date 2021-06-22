@@ -136,7 +136,7 @@ const Routes = () => {
                   )}
               />
               <Route exact path="/help">
-                    <HomePage />
+                    <HelpPage />
               </Route>
             </Switch>
           </div>
