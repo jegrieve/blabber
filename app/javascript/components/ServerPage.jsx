@@ -33,6 +33,7 @@ const ServerPage = (props) => {
       .catch((error) => console.log(error.message));
   }
   // components updateServerImage = {updateServerImage} updateServerInfo = {updateServerInfo}
+
   return (
     <div className = "page-display userpage">
     {props.currentUser 
