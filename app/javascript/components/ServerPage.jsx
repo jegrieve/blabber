@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from "react";
+import ShowServerData from "./ShowServerData";
+import EditServerData from "./EditServerData";
 
 const ServerPage = (props) => {
   const [serverData, setServerData] = useState(null)
@@ -30,15 +32,15 @@ const ServerPage = (props) => {
         )
       .catch((error) => console.log(error.message));
   }
-
+  // components updateServerImage = {updateServerImage} updateServerInfo = {updateServerInfo}
   return (
     <div className = "page-display userpage">
     {props.currentUser 
     && serverData 
-    && props.currentUser.id === userData.id 
+    && props.currentUser.id === serverData.user.id
     ? 
-    <EditServerData serverData = {serverData} updateServerImage = {updateServerImage} updateServerInfo = {updateServerInfo} />
-    : userData ? 
+    <EditServerData serverData = {serverData}  />
+    : serverData ? 
     <ShowServerData serverData = {serverData} />
     :
     false
