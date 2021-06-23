@@ -25,6 +25,6 @@ class Api::V1::ServersController < ApplicationController
 
     private
     def server_params
-        params.permit(:name, :info)
+        params.permit(:name, :info, :server_image)
     end
 end

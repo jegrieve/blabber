@@ -4,8 +4,10 @@ import React, {useEffect, useState} from "react";
 const CreateNewServer = (props) => {
   const [createServerInputs, setCreateServerInputs] = useState({
     serverName: "",
-    serverInfo: ""
-  })
+    serverInfo: "",
+    serverImage: null
+  });
+  const [submitType, setSubmitType] = useState("text");
 
   const enterServerInputs = (e) => {
     setCreateServerInputs((prev) => ({
@@ -16,7 +18,11 @@ const CreateNewServer = (props) => {
 
   const submitCreateServerForm = (e) => {
     e.preventDefault();
-    postCreateServerData();
+    if (submitType === "text") {
+      postCreateServerData();
+    } else {
+      postCreateServerDataWithImage();
+    }
 }
 
   const postCreateServerData = () => {
@@ -46,10 +52,48 @@ const CreateNewServer = (props) => {
       .catch(error => console.log('did not post'))
   }
 
-  const onImageChange = () => {
-    
+  const postCreateServerDataWithImage = () => {
+    const formData =  new FormData();
+    formData.append('name', createServerInputs["serverName"]);
+    formData.append('info', createServerInputs["serverInfo"]);
+    formData.append('server_image', createServerInputs["serverImage"]);
+    const url = `/api/v1/servers/create`;
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+    fetch(url, {
+    method: "POST",
+    body: formData,
+    headers: {
+    "X-CSRF-Token": token, 
+    },
+  })
+    .then(response => {
+        if (response.ok) {
+            return response.json()
+        }
+        throw new Error("Network response was not ok.");
+    })
+    .then(response => {
+      console.log(response)
+      props.history.push(`/server/${response.id}`);
+    })
+    .catch(error => console.log(error.message))
   }
-  
+
+  const onImageChange = (e) => {
+    e.preventDefault();
+    setCreateServerInputs((prev) => ({
+      ...prev,
+      serverImage: e.target.files[0]
+    }))
+  }
+
+  const toggleSubmitType = () => {
+    if (submitType === "text") {
+      setSubmitType("image")
+    } else {
+      setSubmitType("text")
+    }
+  }
 
   return (
       <div className = "page-display create-server-container d-flex justify-content-center">
@@ -64,9 +108,17 @@ const CreateNewServer = (props) => {
             <input id = "server-info-value" name = "serverInfo" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverInfo"]} />
           </label>
         </div>
-        <div className = "form-group">
-            <input id = "server-image-value" className = "form-control-file" type = "file" accept = "image/*" multiple = {false} onChange = {onImageChange} />
-        </div>
+        {submitType === "text" ? 
+          <div>
+            <button onClick = {toggleSubmitType}>Add Banner</button> 
+          </div>
+          :         
+          <div>
+            <div className = "form-group">
+              <input id = "server-image-value" className = "form-control-file" type = "file" accept = "image/*" multiple = {false} onChange = {onImageChange} />
+            </div>
+            <button onClick = {toggleSubmitType}>Cancel</button>
+          </div>}
           <button type = "submit" className = "btn btn-success">Create</button>
         </form>
       </div>

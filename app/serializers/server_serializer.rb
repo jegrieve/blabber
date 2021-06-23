@@ -1,4 +1,5 @@
 class ServerSerializer < ActiveModel::Serializer
+  include Rails.application.routes.url_helpers
   attributes :id, :name, :info, :channels, :server_image
 
   def server_image
