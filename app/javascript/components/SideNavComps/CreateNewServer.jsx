@@ -73,7 +73,6 @@ const CreateNewServer = (props) => {
         throw new Error("Network response was not ok.");
     })
     .then(response => {
-      console.log(response)
       props.history.push(`/server/${response.id}`);
     })
     .catch(error => console.log(error.message))

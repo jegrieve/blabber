@@ -32,29 +32,18 @@ const ServerPage = (props) => {
   }
 
   return (
-    <div className = "page-display serverpage">
-
-    {serverData ?
-    <div>
-      <div className = "server-banner">
-        {/* serverData.server_image */}
-      </div>
-      <div className = "server-title">
-        {serverData.name}
-      </div>
-      <div className = "server-info">
-        {serverData.info}
-      </div>
-      <div className = "server-data">
-        {/* serverData.data */}
-      </div>
-    </div>
+    <div className = "page-display userpage">
+    {props.currentUser 
+    && serverData 
+    && props.currentUser.id === userData.id 
+    ? 
+    <EditServerData serverData = {serverData} updateServerImage = {updateServerImage} updateServerInfo = {updateServerInfo} />
+    : userData ? 
+    <ShowServerData serverData = {serverData} />
     :
-    <div>
-      No server here.
-    </div>
-  }
-    </div>
+    false
+    }
+  </div>
   )
 }
 
