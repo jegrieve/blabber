@@ -11,6 +11,12 @@ const ServerPage = (props) => {
   },[])
 
   useEffect(() => {
+    if (serverData) {
+      props.setCurrentServer(serverData);
+    }
+  }, [serverData])
+
+  useEffect(() => {
     if (props.match.params.id !== serverPageId) {
       setServerPageId(props.match.params.id);
     }

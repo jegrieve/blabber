@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 
-
 const EditServerData = (props) => {
     const [imageData, setImageData] = useState({
         image: null
@@ -8,20 +7,20 @@ const EditServerData = (props) => {
       const [editImage, setEditImage] = useState(false);
       const [infoText, setInfoText] = useState("");
       const [editInfo, setEditInfo] = useState(false);
-    
-      useEffect(() => {
-        if (!imageData.image) {
-          setEditImage(false);
-        }
-      }, [imageData])
-    
+
       useEffect(() => {
         if (!props.serverData.info) {
           setInfoText("This server has no info.")
         } else {
           setInfoText(props.serverData.info)
         }
-      },[editInfo])
+      },[])
+    
+      useEffect(() => {
+        if (!imageData.image) {
+          setEditImage(false);
+        }
+      }, [imageData])
     
       useEffect(() => {
         if (editInfo === "submitted") {

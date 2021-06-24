@@ -9,21 +9,22 @@ const EditUserData = (props) => {
   });
   const [editImage, setEditImage] = useState(false);
   const [bioText, setBioText] = useState("");
-  const [editBio, setEditBio] = useState(false);
+  const [editBio, setEditBio] = useState(false
+    );
+
+    useEffect(() => {
+      if (!props.userData.bio) {
+        setBioText("This user has not set a bio.")
+      } else {
+        setBioText(props.userData.bio)
+      }
+    },[])
 
   useEffect(() => {
     if (!imageData.image) {
       setEditImage(false);
     }
   }, [imageData])
-
-  useEffect(() => {
-    if (!props.userData.bio) {
-      setBioText("This user has not set a bio.")
-    } else {
-      setBioText(props.userData.bio)
-    }
-  },[editBio])
 
   useEffect(() => {
     if (editBio === "submitted") {
