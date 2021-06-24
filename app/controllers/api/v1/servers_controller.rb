@@ -26,7 +26,7 @@ class Api::V1::ServersController < ApplicationController
             server.update(server_image: params[:server_image])
             render json: server
         elsif server && params[:info]
-            user.update(info: params[:info])
+            server.update(info: params[:info])
             render json: server
         end
     end
