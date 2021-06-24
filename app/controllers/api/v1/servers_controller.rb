@@ -20,6 +20,17 @@ class Api::V1::ServersController < ApplicationController
         render json: server
     end
 
+    def update
+        server = Server.find(params[:id])
+        if server && params[:server_image]
+            server.update(server_image: params[:server_image])
+            render json: server
+        elsif server && params[:info]
+            user.update(info: params[:info])
+            render json: server
+        end
+    end
+
     def delete
     end
 
