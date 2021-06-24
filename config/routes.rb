@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'servers/index', to: 'servers#index';
       get 'servers/show/:id', to: 'servers#show';
       post 'servers/create', to: 'servers#create';
+      patch 'servers/update/:id', to: 'servers#update'
       delete 'servers/destroy/:id', to: 'servers#destroy';
 
       get 'channels/index', to: 'channels#index';
