@@ -15,8 +15,12 @@ class Api::V1::ChannelsController < ApplicationController
 
     def create
         server = Server.find(params[:server_id])
-        channel = server.channels.create(channel_params)
-        render json: channel
+        channel = server.channels.new(channel_params)
+        if channel.save
+            render json: channel
+        else
+            render json: channel.errors
+        end
     end
 
     private

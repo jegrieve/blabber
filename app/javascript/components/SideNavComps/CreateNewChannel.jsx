@@ -40,9 +40,20 @@ const CreateNewChannel = (props) => {
             throw new Error("Network response was not ok.");
         })
         .then(response => {
+          if (response.id) {
             props.history.push(`/channel/${response.id}`);
+        } else {
+            console.error("Did not create user due to invalid inputs.")
+            handleFormError(response);
+          }
         })
         .catch(error => console.log('did not post'))
+    }
+
+    const handleFormError = (formError) => {
+      console.log(formError)
+      document.getElementById(`channel-name-value`).classList.add("is-invalid")
+      document.getElementById(`channel-name-help`).innerHTML = formError["name"];
     }
     
     const handleChannelColour = (e) => {
@@ -56,8 +67,9 @@ const CreateNewChannel = (props) => {
       <div className = "page-display create-channel-container d-flex justify-content-center">
         <form className = "create-channel-form form-group" onSubmit = {submitCreateChannelForm}>
         <div className = "form-group">
-          <label className = "channel-inputs" for = "channel-name-value">Channel Name:
+          <label className = "channel-inputs" htmlFor = "channel-name-value">Channel Name:
             <input id = "channel-name-value" name = "channelName" className = "form-control form-control-lg channel-inputs" type = "text" onChange = {enterChannelInputs} value = {createChannelInputs["channelName"]} maxLength="17"/>
+            <small id= "channel-name-help" className="form-text red-text"></small>
             <input type = "color" name = "channelColour" className = "form-control" value = {createChannelInputs["channelColour"]} onChange = {handleChannelColour} />
           </label>
         </div>
