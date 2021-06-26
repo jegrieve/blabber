@@ -8,8 +8,34 @@ const SignUpForm = (props) => {
         password: "",
         passwordConfirm: "",
     });
-    // const [formErrors, setFormErrors] = useState(null)
-    // const [formSuccesses, setFormSuccesses] = useState(null)
+    const [formErrors, setFormErrors] = useState(null);
+
+    useEffect(() => {
+        if (formErrors) {
+            const formSuccesses = {
+                email: true,
+                username: true,
+                password: true,
+                password_confirmation: true
+            }
+            for (let key in formErrors) {
+                if (key !== "password_digest") {
+                    document.getElementById(`sign-up-${key}`).classList.remove("is-valid")
+                    document.getElementById(`sign-up-${key}`).classList.add("is-invalid")
+                    document.getElementById(`sign-up-${key}-help`).innerHTML = `${formErrors[key]}`
+                    formSuccesses[key] = false;
+                }
+            }
+            for (let key in formSuccesses) {
+                if (formSuccesses[key]) {
+                    document.getElementById(`sign-up-${key}`).classList.add("is-valid")
+                    document.getElementById(`sign-up-${key}`).classList.remove("is-invalid")
+                    document.getElementById(`sign-up-${key}-help`).innerHTML = ""
+                }
+            }
+        }
+    }, [formErrors])
+//so the basic form validations work now i just need to do the help stuff that adds the red text underneath the inputs to tell the reason it failed.
 
     useEffect(() => {
         if (props.currentUser) {
@@ -27,10 +53,6 @@ const SignUpForm = (props) => {
     const submitSignUpForm = (e) => {
         e.preventDefault();
         postSignUpData();
-    }
-
-    const setFormErrors = () => {
-
     }
 
     const postSignUpData = () => {
@@ -57,12 +79,12 @@ const SignUpForm = (props) => {
             throw new Error("Network response was not ok.");
         })
         .then(response => {
-            console.log(response) 
+            console.log(response)
             if (response.id) {
                 props.setCurrentUser(response)
             } else {
                 console.error("Did not create user due to invalid inputs.")
-                // setFormErrors(response);
+                setFormErrors(response);
             }
         })
         .catch(error => console.log(error.message))
@@ -74,21 +96,25 @@ const SignUpForm = (props) => {
             <div className = "form-group">
             <label>Email:
                 <input id="sign-up-email" name = "email" type="email" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["email"]} />
+                <small id="sign-up-email-help" className="form-text red-text"></small>
             </label>
             </div>
             <div className = "form-group">
             <label>Username:
                 <input id="sign-up-username" name = "username" type="text" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["username"]} minLength = "5"/>
+                <small id="sign-up-username-help" className="form-text red-text"></small>
             </label>
             </div>
             <div className = "form-group">
             <label>Password:
                 <input id="sign-up-password" name = "password" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["password"]} minLength = "5"/>
+                <small id="sign-up-password-help" className="form-text red-text"></small>
             </label>
             </div>
             <div className = "form-group">
             <label>Password Confirmation:
-                <input id="sign-up-confirm" name = "passwordConfirm" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["passwordConfirm"]} minLength = "5"/>
+                <input id="sign-up-password_confirmation" name = "passwordConfirm" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["passwordConfirm"]} minLength = "5"/>
+                <small id="sign-up-password_confirmation-help" className="form-text red-text"></small>
             </label>
             </div>
             <div>
@@ -99,5 +125,9 @@ const SignUpForm = (props) => {
   )
 }
 
+//im gonna have to do samething as reddit, BUT, there must be a better way to do it. EX: instead of using a case/switch statement just use the name
+//of the input and make it correspond 1:1 with the function.
 
+//so basically the reddit way was good BUT i shouldnt use case staments, just use the name and make it correspond to the formerror/success
+//So the first time was good it just needs to be tweaked.
 export default SignUpForm;
