@@ -8,6 +8,40 @@ const CreateNewServer = (props) => {
     serverImage: null
   });
   const [submitType, setSubmitType] = useState("text");
+  const [formErrors, setFormErrors] = useState(null);
+
+  useEffect(() => {
+    const formSuccesses = {
+      name: true,
+      info: true
+  }
+    if (formErrors) {
+        for (let key in formErrors) {
+                document.getElementById(`server-${key}-value`).classList.remove("is-valid")
+                document.getElementById(`server-${key}-value`).classList.add("is-invalid")
+                document.getElementById(`server-${key}-help`).innerHTML = `${formErrors[key]}`
+                formSuccesses[key] = false;
+        }
+        for (let key in formSuccesses) {
+            if (formSuccesses[key]) {
+                document.getElementById(`server-${key}-value`).classList.add("is-valid")
+                document.getElementById(`server-${key}-value`).classList.remove("is-invalid")
+                document.getElementById(`server-${key}-help`).innerHTML = ""
+            }
+        }
+    } else {
+      for (let key in formSuccesses) {
+        document.getElementById(`server-${key}-value`).classList.remove("is-invalid")
+        document.getElementById(`server-${key}-value`).classList.remove("is-valid")
+        document.getElementById(`server-${key}-help`).innerHTML = ""
+      }
+    }
+}, [formErrors])
+
+  useEffect(() => {
+    setFormErrors(null);
+  }, [submitType])
+
 
   const enterServerInputs = (e) => {
     setCreateServerInputs((prev) => ({
@@ -47,7 +81,12 @@ const CreateNewServer = (props) => {
           throw new Error("Network response was not ok.");
       })
       .then(response => {
+        if (response.id) {
           props.history.push(`/server/${response.id}`);
+      } else {
+          console.error("Did not create user due to invalid inputs.")
+          setFormErrors(response);
+        }
       })
       .catch(error => console.log('did not post'))
   }
@@ -73,9 +112,11 @@ const CreateNewServer = (props) => {
         throw new Error("Network response was not ok.");
     })
     .then(response => {
-      props.history.push(`/server/${response.id}`);
+        props.history.push(`/server/${response.id}`);
     })
-    .catch(error => console.log(error.message))
+    .catch(() => {
+        document.getElementById(`server-image-help`).innerHTML = "please make sure each input is filled"
+    })
   }
 
   const onImageChange = (e) => {
@@ -100,11 +141,13 @@ const CreateNewServer = (props) => {
         <div className = "form-group">
           <label className = "server-inputs" htmlFor = "server-name-value">Server Name:
             <input id = "server-name-value" name = "serverName" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverName"]} minLength = "5" maxLength="15"/>
+            <small id="server-name-help" className="form-text red-text"></small>
           </label>
         </div>
         <div className = "form-group">
           <label className = "server-inputs" htmlFor  = "server-info-value">Server Info:
             <input id = "server-info-value" name = "serverInfo" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverInfo"]} />
+            <small id="server-info-help" className="form-text red-text"></small>
           </label>
         </div>
         {submitType === "text" ? 
@@ -115,6 +158,7 @@ const CreateNewServer = (props) => {
           <div>
             <div className = "form-group">
               <input id = "server-image-value" className = "form-control-file" type = "file" accept = "image/*" multiple = {false} onChange = {onImageChange} />
+              <small id="server-image-help" className="form-text red-text"></small>
             </div>
             <button onClick = {toggleSubmitType}>Cancel</button>
           </div>}

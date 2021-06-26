@@ -16,8 +16,12 @@ class Api::V1::ServersController < ApplicationController
 
     def create
         user = User.find_by(id: session[:user_id])
-        server = user.servers.create(server_params)
-        render json: server
+        server = user.servers.new(server_params)
+        if server.save
+            render json: server
+        else
+            render json: server.errors
+        end
     end
 
     def update

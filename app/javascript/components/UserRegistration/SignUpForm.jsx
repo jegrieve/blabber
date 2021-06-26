@@ -35,7 +35,6 @@ const SignUpForm = (props) => {
             }
         }
     }, [formErrors])
-//so the basic form validations work now i just need to do the help stuff that adds the red text underneath the inputs to tell the reason it failed.
 
     useEffect(() => {
         if (props.currentUser) {
