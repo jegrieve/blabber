@@ -100,11 +100,13 @@ const ServerPage = (props) => {
     serverData && 
     props.currentUser.id === serverData.user.id
     ? 
-    <EditServerData serverData = {serverData} updateServerImage = {updateServerImage} updateServerInfo = {updateServerInfo} />
+    <EditServerData history = {props.history} serverData = {serverData} updateServerImage = {updateServerImage} updateServerInfo = {updateServerInfo} currentUser = {props.currentUser} />
     : serverData ? 
     <ShowServerData serverData = {serverData} />
     :
-    false
+    <div>
+      This server could not be found.
+    </div>
     }
   </div>
   )

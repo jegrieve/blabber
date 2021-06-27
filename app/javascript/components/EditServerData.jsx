@@ -7,6 +7,7 @@ const EditServerData = (props) => {
       const [editImage, setEditImage] = useState(false);
       const [infoText, setInfoText] = useState("");
       const [editInfo, setEditInfo] = useState(false);
+      const [confirmDelete, setConfirmDelete] = useState(false);
 
       useEffect(() => {
         if (!props.serverData.info) {
@@ -75,6 +76,33 @@ const EditServerData = (props) => {
         setInfoText(e.target.value);
       }
     
+      const toggleConfirmDelete = () => {
+        setConfirmDelete(!confirmDelete)
+      }
+
+      const deleteServer = () => {
+        const url = `/api/v1/servers/destroy/${props.serverData.id}`;
+        const token = document.querySelector('meta[name="csrf-token"]').content;
+      
+        fetch(url, {
+          method: "DELETE",
+          headers: {
+            "X-CSRF-Token": token,
+            "Content-Type": "application/json"
+          }
+        })
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error("Network response was not ok.");
+          })
+          .then((response) => {
+            props.history.push("/")
+          })
+          .catch(error => console.log(error.message));    
+      }
+
       return (
           <div>
               <div>{props.serverData.name}</div>
@@ -111,6 +139,17 @@ const EditServerData = (props) => {
                     {!props.serverData.info ? <div>This server has no info.</div> : <div>{props.serverData.info}</div>}
                     <button onClick = {handleInfo}>Edit info</button>
                 </div>}
+              </div>
+              <div>
+                  {!confirmDelete ? 
+                  <div>
+                    <button onClick = {toggleConfirmDelete}>Delete Server</button>
+                  </div> 
+                  : 
+                  <div>
+                    <div className = "red-text">Warning: delete server and all associated channels/messages.</div>
+                    <button onClick = {deleteServer}>Confirm Delete</button>
+                  </div> }
               </div>
           </div>
       )
