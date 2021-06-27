@@ -35,7 +35,12 @@ class Api::V1::ServersController < ApplicationController
         end
     end
 
-    def delete
+    def destroy
+        server = Server.find(params[:id])
+        if (session[:user_id] && session[:user_id] === server.user_id)
+            server.destroy
+            render json: {message: "Message deleted"}
+        end
     end
 
     private
