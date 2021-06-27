@@ -1,6 +1,6 @@
 class ServerSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :name, :info, :channels, :server_image, :user
+  attributes :id, :name, :info, :channels, :server_image, :user, :user_id
 
   def server_image
     if object.server_image.attached?
