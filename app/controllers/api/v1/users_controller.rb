@@ -7,6 +7,10 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def destroy
+        if (session[:user_id] && params[:id])
+            User.find(params[:id]).destroy
+            render json: {message: "User Deleted"}
+        end
     end
 
     def update
