@@ -9,8 +9,8 @@ const EditUserData = (props) => {
   });
   const [editImage, setEditImage] = useState(false);
   const [bioText, setBioText] = useState("");
-  const [editBio, setEditBio] = useState(false
-    );
+  const [editBio, setEditBio] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
     useEffect(() => {
       if (!props.userData.bio) {
@@ -79,6 +79,33 @@ const EditUserData = (props) => {
     setBioText(e.target.value);
   }
 
+  const toggleConfirmDelete = () => {
+    setConfirmDelete(!confirmDelete)
+  }
+
+  const deleteUser = () => {
+    const url = `/api/v1/users/destroy/${props.userData.id}`;
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+  
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "X-CSRF-Token": token,
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .then((response) => {
+        props.setCurrentUser(null);
+      })
+      .catch(error => console.log(error.message));    
+  }
+
   return (
       <div>
           <div>{props.userData.username}</div>
@@ -116,6 +143,16 @@ const EditUserData = (props) => {
             </div>}
           </div>
           <div>Recent Activity:</div>
+          {!confirmDelete ? 
+                  <div>
+                    <button onClick = {toggleConfirmDelete}>Delete User</button>
+                  </div> 
+                  : 
+                  <div>
+                    <div className = "red-text">Warning: delete user and all associated servers/channels/messages.</div>
+                    <button onClick = {deleteUser}>Confirm Delete</button>
+                  </div> 
+            }
       </div>
   )
 }

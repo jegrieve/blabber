@@ -5,10 +5,19 @@ import ShowUserData from "./ShowUserData"
 const UserPage = (props) => {
     const [userData, setUserData] = useState(null);
     const [userPageId, setUserPageId] = useState(null);
+    const [sameUser, setSameUser] = useState(null);
 
     useEffect(() => {
       getUserData();
     },[])
+
+    useEffect(() => {
+      if (userData && props.currentUser && userData.id === props.currentUser.id) {
+        setSameUser(true);
+      } else if (sameUser && !props.currentUser) {
+        props.history.push("/")
+      }
+    })
 
     useEffect(() => {
       if (props.match.params.id !== userPageId) {
@@ -94,11 +103,11 @@ const UserPage = (props) => {
         && userData 
         && props.currentUser.id === userData.id 
         ? 
-        <EditUserData userData = {userData} updateProfileImage = {updateProfileImage} updateProfileBio = {updateProfileBio} />
+        <EditUserData currentUser = {props.currentUser} setCurrentUser = {props.setCurrentUser} history = {props.history} userData = {userData} updateProfileImage = {updateProfileImage} updateProfileBio = {updateProfileBio} />
         : userData ? 
         <ShowUserData userData = {userData} />
         :
-        false
+        <div>User does not exist or was deleted.</div>
         }
       </div>
   )

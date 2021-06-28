@@ -131,6 +131,7 @@ const Routes = () => {
                     <UserPage
                       {...props}
                       currentUser={currentUser}
+                      setCurrentUser = {setCurrentUser}
                       setCurrentChannel = {setCurrentChannel}
                     />
                   )}
