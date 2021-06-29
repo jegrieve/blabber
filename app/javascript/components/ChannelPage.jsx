@@ -5,7 +5,12 @@ import CreateMessage from "./CreateMessage";
 const ChannelPage = (props) => {
     const [channelMessages, setChannelMessages] = useState(null);
     const [currentChannel, setCurrentChannel] = useState(null);
- 
+    const [messageLimit, setMessageLimit] = useState(10);
+
+    useEffect(() => {
+      getChannelMessages(); 
+    }, [messageLimit])
+
     useEffect(() => {
       if (!currentChannel || Number(props.match.params.id) !== currentChannel.id) {
           getCurrentChannel();
@@ -31,8 +36,10 @@ const ChannelPage = (props) => {
     }, [currentChannel])
 
     useEffect(() => {
-      window.scrollTo(0,document.body.scrollHeight);
+      window.scrollTo(0,document.body.scrollHeight); //so the problem here is this is fine.. but when loadmore is clicked go up instead...
     }, [channelMessages])
+    //so im thinking only when u create/edit/delete emssages u make it pop down/ on first messagepage load/channel change
+    //but then when u click load more dont do it.
 
     // this will keep refreshing messagefeed for new messages
     // useEffect(() => {
@@ -41,6 +48,10 @@ const ChannelPage = (props) => {
     //       }, 15000);
     //       return () => clearTimeout(refresher);
     // })
+
+    const loadMoreMessages = () => {
+      setMessageLimit(messageLimit + 10);
+    }
 
     const getCurrentChannel = () => {
       const id = props.match.params.id
@@ -62,7 +73,7 @@ const ChannelPage = (props) => {
 
     const getChannelMessages = () => {
         const id = props.match.params.id
-        const url = `/api/v1/messages/index?channel_id=${id}`;
+        const url = `/api/v1/messages/index?channel_id=${id}&limit=${messageLimit}`;
     
         fetch(url)
           .then(response => {
@@ -84,8 +95,9 @@ const ChannelPage = (props) => {
           {/* put the channelpage data here plus the messagefeed and create message*/}
           {/* so i need to load messagefeed with createmessage at the sametime cause im getting
           a weird looking page where the createmessage stuff loads before the messagefeed then its normal */}
+          <button onClick = {loadMoreMessages}>Load More</button>
           {channelMessages ? <MessageFeed currentUser= {props.currentUser} getChannelMessages = {getChannelMessages} channelMessageData = {channelMessages} /> : false }
-          {currentChannel ? <CreateMessage channelId = {currentChannel.id} getChannelMessages = {getChannelMessages} /> : false}
+          {currentChannel ? <CreateMessage messageLimit = {messageLimit} setMessageLimit = {setMessageLimit} channelId = {currentChannel.id} getChannelMessages = {getChannelMessages} /> : false}
       </div>
   )
 }
