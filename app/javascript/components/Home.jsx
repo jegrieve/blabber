@@ -7,8 +7,8 @@ const Home = (props) => {
   },[])
   
   return (
-    <div className = "page-display homepage">
-        <div className = "home-title">Welcome to MessageApp!</div>
+    <div className = "page-display server-page">
+        <div className = "page-title">Welcome to MessageApp!</div>
         <div className = "home-info">Pick a server, then pick a channel and send some messages!</div>
         <div className = "home-data">Data about app (servers/channels/users)</div>
       {props.currentUser ? 
