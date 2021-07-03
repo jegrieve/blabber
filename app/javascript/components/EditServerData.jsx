@@ -105,7 +105,7 @@ const EditServerData = (props) => {
 
       return (
           <div>
-              <div>{props.serverData.name}</div>
+              <div className = "page-title">{props.serverData.name}</div>
               <div>
                   {props.serverData.server_image ? 
                   <div>

@@ -95,7 +95,7 @@ const ServerPage = (props) => {
     }
 
   return (
-    <div className = "page-display serverpage">
+    <div className = "page-display page-centered">
     {props.currentUser && 
     serverData && 
     props.currentUser.id === serverData.user.id

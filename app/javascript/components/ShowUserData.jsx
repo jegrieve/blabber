@@ -4,7 +4,7 @@ import { faUserCircle } from '@fortawesome/free-regular-svg-icons'
 
 const ShowUserData = (props) => {
   return (
-      <div>
+      <div className = "page-display page-centered">
           <div>{props.userData.username}</div>
           <div>
               {props.userData.user_image ? 
