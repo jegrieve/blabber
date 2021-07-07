@@ -1,6 +1,6 @@
 require "test_helper"
 
-class PagesInfoControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::PagesInfoControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

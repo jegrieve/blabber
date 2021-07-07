@@ -1,2 +1,0 @@
-class PagesInfoController < ApplicationController
-end
