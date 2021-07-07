@@ -28,6 +28,8 @@ Rails.application.routes.draw do
       get 'users/show/:id', to: 'users#show'
       delete 'users/destroy/:id', to: 'users#destroy'
       patch 'users/update/:id', to: 'users#update'
+
+      get 'pages/show', to: 'pages_info#show'
     end
   end
   root 'homepage#index'
