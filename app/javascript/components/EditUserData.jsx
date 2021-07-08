@@ -142,7 +142,7 @@ const EditUserData = (props) => {
                 <button onClick = {handleBio}>Edit Bio</button>
             </div>}
           </div>
-          <div>Recent Activity:</div>
+          {props.userActivity ? <div>Recent activity in {props.userActivity.name}</div> : false}
           {!confirmDelete ? 
                   <div>
                     <button onClick = {toggleConfirmDelete}>Delete User</button>

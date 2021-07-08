@@ -6,10 +6,17 @@ const UserPage = (props) => {
     const [userData, setUserData] = useState(null);
     const [userPageId, setUserPageId] = useState(null);
     const [sameUser, setSameUser] = useState(null);
+    const [userActivity, setUserActivity] = useState(null);
 
     useEffect(() => {
       getUserData();
     },[])
+
+    useEffect(() => {
+      if (userData) {
+        getUserActivity();
+      }
+    }, [userData])
 
     useEffect(() => {
       if (userData && props.currentUser && userData.id === props.currentUser.id) {
@@ -43,6 +50,24 @@ const UserPage = (props) => {
           .then(response => {
             console.log(response)
             setUserData(response)
+        })
+          .catch(() => console.log("error"));
+      }
+
+      const getUserActivity = () => {
+        const id = props.match.params.id
+        const url = `/api/v1/pages/show?user_id=${userData.id}`;
+    
+        fetch(url)
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error("Network response was not ok.");
+          })
+          .then(response => {
+            console.log(response);
+            setUserActivity(response);
         })
           .catch(() => console.log("error"));
       }
@@ -103,9 +128,9 @@ const UserPage = (props) => {
         && userData 
         && props.currentUser.id === userData.id 
         ? 
-        <EditUserData currentUser = {props.currentUser} setCurrentUser = {props.setCurrentUser} history = {props.history} userData = {userData} updateProfileImage = {updateProfileImage} updateProfileBio = {updateProfileBio} />
+        <EditUserData currentUser = {props.currentUser} setCurrentUser = {props.setCurrentUser} history = {props.history} userData = {userData} updateProfileImage = {updateProfileImage} updateProfileBio = {updateProfileBio} userActivity = {userActivity} />
         : userData ? 
-        <ShowUserData userData = {userData} />
+        <ShowUserData userData = {userData} userActivity = {userActivity}/>
         :
         <div>User does not exist or was deleted.</div>
         }

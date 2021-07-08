@@ -16,7 +16,7 @@ const ShowUserData = (props) => {
               }
           </div>
           <div>{props.userData.bio}</div>
-          <div>Recent Activity:</div>
+          {props.userActivity ? <div>Recent activity in {props.userActivity.name}</div> : false}
       </div>
   )
 }
