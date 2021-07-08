@@ -50,8 +50,8 @@ const Home = (props) => {
           </div>}       
           {homepageInfo ? 
           <div>
-            <div>{homepageInfo.servers} servers</div>
-            <div>{homepageInfo.users} users</div>
+            <div>{homepageInfo.servers} servers created</div>
+            <div>{homepageInfo.users} users registered</div>
           </div>
         :false}
         </div>

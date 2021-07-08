@@ -151,6 +151,7 @@ const EditServerData = (props) => {
                     <button onClick = {deleteServer}>Confirm Delete</button>
                   </div> }
               </div>
+              <div>{props.serverData.channels.length} channels</div>
           </div>
       )
 }

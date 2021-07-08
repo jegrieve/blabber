@@ -14,6 +14,7 @@ const ShowServerData = (props) => {
               <div className = "server-placeholder-image">placeholder banner here</div>
               }
             <div className = "server-info">{props.serverData.info}</div>
+            <div>{props.serverData.channels.length} channels</div>
           </div>
       </div>
   )
