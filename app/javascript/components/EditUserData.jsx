@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCircle } from '@fortawesome/free-regular-svg-icons'
+import { faUserCircle, faEdit } from '@fortawesome/free-regular-svg-icons'
+import { NavLink } from "react-router-dom";
 
 
 const EditUserData = (props) => {
@@ -106,13 +107,17 @@ const EditUserData = (props) => {
       .catch(error => console.log(error.message));    
   }
 
+  const cancelDelete = () => {
+    setConfirmDelete(false);
+  }
+
   return (
       <div className = "page-display page-centered">
-          <div>{props.userData.username}</div>
+          <div className = "page-title">{props.userData.username}</div>
           <div>
               {props.userData.user_image ? 
               <div>
-                  <img src = {props.userData.user_image.url} width = {300} />
+                  <img className = "user-img" src = {props.userData.user_image.url} width = {400} />
               </div> 
               :
               <FontAwesomeIcon icon = {faUserCircle} />
@@ -122,35 +127,38 @@ const EditUserData = (props) => {
                   <div className = "form-group" >
                     <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
                   </div>
-                  <button onClick = {saveEditImage}>Save</button>
-                  <button onClick = {exitEditImage}>Cancel</button>
+                  <button className = "btn btn-success" onClick = {saveEditImage}>Save</button>
+                  <button  className = "btn btn-danger cancel-btn" onClick = {exitEditImage}>Cancel</button>
                  </div> : 
                  <div>
-                   <button onClick = {handleImage}>Edit Image</button>
+                   <span className = "user-edit" onClick = {handleImage}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Edit Profile Image</span>
                   </div>}
           </div>
           <div>
             {editBio === true ? 
             <div>
-              <textarea value = {bioText} onChange = {onBioInputChange} />
-                <button onClick = {saveEditBio}>Save</button>
-                <button onClick = {exitEditBio}>Cancel</button>
+              <div>
+                <textarea className = "user-bio-edit" value = {bioText} onChange = {onBioInputChange} maxLength = "400" />
+              </div>
+                <button className = "btn btn-success" onClick = {saveEditBio}>Save</button>
+                <button className = "btn btn-danger cancel-btn" onClick = {exitEditBio}>Cancel</button>
             </div> 
             : 
             <div>
-                {!props.userData.bio ? <div>This user has not set a bio.</div> : <div>{props.userData.bio}</div>}
-                <button onClick = {handleBio}>Edit Bio</button>
+                {!props.userData.bio ? <div className = "user-bio">This user has not set a bio.</div> : <div className = "user-bio">{props.userData.bio}</div>}
+                <span className = "user-edit" onClick = {handleBio}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Edit Profile Bio</span>
             </div>}
           </div>
-          {props.userActivity ? <div>Recent activity in {props.userActivity.name}</div> : false}
+          {props.userActivity ? <div className = "user-activity">Recent activity in <NavLink to={`/server/${props.userActivity.id}`}>{props.userActivity.name}</NavLink></div> : false}
           {!confirmDelete ? 
                   <div>
-                    <button onClick = {toggleConfirmDelete}>Delete User</button>
+                    <button className = "btn btn-danger" onClick = {toggleConfirmDelete}>Delete User</button>
                   </div> 
                   : 
                   <div>
                     <div className = "red-text">Warning: delete user and all associated servers/channels/messages.</div>
-                    <button onClick = {deleteUser}>Confirm Delete</button>
+                    <button className = "btn btn-danger" onClick = {deleteUser}>Confirm Delete</button>
+                    <button className = "btn btn-primary cancel-btn" onClick = {cancelDelete}>Cancel</button>
                   </div> 
             }
       </div>

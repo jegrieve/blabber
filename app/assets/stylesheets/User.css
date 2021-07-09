@@ -1,0 +1,22 @@
+.user-bio {
+  font-size: 28px;
+}
+
+.user-edit {
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  margin-left: 5px;
+}
+
+.user-activity {
+  font-size: 24px;
+  font-style: italic;
+}
+
+.user-bio-edit {
+  width: 50%;
+  height: 150px;
+}
