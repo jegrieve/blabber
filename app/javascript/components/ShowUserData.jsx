@@ -10,10 +10,12 @@ const ShowUserData = (props) => {
           <div>
               {props.userData.user_image ? 
               <div>
-                  <img className = "user-image" src = {props.userData.user_image.url} width = {400} />
+                  <img className = "user-img" src = {props.userData.user_image.url} width = {350} height = {300} />
               </div> 
               :
-              <FontAwesomeIcon icon = {faUserCircle} />
+              <div className = "user-placeholder-img">
+                <FontAwesomeIcon icon = {faUserCircle} size = "6x"/>
+              </div>
               }
           </div>
           <div className = "user-bio">{props.userData.bio}</div>

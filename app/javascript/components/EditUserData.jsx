@@ -117,7 +117,7 @@ const EditUserData = (props) => {
           <div>
               {props.userData.user_image ? 
               <div>
-                  <img className = "user-img" src = {props.userData.user_image.url} width = {400} />
+                  <img className = "user-img" src = {props.userData.user_image.url} width = {350} height = {300} />
               </div> 
               :
               <FontAwesomeIcon icon = {faUserCircle} />

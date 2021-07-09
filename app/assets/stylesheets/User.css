@@ -20,3 +20,12 @@
   width: 50%;
   height: 150px;
 }
+
+.user-img {
+  border-radius: 80%;
+  border: 1px solid black;
+}
+
+.user-placeholder-img {
+  font-size: 55px;
+}
