@@ -1,12 +1,18 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from "react-router-dom";
 
 const ShowUserData = (props) => {
   return (
       <div className = "page-display page-centered">
-          <div className = "user-username page-title">{props.userData.username}</div>
+          <div className = "user-username page-title">
+              <span className = "title-icon">
+                <FontAwesomeIcon icon = {faUser}/>
+              </span>
+            {props.userData.username}
+            </div>
           <div>
               {props.userData.user_image ? 
               <div>

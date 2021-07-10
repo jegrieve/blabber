@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle, faEdit } from '@fortawesome/free-regular-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from "react-router-dom";
 
 
@@ -113,7 +114,12 @@ const EditUserData = (props) => {
 
   return (
       <div className = "page-display page-centered">
-          <div className = "page-title">{props.userData.username}</div>
+          <div className = "page-title">
+                <span className = "title-icon">
+                  <FontAwesomeIcon icon = {faUser}/>
+                </span>
+            {props.userData.username}
+            </div>
           <div>
               {props.userData.user_image ? 
               <div>
@@ -152,7 +158,7 @@ const EditUserData = (props) => {
           {props.userActivity ? <div className = "user-activity">Recent activity in <NavLink to={`/server/${props.userActivity.id}`}>{props.userActivity.name}</NavLink></div> : false}
           {!confirmDelete ? 
                   <div>
-                    <button className = "btn btn-danger" onClick = {toggleConfirmDelete}>Delete User</button>
+                    <button className = "btn btn-warning" onClick = {toggleConfirmDelete}>Delete User</button>
                   </div> 
                   : 
                   <div>

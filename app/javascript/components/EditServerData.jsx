@@ -1,4 +1,7 @@
 import React, {useState, useEffect} from "react";
+import { faEdit } from '@fortawesome/free-regular-svg-icons'
+import { faServer } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const EditServerData = (props) => {
     const [imageData, setImageData] = useState({
@@ -103,9 +106,18 @@ const EditServerData = (props) => {
           .catch(error => console.log(error.message));    
       }
 
+      const cancelDelete = () => {
+        setConfirmDelete(false);
+      }
+
       return (
           <div>
-              <div className = "page-title">{props.serverData.name}</div>
+              <div className = "page-title">
+                <span className = "title-icon">
+                  <FontAwesomeIcon icon = {faServer}/>
+                </span>
+                {props.serverData.name}
+                </div>
               <div>
                   {props.serverData.server_image ? 
                   <div>
@@ -120,35 +132,38 @@ const EditServerData = (props) => {
                       <div className = "form-group" >
                         <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
                       </div>
-                      <button onClick = {saveEditImage}>Save</button>
-                      <button onClick = {exitEditImage}>Cancel</button>
+                      <button className = "btn btn-success" onClick = {saveEditImage}>Save</button>
+                      <button className = "btn btn-danger cancel-btn" onClick = {exitEditImage}>Cancel</button>
                      </div> : 
                      <div>
-                       <button onClick = {handleImage}>Edit Image</button>
+                       <span className = "server-edit" onClick = {handleImage}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Edit Image</span>
                       </div>}
               </div>
               <div>
                 {editInfo === true ? 
                 <div>
-                  <textarea value = {infoText} onChange = {onInfoInputChange} />
-                    <button onClick = {saveEditInfo}>Save</button>
-                    <button onClick = {exitEditInfo}>Cancel</button>
+                  <div>
+                    <textarea className = "server-info-edit" value = {infoText} onChange = {onInfoInputChange} maxLength = "400"/>
+                  </div>
+                    <button className = "btn btn-success" onClick = {saveEditInfo}>Save</button>
+                    <button className = "btn btn-danger cancel-btn" onClick = {exitEditInfo}>Cancel</button>
                 </div> 
                 : 
                 <div>
                     {!props.serverData.info ? <div>This server has no info.</div> : <div>{props.serverData.info}</div>}
-                    <button onClick = {handleInfo}>Edit info</button>
+                    <span className = "server-edit" onClick = {handleInfo}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Edit info</span>
                 </div>}
               </div>
               <div>
                   {!confirmDelete ? 
                   <div>
-                    <button onClick = {toggleConfirmDelete}>Delete Server</button>
+                    <button className = "btn btn-warning" onClick = {toggleConfirmDelete}>Delete Server</button>
                   </div> 
                   : 
                   <div>
                     <div className = "red-text">Warning: delete server and all associated channels/messages.</div>
-                    <button onClick = {deleteServer}>Confirm Delete</button>
+                    <button className = "btn btn-danger" onClick = {deleteServer}>Confirm Delete</button>
+                    <button className = "btn btn-primary cancel-btn" onClick = {cancelDelete}>Cancel</button>
                   </div> }
               </div>
               <div>{props.serverData.channels.length} channels</div>

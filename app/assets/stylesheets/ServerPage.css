@@ -1,3 +1,13 @@
 .server-data {
   text-align: center;
 }
+
+.server-edit {
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.server-info-edit {
+  width: 50%;
+  height: 150px;
+}

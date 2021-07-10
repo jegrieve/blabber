@@ -1,10 +1,17 @@
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faServer } from '@fortawesome/free-solid-svg-icons'
 
 
 const ShowServerData = (props) => {
   return (
       <div>
-          <div className = "page-title">{props.serverData.name}</div>
+          <div className = "page-title">
+            <span className = "title-icon">
+              <FontAwesomeIcon icon = {faServer}/>
+            </span>
+            {props.serverData.name}
+            </div>
           <div className = "server-data">
             {props.serverData.server_image ? 
               <div className = "server-image">
