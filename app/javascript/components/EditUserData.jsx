@@ -126,7 +126,9 @@ const EditUserData = (props) => {
                   <img className = "user-img" src = {props.userData.user_image.url} width = {350} height = {300} />
               </div> 
               :
-              <FontAwesomeIcon icon = {faUserCircle} />
+              <div className = "user-placeholder-img">
+                <FontAwesomeIcon icon = {faUserCircle} size = "6x"/>
+              </div>
               }
                {editImage === true ? 
                  <div>

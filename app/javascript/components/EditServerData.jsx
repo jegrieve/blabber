@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { faEdit } from '@fortawesome/free-regular-svg-icons'
+import { faEdit, faComments } from '@fortawesome/free-regular-svg-icons'
 import { faServer } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -124,8 +124,9 @@ const EditServerData = (props) => {
                       <img src = {props.serverData.server_image.url} width = {300} />
                   </div> 
                   :
-                //   <FontAwesomeIcon icon = {faUserCircle} />
-                <div>placeholder image</div>
+                  <div className = "server-placeholder-img">
+                    <FontAwesomeIcon icon = {faComments} size = "6x"/>
+                  </div>
                   }
                    {editImage === true ? 
                      <div>
@@ -150,7 +151,7 @@ const EditServerData = (props) => {
                 </div> 
                 : 
                 <div>
-                    {!props.serverData.info ? <div>This server has no info.</div> : <div>{props.serverData.info}</div>}
+                    {!props.serverData.info ? <div>This server has no info.</div> : <div className = "server-info">{props.serverData.info}</div>}
                     <span className = "server-edit" onClick = {handleInfo}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Edit info</span>
                 </div>}
               </div>
