@@ -3,13 +3,14 @@ import { NavLink } from "react-router-dom";
 import SignOut from "./UserRegistration/SignOut";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faQuestionCircle } from '@fortawesome/free-regular-svg-icons'
+import logo from 'images/blabberlogo.png'
 
 const Navbar = (props) => {
   return (
     <div className = "site-navbar">
       <div className = "nav-items d-flex align-items-center justify-content-between">
         <div className = "nav-logo">
-          <NavLink to={`/`}>Homepage (logo goes here)</NavLink>
+          <NavLink to={`/`}><img className = "navbar-logo" src = {logo}/></NavLink>
         </div>
         {props.currentUser ?       
         <div className = "nav-elements d-flex justify-content-around">
