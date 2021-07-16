@@ -1,5 +1,9 @@
 import React, {useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
+import homepageUsers from 'images/homepage_users.svg'
+import homepageUser from 'images/homepage_user.svg'
+import homepagePerson from 'images/homepage_person.svg'
+
 
 const Home = (props) => {
   const [homepageInfo, setHomepageInfo] = useState(null);
@@ -30,16 +34,32 @@ const Home = (props) => {
 
   return (
     <div className = "page-display page-centered">
-        <div className = "page-title">Welcome to MessageApp!</div>
-        <div className = "home-page">
-          <div className = "home-help">Pick a server, then pick a channel and send some messages!</div>
-          <div className = "home-info">Data about app (servers/channels/users)</div>
+        <div className = "page-title">The best place to chat!</div>
+        <div className = "home-page container row align-items-center">
+          <div className = "col-6">
+            <div className = "home-info">Chat with others, join different servers. <br/> Send pictures, videos, gifs and more.</div>
+          </div>
+          <div className = "col-6">
+            <img src = {homepageUsers} width = {300} />
+          </div>
+          <div className = "col-6">
+            <img src = {homepagePerson} width = {300} />
+          </div>
+          <div className = "col-6">
+            <div className = "home-info">Join or create a server, and chat publicly or privately.</div>
+          </div>
+          {/* <div className = "home-info">Data about app (servers/channels/users)</div> */}
          {props.currentUser ? 
-          <div>
-            welcome {props.currentUser.username}
+          <div className = "col-12 home-user">
+            <div>
+              welcome {props.currentUser.username} Link to users profile here.
+            </div>
+            <div>
+            Arrow here Select a server to get started
+            </div>
           </div> 
           : 
-          <div>
+          <div className = "col-12 home-user">
             <span>Please 
               <NavLink history = {props.history} to = {"/sign-in"}> sign in</NavLink>
             </span>
@@ -48,12 +68,12 @@ const Home = (props) => {
               to begin chatting
             </span>
           </div>}       
-          {homepageInfo ? 
+          {/* {homepageInfo ? 
           <div>
             <div>{homepageInfo.servers} servers created</div>
             <div>{homepageInfo.users} users registered</div>
           </div>
-        :false}
+        :false} */}
         </div>
 
     </div>
