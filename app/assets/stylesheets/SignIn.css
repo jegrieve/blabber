@@ -3,6 +3,14 @@
   font-weight: bold;
 }
 
+.sign-in-inputs {
+  margin-top: 15px;
+}
+
 .input-label {
   width: 364px;
+}
+
+.login-user-img {
+  margin-top: 70px;
 }

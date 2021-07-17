@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-
+import loginUser from 'images/login_person.svg'
 
 const SignInForm = (props) => {
     const [signInUserInputs, setSignInUserInputs] = useState({
@@ -82,6 +82,9 @@ const SignInForm = (props) => {
                 <button className = "btn btn-success" type = "submit">Log In</button>
             </div>
         </form>
+        <div className = "login-user-img">
+            <img src = {loginUser} width = {300} />
+        </div>
     </div>
   )
 }
