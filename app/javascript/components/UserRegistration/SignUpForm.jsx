@@ -94,25 +94,25 @@ const SignUpForm = (props) => {
       <div>
           <form className = "sign-up-inputs" onSubmit = {submitSignUpForm}>
             <div className = "form-group">
-            <label>Email:
+            <label className = "input-label">Email:
                 <input id="sign-up-email" name = "email" type="email" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["email"]} />
                 <small id="sign-up-email-help" className="form-text red-text"></small>
             </label>
             </div>
             <div className = "form-group">
-            <label>Username:
+            <label className = "input-label">Username:
                 <input id="sign-up-username" name = "username" type="text" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["username"]} minLength = "5"/>
                 <small id="sign-up-username-help" className="form-text red-text"></small>
             </label>
             </div>
             <div className = "form-group">
-            <label>Password:
+            <label className = "input-label">Password:
                 <input id="sign-up-password" name = "password" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["password"]} minLength = "5"/>
                 <small id="sign-up-password-help" className="form-text red-text"></small>
             </label>
             </div>
             <div className = "form-group">
-            <label>Password Confirmation:
+            <label className = "input-label">Password Confirmation:
                 <input id="sign-up-password_confirmation" name = "passwordConfirm" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["passwordConfirm"]} minLength = "5"/>
                 <small id="sign-up-password_confirmation-help" className="form-text red-text"></small>
             </label>
