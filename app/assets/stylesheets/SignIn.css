@@ -2,3 +2,7 @@
   color: rgb(231, 14, 14);
   font-weight: bold;
 }
+
+.input-label {
+  width: 364px;
+}

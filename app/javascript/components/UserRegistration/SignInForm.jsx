@@ -68,13 +68,13 @@ const SignInForm = (props) => {
     <div>
         <form className = "sign-in-inputs" onSubmit = {submitSignInForm}>
             <div className = "form-group">
-                <label>Username:
-                    <small id="sign-in-username-error" className="form-text red-text"></small>
+                <label className = "input-label">Username:
                     <input id="sign-in-username" name = "username" type="text" className = "form-control" onChange = {enterSignInInputs} value = {signInUserInputs["username"]}/>
+                    <small id="sign-in-username-error" className="form-text red-text"></small>
                 </label>
             </div>
             <div className = "form-group">
-                <label>Password:
+                <label className = "input-label">Password:
                     <input id="sign-in-password" name = "password" className = "form-control" type="password" onChange = {enterSignInInputs} value = {signInUserInputs["password"]}/>
                 </label>
             </div>
