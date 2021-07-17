@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import signUpPerson from 'images/signup_person.svg';
 
 
 const SignUpForm = (props) => {
@@ -120,6 +121,9 @@ const SignUpForm = (props) => {
                 <button type = "submit" className = "btn btn-success">Create</button>
             </div>
           </form>
+          <div className = "signup-user-img">
+            <img src = {signUpPerson} width = {300} />
+        </div>
       </div>
   )
 }

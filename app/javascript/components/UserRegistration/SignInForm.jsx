@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import loginUser from 'images/login_person.svg'
+import loginUser from 'images/login_person.svg';
 
 const SignInForm = (props) => {
     const [signInUserInputs, setSignInUserInputs] = useState({
