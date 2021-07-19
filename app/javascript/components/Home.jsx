@@ -52,10 +52,10 @@ const Home = (props) => {
          {props.currentUser ? 
           <div className = "col-12 home-user">
             <div>
-              welcome {props.currentUser.username} Link to users profile here.
-            </div>
-            <div>
-            Arrow here Select a server to get started
+            welcome&nbsp;
+            <NavLink to={`/user/${props.currentUser.id}`}>
+              {props.currentUser.username}
+            </NavLink>
             </div>
           </div> 
           : 

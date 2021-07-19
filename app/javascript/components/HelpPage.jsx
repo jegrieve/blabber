@@ -5,7 +5,7 @@ const HelpPage = (props) => {
       <div className = "page-display">
         <div className = "page-title">Help</div>
         <div className = "help-info">
-          <div></div>
+          <div></div> {/* use logomaker to make a list of steps of how to use app*/}
         </div>
       </div>
   )
