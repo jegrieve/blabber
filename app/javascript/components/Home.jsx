@@ -34,6 +34,8 @@ const Home = (props) => {
 
   return (
     <div className = "page-display page-centered">
+      {!props.currentUser ? 
+      <div>
         <div className = "page-title">The best place to chat!</div>
         <div className = "home-page container row align-items-center">
           <div className = "col-6">
@@ -49,16 +51,6 @@ const Home = (props) => {
             <div className = "home-info">Join or create a server, and chat publicly or privately.</div>
           </div>
           {/* <div className = "home-info">Data about app (servers/channels/users)</div> */}
-         {props.currentUser ? 
-          <div className = "col-12 home-user">
-            <div>
-            welcome&nbsp;
-            <NavLink to={`/user/${props.currentUser.id}`}>
-              {props.currentUser.username}
-            </NavLink>
-            </div>
-          </div> 
-          : 
           <div className = "col-12 home-user">
             <span>Please 
               <NavLink history = {props.history} to = {"/sign-in"}> sign in</NavLink>
@@ -67,7 +59,7 @@ const Home = (props) => {
               <NavLink history = {props.history} to={"/sign-up"}> sign up </NavLink>
               to begin chatting
             </span>
-          </div>}       
+          </div>       
           {/* {homepageInfo ? 
           <div>
             <div>{homepageInfo.servers} servers created</div>
@@ -75,7 +67,10 @@ const Home = (props) => {
           </div>
         :false} */}
         </div>
-
+      </div> : 
+      <div>
+        Signedinhomepage
+      </div>}
     </div>
   )
 }
