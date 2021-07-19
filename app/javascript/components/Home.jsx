@@ -40,28 +40,34 @@ const Home = (props) => {
       {!props.currentUser ? 
       <div>
         <div className = "page-title">The best place to chat!</div>
-        <div className = "home-page container row align-items-center">
-          <div className = "col-6">
-            <div className = "home-info">Chat with others, join different servers. <br/> Send pictures, videos, gifs and more.</div>
+        <div className = "home-page container">
+          <div className = "row align-items-center">
+            <div className = "col-6">
+              <div className = "home-info">Chat with others, join different servers. <br/> Send pictures, videos, gifs and more.</div>
+            </div>
+            <div className = "col-6">
+              <img src = {homepageUsers} width = {300} />
+            </div>
           </div>
-          <div className = "col-6">
-            <img src = {homepageUsers} width = {300} />
-          </div>
-          <div className = "col-6">
-            <img src = {homepagePerson} width = {300} />
-          </div>
-          <div className = "col-6">
-            <div className = "home-info">Join or create a server, and chat publicly or privately.</div>
+          <div className = "row align-items-center">
+            <div className = "col-6">
+              <img src = {homepagePerson} width = {300} />
+            </div>
+            <div className = "col-6">
+              <div className = "home-info">Join or create a server, and chat publicly or privately.</div>
+            </div>
           </div>
           {/* <div className = "home-info">Data about app (servers/channels/users)</div> */}
-          <div className = "col-12 home-user">
-            <span>Please 
-              <NavLink history = {props.history} to = {"/sign-in"}> sign in</NavLink>
-            </span>
-            <span> or
-              <NavLink history = {props.history} to={"/sign-up"}> sign up </NavLink>
-              to begin chatting
-            </span>
+          <div className = "row">
+            <div className = "col-12 home-user">
+              <span>Please 
+                <NavLink history = {props.history} to = {"/sign-in"}> sign in</NavLink>
+              </span>
+              <span> or
+                <NavLink history = {props.history} to={"/sign-up"}> sign up </NavLink>
+                to begin chatting
+              </span>
+            </div>
           </div>       
           {/* {homepageInfo ? 
           <div>
@@ -77,23 +83,36 @@ const Home = (props) => {
             {props.currentUser.username}
           </NavLink> 
         </div>
-        <div className = "home-page container row align-items-center">
-          <div className = "col-6">
-            <div className = "home-info">Start chatting (join server/ create server under arrows)
-              <div className = "homepage-arrows">
-                <span className = "arrow-left">
-                  <FontAwesomeIcon icon={faLongArrowAltLeft} size = "6x" />
-                </span>
-                <span className = "arrow-right">
-                  <FontAwesomeIcon icon={faLongArrowAltRight} size = "6x" />
-                </span>
+        <div className = "home-page container align-items-center">
+          <div className = "row">
+            <div className = "col-6">
+              <div className = "home-info">Start chatting (join server/ create server under arrows)
+                <div className = "homepage-arrows">
+                  <span className = "arrow-left">
+                    <FontAwesomeIcon icon={faLongArrowAltLeft} size = "6x" />
+                  </span>
+                  <span className = "arrow-right">
+                    <FontAwesomeIcon icon={faLongArrowAltRight} size = "6x" />
+                  </span>
+                </div>
               </div>
             </div>
+            <div className = "col-6">
+              <NavLink to={`/create-new-server`}>
+                <img src = {createServerPerson} width = {300} />
+              </NavLink> 
+            </div>
           </div>
-          <div className = "col-6">
-            <NavLink to={`/create-new-server`}>
-              <img src = {createServerPerson} width = {300} />
-            </NavLink> 
+          <div className = "row">
+            <div className = "col-4">
+              a
+            </div>
+            <div className = "col-4">
+              b
+            </div>
+            <div className = "col-4">
+              c
+            </div> 
           </div>
         </div>
       </div>}
