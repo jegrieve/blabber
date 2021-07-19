@@ -2,7 +2,10 @@ import React, {useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
 import homepageUsers from 'images/homepage_users.svg'
 import homepageUser from 'images/homepage_user.svg'
+import createServerPerson from 'images/create_server_person.svg'
 import homepagePerson from 'images/homepage_person.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLongArrowAltRight, faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 
 
 const Home = (props) => {
@@ -69,7 +72,30 @@ const Home = (props) => {
         </div>
       </div> : 
       <div>
-        Signedinhomepage
+        <div className = "page-title">Welcome&nbsp;             
+          <NavLink to={`/user/${props.currentUser.id}`}>
+            {props.currentUser.username}
+          </NavLink> 
+        </div>
+        <div className = "home-page container row align-items-center">
+          <div className = "col-6">
+            <div className = "home-info">Start chatting (join server/ create server under arrows)
+              <div className = "homepage-arrows">
+                <span className = "arrow-left">
+                  <FontAwesomeIcon icon={faLongArrowAltLeft} size = "6x" />
+                </span>
+                <span className = "arrow-right">
+                  <FontAwesomeIcon icon={faLongArrowAltRight} size = "6x" />
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className = "col-6">
+            <NavLink to={`/create-new-server`}>
+              <img src = {createServerPerson} width = {300} />
+            </NavLink> 
+          </div>
+        </div>
       </div>}
     </div>
   )

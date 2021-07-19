@@ -6,3 +6,11 @@
   margin-top: 60px;
   font-size: 20px;
 }
+
+.arrow-left {
+  padding-right: 10px;
+}
+
+.arrow-right {
+  padding-left: 10px;
+}
