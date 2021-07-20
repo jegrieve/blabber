@@ -111,13 +111,13 @@ const SignUpForm = (props) => {
                 <small id="sign-up-password-help" className="form-text red-text"></small>
             </label>
             </div>
-            <div className = "form-group">
+            <div className = "form-group no-margin-bot">
             <label className = "input-label">Password Confirmation:
                 <input id="sign-up-password_confirmation" name = "passwordConfirm" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["passwordConfirm"]} minLength = "5"/>
                 <small id="sign-up-password_confirmation-help" className="form-text red-text"></small>
             </label>
             </div>
-            <div>
+            <div className = "create-btn">
                 <button type = "submit" className = "btn btn-success">Create</button>
             </div>
           </form>
