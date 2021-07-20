@@ -8,9 +8,24 @@
 }
 
 .arrow-left {
-  padding-right: 10px;
+  padding-right: 40px;
+  display: inline-block;
 }
 
 .arrow-right {
-  padding-left: 10px;
+  padding-left: 40px;
+  display: inline-block;
+}
+
+.med-padding-top {
+  padding-top: 85px;
+}
+
+.homepage-app-info {
+  font-size: 28px;
+  padding-bottom: 25px;
+}
+
+.top-row-homepage {
+  padding-top: 30px;
 }

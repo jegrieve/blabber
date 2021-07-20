@@ -5,7 +5,7 @@ import homepageUser from 'images/homepage_user.svg'
 import createServerPerson from 'images/create_server_person.svg'
 import homepagePerson from 'images/homepage_person.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLongArrowAltRight, faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
+import { faLongArrowAltRight, faLongArrowAltLeft, faUser, faQuestionCircle, faServer, faUsers } from '@fortawesome/free-solid-svg-icons'
 
 
 const Home = (props) => {
@@ -69,12 +69,6 @@ const Home = (props) => {
               </span>
             </div>
           </div>       
-          {/* {homepageInfo ? 
-          <div>
-            <div>{homepageInfo.servers} servers created</div>
-            <div>{homepageInfo.users} users registered</div>
-          </div>
-        :false} */}
         </div>
       </div> : 
       <div>
@@ -84,15 +78,26 @@ const Home = (props) => {
           </NavLink> 
         </div>
         <div className = "home-page container align-items-center">
-          <div className = "row">
+          <div className = "row top-row-homepage">
             <div className = "col-6">
-              <div className = "home-info">Start chatting (join server/ create server under arrows)
+              <div className = "home-info">Start chatting
                 <div className = "homepage-arrows">
                   <span className = "arrow-left">
-                    <FontAwesomeIcon icon={faLongArrowAltLeft} size = "6x" />
+                    <div>
+                      <FontAwesomeIcon icon={faLongArrowAltLeft} size = "6x" />
+                    </div>
+                    <div>
+                      Join a Server
+                    </div>
                   </span>
+                  <span>or</span>
                   <span className = "arrow-right">
-                    <FontAwesomeIcon icon={faLongArrowAltRight} size = "6x" />
+                    <div>
+                      <FontAwesomeIcon icon={faLongArrowAltRight} size = "6x" />
+                    </div>
+                    <div>
+                      Create a Server
+                    </div>
                   </span>
                 </div>
               </div>
@@ -103,15 +108,35 @@ const Home = (props) => {
               </NavLink> 
             </div>
           </div>
-          <div className = "row">
+          <div className = "row med-padding-top align-items-center">
             <div className = "col-4">
-              a
+              <div>
+                <NavLink to={`/user/${props.currentUser.id}`}>
+                  <FontAwesomeIcon icon = {faUser} size = "6x" title = "Profile" />
+                </NavLink>
+              </div>
+              <div>
+                Profile
+              </div>
             </div>
             <div className = "col-4">
-              b
+            {homepageInfo ? 
+            <div className = "homepage-app-info">
+              <div>Stats</div>
+              <div>{homepageInfo.servers} <FontAwesomeIcon icon = {faServer} title = "Servers" /></div>
+              <div>{homepageInfo.users} <FontAwesomeIcon icon = {faUsers} title = "Users"/></div>
+            </div>
+            :false}
             </div>
             <div className = "col-4">
-              c
+              <div>
+                <NavLink to={`/help`}>
+                  <FontAwesomeIcon icon = {faQuestionCircle}  size = "6x" title = "Help" />
+                </NavLink>
+              </div>
+              <div>
+                Help
+              </div>
             </div> 
           </div>
         </div>
