@@ -1,9 +1,10 @@
 .user-bio {
-  font-size: 28px;
+  font-size: 24px;
 }
 
 .user-edit {
-  font-size: 26px;
+  font-size: 25px;
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -22,10 +23,20 @@
 }
 
 .user-img {
-  border-radius: 80%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
   border: 1px solid black;
 }
 
 .user-placeholder-img {
   font-size: 55px;
+}
+
+.delete-user-btn {
+  margin-top: 10px;
+}
+
+.user-margin-top {
+  margin-top: 10px;
 }

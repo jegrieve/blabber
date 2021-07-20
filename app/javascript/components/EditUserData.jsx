@@ -123,7 +123,7 @@ const EditUserData = (props) => {
           <div>
               {props.userData.user_image ? 
               <div>
-                  <img className = "user-img" src = {props.userData.user_image.url} width = {350} height = {300} />
+                  <img className = "user-img" src = {props.userData.user_image.url} />
               </div> 
               :
               <div className = "user-placeholder-img">
@@ -131,20 +131,20 @@ const EditUserData = (props) => {
               </div>
               }
                {editImage === true ? 
-                 <div>
+                 <div className = "user-margin-top">
                   <div className = "form-group" >
                     <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
                   </div>
                   <button className = "btn btn-success" onClick = {saveEditImage}>Save</button>
                   <button  className = "btn btn-danger cancel-btn" onClick = {exitEditImage}>Cancel</button>
                  </div> : 
-                 <div>
-                   <span className = "user-edit" onClick = {handleImage}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Edit Profile Image</span>
+                 <div className = "user-margin-top">
+                   <span className = "user-edit d-flex justify-content-center align-items-center" onClick = {handleImage}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Image</span>
                   </div>}
           </div>
           <div>
             {editBio === true ? 
-            <div>
+            <div className = "user-margin-top">
               <div>
                 <textarea className = "user-bio-edit" value = {bioText} onChange = {onBioInputChange} maxLength = "400" />
               </div>
@@ -154,16 +154,16 @@ const EditUserData = (props) => {
             : 
             <div>
                 {!props.userData.bio ? <div className = "user-bio">This user has not set a bio.</div> : <div className = "user-bio">{props.userData.bio}</div>}
-                <span className = "user-edit" onClick = {handleBio}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Edit Profile Bio</span>
+                <span className = "user-edit d-flex justify-content-center align-items-center user-margin-top" onClick = {handleBio}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Bio</span>
             </div>}
           </div>
-          {props.userActivity ? <div className = "user-activity">Recent activity in <NavLink to={`/server/${props.userActivity.id}`}>{props.userActivity.name}</NavLink></div> : false}
+          {/* {props.userActivity ? <div className = "user-activity">Recent activity in <NavLink to={`/server/${props.userActivity.id}`}>{props.userActivity.name}</NavLink></div> : false} */}
           {!confirmDelete ? 
-                  <div>
+                  <div className = "delete-user-btn">
                     <button className = "btn btn-warning" onClick = {toggleConfirmDelete}>Delete User</button>
                   </div> 
                   : 
-                  <div>
+                  <div className = "delete-user-btn">
                     <div className = "red-text">Warning: delete user and all associated servers/channels/messages.</div>
                     <button className = "btn btn-danger" onClick = {deleteUser}>Confirm Delete</button>
                     <button className = "btn btn-primary cancel-btn" onClick = {cancelDelete}>Cancel</button>
