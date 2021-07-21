@@ -1,8 +1,28 @@
-.create-server-form {
-  text-align: center;
-  width: 400px;
+.server-inputs {
+  width: 364px;
 }
 
-.server-inputs {
-  width: 100%;
+.top-padding-server {
+  padding-top: 30px;
+}
+
+#server-info-value {
+  min-height: 200px;
+  max-height: 280px;
+}
+
+.create-server-image {
+  padding-top: 60px;
+}
+
+.create-server-info {
+  font-size: 24px;
+}
+
+#server-image-value {
+  padding-left: 130px;
+}
+
+.server-create-btn {
+  margin-top: 15px;
 }

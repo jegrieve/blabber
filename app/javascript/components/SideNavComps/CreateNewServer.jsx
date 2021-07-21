@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-
+import createServerImage from 'images/create_server_img.svg'
 
 const CreateNewServer = (props) => {
   const [createServerInputs, setCreateServerInputs] = useState({
@@ -136,34 +136,47 @@ const CreateNewServer = (props) => {
   }
 
   return (
-      <div className = "page-display create-server-container d-flex justify-content-center">
-        <form className = "create-server-form form-group" onSubmit = {submitCreateServerForm}>
-        <div className = "form-group">
-          <label className = "server-inputs" htmlFor = "server-name-value">Server Name:
-            <input id = "server-name-value" name = "serverName" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverName"]} minLength = "5" maxLength="15"/>
-            <small id="server-name-help" className="form-text red-text"></small>
-          </label>
-        </div>
-        <div className = "form-group">
-          <label className = "server-inputs" htmlFor  = "server-info-value">Server Info:
-            <input id = "server-info-value" name = "serverInfo" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverInfo"]} />
-            <small id="server-info-help" className="form-text red-text"></small>
-          </label>
-        </div>
-        {submitType === "text" ? 
+      <div className = "page-display">
+        <div className = "page-title">Create Server</div>
+        <div className = "row top-padding-server">
+          <div className = "col-6 page-centered">
+            <form className = "create-server-form form-group" onSubmit = {submitCreateServerForm}>
+              <div className = "form-group">
+                <label className = "server-inputs" htmlFor = "server-name-value">Server Name:
+                <input id = "server-name-value" name = "serverName" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverName"]} minLength = "5" maxLength="15"/>
+                <small id="server-name-help" className="form-text red-text"></small>
+                </label>
+              </div>
+              <div className = "form-group">
+                <label className = "server-inputs" htmlFor  = "server-info-value">Server Info:
+                <textarea id = "server-info-value" name = "serverInfo" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverInfo"]} maxLength = "400" />
+                <small id="server-info-help" className="form-text red-text"></small>
+                </label>
+              </div>
+          {submitType === "text" ? 
           <div>
-            <button onClick = {toggleSubmitType}>Add Banner</button> 
+            <button className = "btn btn-primary" onClick = {toggleSubmitType}>Add Banner</button> 
           </div>
           :         
           <div>
-            <div className = "form-group">
+            <div className = "form-group server-image-input">
               <input id = "server-image-value" className = "form-control-file" type = "file" accept = "image/*" multiple = {false} onChange = {onImageChange} />
               <small id="server-image-help" className="form-text red-text"></small>
             </div>
-            <button onClick = {toggleSubmitType}>Cancel</button>
+            <button className = "btn btn-danger" onClick = {toggleSubmitType}>Cancel</button>
           </div>}
-          <button type = "submit" className = "btn btn-success">Create</button>
+          <button type = "submit" className = "btn btn-success server-create-btn">Create</button>
         </form>
+          </div>
+          <div className = "col-6 create-server-info">
+            <div>Create a new server for your community.</div>
+            <div>Include information on what your server is about.</div>
+            <div className = "create-server-image">
+              <img src = {createServerImage} width = {300} />
+            </div>
+          </div>
+        </div>
+
       </div>
   )
 }
