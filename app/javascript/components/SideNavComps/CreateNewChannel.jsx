@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import createChannelImage from 'images/create_channel_people.svg'
 
 const CreateNewChannel = (props) => {
     const [createChannelInputs, setCreateChannelInputs] = useState({
@@ -85,9 +86,9 @@ const CreateNewChannel = (props) => {
           </div>
           <div className = "col-6 create-server-info">
             <div>Create a new channel to add to this server.</div>
-            <div>Include a channel colour to better identify your channel.</div>
-            <div>
-              image goes here
+            <div>Include a colour to better identify your channel.</div>
+            <div className = "create-server-image">
+              <img src = {createChannelImage} width = {300} />
             </div>
           </div>
         </div>
