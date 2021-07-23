@@ -8,8 +8,8 @@
 }
 
 .server-info-edit {
-  width: 50%;
-  height: 150px;
+  height: 300px;
+  width: 100%;
 }
 
 .server-placeholder-img {
@@ -18,4 +18,9 @@
 
 .server-info {
   font-size: 28px;
+  word-wrap: break-word;
+}
+
+.server-padding-top {
+  padding-top: 25px;
 }

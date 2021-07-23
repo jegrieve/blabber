@@ -13,18 +13,24 @@ const ShowServerData = (props) => {
             </span>
             {props.serverData.name}
             </div>
-          <div className = "server-data">
+            <div className = "row">
+              <div className = "col-6 page-centered">
+              <div className = "server-data">
             {props.serverData.server_image ? 
               <div className = "server-image">
-                  <img src = {props.serverData.server_image.url} width = {300} />
+                  <img src = {props.serverData.server_image.url} width = {450} />
               </div> 
               :
               <div className = "server-placeholder-img">
                 <FontAwesomeIcon icon = {faComments} size = "6x"/>
               </div>
               }
-            <div className = "server-info">{props.serverData.info}</div>
-            <div>{props.serverData.channels.length} channels</div>
+              </div>
+            </div>
+            <div className = "col-6">
+              <div className = "server-info">{props.serverData.info}</div>
+              <div>{props.serverData.channels.length} channels</div>
+            </div>
           </div>
       </div>
   )

@@ -118,10 +118,11 @@ const EditServerData = (props) => {
                 </span>
                 {props.serverData.name}
                 </div>
-              <div>
+                <div className = "row server-padding-top">
+                <div className = "col-6 page-centered">
                   {props.serverData.server_image ? 
                   <div>
-                      <img src = {props.serverData.server_image.url} width = {300} />
+                      <img src = {props.serverData.server_image.url} width = {450} />
                   </div> 
                   :
                   <div className = "server-placeholder-img">
@@ -139,8 +140,8 @@ const EditServerData = (props) => {
                      <div>
                        <span className = "server-edit" onClick = {handleImage}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Edit Image</span>
                       </div>}
-              </div>
-              <div>
+                  </div>
+                  <div className = "col-6">
                 {editInfo === true ? 
                 <div>
                   <div>
@@ -155,19 +156,20 @@ const EditServerData = (props) => {
                     <span className = "server-edit" onClick = {handleInfo}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Edit info</span>
                 </div>}
               </div>
+                </div>
+              <div className = "page-centered">{props.serverData.channels.length} channels</div>
               <div>
                   {!confirmDelete ? 
-                  <div>
+                  <div className = "page-centered">
                     <button className = "btn btn-warning" onClick = {toggleConfirmDelete}>Delete Server</button>
                   </div> 
                   : 
-                  <div>
+                  <div className = "page-centered">
                     <div className = "red-text">Warning: delete server and all associated channels/messages.</div>
                     <button className = "btn btn-danger" onClick = {deleteServer}>Confirm Delete</button>
                     <button className = "btn btn-primary cancel-btn" onClick = {cancelDelete}>Cancel</button>
                   </div> }
               </div>
-              <div>{props.serverData.channels.length} channels</div>
           </div>
       )
 }
