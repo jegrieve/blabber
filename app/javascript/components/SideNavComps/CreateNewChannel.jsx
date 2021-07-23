@@ -64,17 +64,33 @@ const CreateNewChannel = (props) => {
     }
   
     return (
-      <div className = "page-display create-channel-container d-flex justify-content-center">
-        <form className = "create-channel-form form-group" onSubmit = {submitCreateChannelForm}>
-        <div className = "form-group">
-          <label className = "channel-inputs" htmlFor = "channel-name-value">Channel Name:
-            <input id = "channel-name-value" name = "channelName" className = "form-control form-control-lg channel-inputs" type = "text" onChange = {enterChannelInputs} value = {createChannelInputs["channelName"]} maxLength="17"/>
-            <small id= "channel-name-help" className="form-text red-text"></small>
-            <input type = "color" name = "channelColour" className = "form-control" value = {createChannelInputs["channelColour"]} onChange = {handleChannelColour} />
-          </label>
+      <div className = "page-display">
+        <div className = "page-title">Create Channel</div>
+        <div className = "row top-padding-server">
+          <div className = "col-6 page-centered">
+            <form className = "create-channel-form form-group" onSubmit = {submitCreateChannelForm}>
+              <div className = "form-group">
+                <label className = "channel-inputs" htmlFor = "channel-name-value">Channel Name:
+                  <input id = "channel-name-value" name = "channelName" className = "form-control form-control-lg channel-inputs" type = "text" onChange = {enterChannelInputs} value = {createChannelInputs["channelName"]} maxLength="17"/>
+                  <small id= "channel-name-help" className="form-text red-text"></small>
+                </label>
+                </div>
+                <div className = "form-group">
+                  <label className = "channel-inputs" htmlFor = "channel-colour-value">Channel Colour:
+                    <input type = "color" name = "channelColour" className = "form-control" value = {createChannelInputs["channelColour"]} onChange = {handleChannelColour} />
+                  </label>
+                </div>
+              <button type = "submit" className = "btn btn-success">Create</button>
+            </form>
+          </div>
+          <div className = "col-6 create-server-info">
+            <div>Create a new channel to add to this server.</div>
+            <div>Include a channel colour to better identify your channel.</div>
+            <div>
+              image goes here
+            </div>
+          </div>
         </div>
-          <button type = "submit" className = "btn btn-success">Create</button>
-        </form>
       </div>  
     )
   }

@@ -176,7 +176,6 @@ const CreateNewServer = (props) => {
             </div>
           </div>
         </div>
-
       </div>
   )
 }
