@@ -5,4 +5,12 @@ class Server < ApplicationRecord
     
     validates :name, presence: true, uniqueness: true
     validates :info, presence: true
+
+    def unique_users
+        unique_count = 0;
+        self.channels.each do |channel|
+            unique_count += channel.unique_users
+        end
+        unique_count;
+      end
 end
