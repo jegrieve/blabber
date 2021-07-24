@@ -14,7 +14,7 @@ const ShowServerData = (props) => {
             </span>
             {props.serverData.name}
             </div>
-            <div className = "row">
+            <div className = "row server-padding-top">
               <div className = "col-6 page-centered">
               <div className = "server-data">
             {props.serverData.server_image ? 
@@ -32,13 +32,13 @@ const ShowServerData = (props) => {
               <div className = "server-info">{props.serverData.info}</div>
             </div>
           </div>
-          <div className = "page-centered">
+          <div className = "page-centered server-app-info">
             <div>
               {props.serverData.channels.length} 
               <FontAwesomeIcon icon = {faCircleNotch} title = "Channels" />
             </div>
             <div>
-              user amount
+              {props.serverData.unique_users}
               <FontAwesomeIcon icon = {faUsers} title = "Users" />
             </div>
           </div>

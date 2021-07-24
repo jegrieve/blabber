@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { faEdit, faComments } from '@fortawesome/free-regular-svg-icons'
-import { faServer } from '@fortawesome/free-solid-svg-icons'
+import { faServer, faCircleNotch, faUsers  } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const EditServerData = (props) => {
@@ -157,7 +157,16 @@ const EditServerData = (props) => {
                 </div>}
               </div>
                 </div>
-              <div className = "page-centered">{props.serverData.channels.length} channels</div>
+              <div className = "page-centered server-app-info-edit">
+                <div>
+                  {props.serverData.channels.length} 
+                  <FontAwesomeIcon icon = {faCircleNotch} title = "Channels" />
+                </div>
+                <div>
+                  {props.serverData.unique_users} 
+                  <FontAwesomeIcon icon = {faUsers} title = "Users" />
+                </div>
+              </div>
               <div>
                   {!confirmDelete ? 
                   <div className = "page-centered">

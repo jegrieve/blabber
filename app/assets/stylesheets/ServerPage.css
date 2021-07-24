@@ -24,3 +24,12 @@
 .server-padding-top {
   padding-top: 25px;
 }
+
+.server-app-info {
+  padding-top: 30px;
+  font-size: 32px;
+}
+
+.server-app-info-edit {
+  font-size: 32px;
+}
