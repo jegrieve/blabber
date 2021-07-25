@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import Channel from "./Channel"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faChevronLeft, faPlus, faArrowLeft, faCircle } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight, faChevronLeft, faPlus, faArrowLeft, faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 
 const ChannelFeed = (props) => {
   const [currentServer, setCurrentServer] = useState(null);
@@ -85,7 +85,7 @@ const ChannelFeed = (props) => {
           {serverChannels.map((channel) => {
            return (
              <div className = "channel-item" key = {"c" + channel.id}> 
-               <FontAwesomeIcon icon = {faCircle} color = {`${channel.colour}`}/>
+               <FontAwesomeIcon icon = {faCircleNotch} color = {`${channel.colour}`}/>
                <Channel data = {channel} />
              </div>
            )

@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComments } from '@fortawesome/free-regular-svg-icons'
 import { faServer, faCircleNotch, faUsers } from '@fortawesome/free-solid-svg-icons'
 
-// i want serverdata to show #channels and #users. faicon users , faicon channels (halfcircles)
-// make the sidenav channel faicons half circles then i can change the colour based on the channel colour etc
 const ShowServerData = (props) => {
   return (
       <div>
