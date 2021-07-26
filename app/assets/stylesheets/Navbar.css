@@ -1,6 +1,10 @@
 .site-navbar {
   height: 79px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #cccccc; /* added this */
+  background-color: #2f3237;
+  /* 
+  background-color: #3f3d56; 
+   */
   position: sticky;
   top: 0;
   z-index: 1;

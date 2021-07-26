@@ -1,5 +1,9 @@
 .side-nav-container {
   border-right: 1px solid black;
+  background-color: #2f3237; /* added this */
+  /* 
+  background-color: #3f3d56; 
+ */
   padding: 0 !important;
 }
 
