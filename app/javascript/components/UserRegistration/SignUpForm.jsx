@@ -95,7 +95,7 @@ const SignUpForm = (props) => {
           <form className = "sign-up-inputs" onSubmit = {submitSignUpForm}>
             <div className = "form-group sign-up-input">
             <label className = "input-label">Email:
-                <input id="sign-up-email" name = "email" type="email" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["email"]} placeholder = {"example@gmail.com"}/>
+                <input id="sign-up-email" name = "email" type="email" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["email"]} placeholder = {"example@example.com"}/>
                 <small id="sign-up-email-help" className="form-text red-text"></small>
             </label>
             </div>
@@ -113,7 +113,7 @@ const SignUpForm = (props) => {
             </div>
             <div className = "form-group sign-up-input">
             <label className = "input-label">Password Confirmation:
-                <input id="sign-up-password_confirmation" name = "passwordConfirm" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["passwordConfirm"]} placeholder = {"confirm your password"} minLength = "5"/>
+                <input id="sign-up-password_confirmation" name = "passwordConfirm" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["passwordConfirm"]} minLength = "5"/>
                 <small id="sign-up-password_confirmation-help" className="form-text red-text"></small>
             </label>
             </div>
