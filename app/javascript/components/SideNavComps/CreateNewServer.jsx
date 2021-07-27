@@ -143,13 +143,13 @@ const CreateNewServer = (props) => {
             <form className = "create-server-form form-group" onSubmit = {submitCreateServerForm}>
               <div className = "form-group">
                 <label className = "server-inputs" htmlFor = "server-name-value">Server Name:
-                <input id = "server-name-value" name = "serverName" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverName"]} minLength = "5" maxLength="15"/>
+                <input id = "server-name-value" name = "serverName" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverName"]} minLength = "3" maxLength="17" placeholder = {"3-17 characters"} />
                 <small id="server-name-help" className="form-text red-text"></small>
                 </label>
               </div>
               <div className = "form-group">
                 <label className = "server-inputs" htmlFor  = "server-info-value">Server Info:
-                <textarea id = "server-info-value" name = "serverInfo" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverInfo"]} maxLength = "400" />
+                <textarea id = "server-info-value" name = "serverInfo" className = "form-control form-control-lg server-inputs" type = "text" onChange = {enterServerInputs} value = {createServerInputs["serverInfo"]} maxLength = "400" placeholder = {"minimum 10 characters"} minLength = "10" />
                 <small id="server-info-help" className="form-text red-text"></small>
                 </label>
               </div>
