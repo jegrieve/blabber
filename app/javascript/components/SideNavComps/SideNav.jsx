@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import ServerFeed from "./ServerFeed";
 import ChannelFeed from "./ChannelFeed";
 
