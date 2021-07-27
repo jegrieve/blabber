@@ -16,12 +16,12 @@ const Navbar = (props) => {
         <div className = "nav-elements d-flex justify-content-around">
           <div className = "nav-user">
             <NavLink to={`/user/${props.currentUser.id}`}>
-              <FontAwesomeIcon icon={faUser} size = '2x' />
+              <FontAwesomeIcon icon={faUser} size = '2x' color = "white" />
             </NavLink>
           </div>
           <div className = "nav-help">
             <NavLink to={`/help`}>
-              <FontAwesomeIcon icon={faQuestionCircle} size = '2x' />
+              <FontAwesomeIcon icon={faQuestionCircle} size = '2x' color = "white"/>
             </NavLink>
           </div>
           <div className = "nav-sign-out">
@@ -32,12 +32,12 @@ const Navbar = (props) => {
         <div className = "nav-elements d-flex justify-content-between">
           <div className = "nav-sign-up">
           <NavLink history = {props.history} to={"/sign-up"}>
-            <div className = "btn btn-primary">Sign Up</div>
+            <div id = "sign-up-btn" className = "btn btn-light">Sign Up</div>
           </NavLink>
           </div>
           <div className = "nav-sign-in">
           <NavLink history = {props.history} to = {"/sign-in"}>
-            <div className = "btn btn-info">Sign In</div>
+            <div id = "sign-in-btn" className = "btn btn-light">Sign In</div>
           </NavLink>
           </div>
         </div>

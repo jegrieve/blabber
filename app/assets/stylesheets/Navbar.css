@@ -1,6 +1,6 @@
 .site-navbar {
   height: 79px;
-  border-bottom: 1px solid #cccccc; /* added this */
+  border-bottom: 1px solid white; /* added this */
   background-color: #2f3237;
   /* 
   background-color: #3f3d56; 
@@ -27,4 +27,10 @@
 
 .navbar-logo {
   padding-bottom: 25px;
+}
+
+#sign-in-btn,
+#sign-up-btn {
+  color: white;
+  background-color: #36393f;
 }
