@@ -6,11 +6,17 @@ import { faCircle } from '@fortawesome/free-regular-svg-icons'
 const Server = (props) => {
   return (
       <div className = "server-feed-item">
-        <NavLink to = {`/server/${props.data.id}`}>
+        <NavLink to = {`/server/${props.data.id}`} >
           <div className = "server-img-container">
-            {props.data.server_image ? <img className = "server-sidenav-img" src = {props.data.server_image.url}/> : <FontAwesomeIcon icon = {faCircle} size = "3x" /> }
+            {props.data.server_image ? 
+            <img className = "server-sidenav-img" src = {props.data.server_image.url}/> 
+            : 
+            <div className = "server-img-container">
+              <FontAwesomeIcon icon = {faCircle} size = "3x" />
+            </div>
+             }
           </div>
-          <div>
+          <div className = "server-name">
             {props.data.name}
           </div>
         </NavLink>

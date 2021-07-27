@@ -55,6 +55,20 @@
 
 .server-sidenav-img {
   border-radius: 50%;
+  border: 2px solid #f50057;
   width: 75px;
   height: 75px;
 }
+
+.server-img-container {
+  color: #f50057;
+}
+
+.server-name {
+  color: white;
+}
+
+/* .server-feed-item:hover {
+  color: white !important;
+  background-color: white !important;
+} */

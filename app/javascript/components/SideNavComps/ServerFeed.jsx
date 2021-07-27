@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import Server from "./Server";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faChevronLeft, faPlus} from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight, faChevronLeft, faPlusCircle} from '@fortawesome/free-solid-svg-icons'
 
 const ServerFeed = (props) => {
   const [loadedServers, setLoadedServers] = useState([]);
@@ -59,15 +59,15 @@ console.log(offsetNum)
          }) : false}
           <div className = "server-feed-nav-elements">
             <div className = "chevron-btn" id = "server-decrement" onClick = {decrementOffsetNum}>
-              <FontAwesomeIcon icon = {faChevronLeft} size = "2x"/> 
+              <FontAwesomeIcon icon = {faChevronLeft} size = "2x" color = {"white"} /> 
             </div>
           <div className = "server-feed-add-server">
             <NavLink to = {"/create-new-server"}>
-              <FontAwesomeIcon icon = {faPlus} size = "2x" /> 
+              <FontAwesomeIcon icon = {faPlusCircle} size = "2x" color = {"#f50057"} /> 
             </NavLink>
           </div>
             <div className = "chevron-btn" id = "server-increment" onClick = {incrementOffsetNum}>
-              <FontAwesomeIcon icon = {faChevronRight} size = "2x"/> 
+              <FontAwesomeIcon icon = {faChevronRight} size = "2x" color = {"white"} /> 
             </div> 
           </div>
       </div>
