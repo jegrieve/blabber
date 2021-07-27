@@ -93,27 +93,27 @@ const SignUpForm = (props) => {
   return (
       <div>
           <form className = "sign-up-inputs" onSubmit = {submitSignUpForm}>
-            <div className = "form-group">
+            <div className = "form-group sign-up-input">
             <label className = "input-label">Email:
-                <input id="sign-up-email" name = "email" type="email" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["email"]} />
+                <input id="sign-up-email" name = "email" type="email" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["email"]} placeholder = {"example@gmail.com"}/>
                 <small id="sign-up-email-help" className="form-text red-text"></small>
             </label>
             </div>
-            <div className = "form-group">
+            <div className = "form-group sign-up-input">
             <label className = "input-label">Username:
-                <input id="sign-up-username" name = "username" type="text" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["username"]} minLength = "5"/>
+                <input id="sign-up-username" name = "username" type="text" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["username"]} placeholder = {"5-15 characters"} minLength = "5"  maxLength = {"15"}/>
                 <small id="sign-up-username-help" className="form-text red-text"></small>
             </label>
             </div>
-            <div className = "form-group">
+            <div className = "form-group sign-up-input">
             <label className = "input-label">Password:
-                <input id="sign-up-password" name = "password" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["password"]} minLength = "5"/>
+                <input id="sign-up-password" name = "password" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["password"]} placeholder = {"5-12 characters"} minLength = "5"  maxLength = {"12"}/>
                 <small id="sign-up-password-help" className="form-text red-text"></small>
             </label>
             </div>
-            <div className = "form-group no-margin-bot">
+            <div className = "form-group sign-up-input">
             <label className = "input-label">Password Confirmation:
-                <input id="sign-up-password_confirmation" name = "passwordConfirm" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["passwordConfirm"]} minLength = "5"/>
+                <input id="sign-up-password_confirmation" name = "passwordConfirm" type="password" className = "form-control" onChange = {enterSignUpInputs} value = {createUserInputs["passwordConfirm"]} placeholder = {"confirm your password"} minLength = "5"/>
                 <small id="sign-up-password_confirmation-help" className="form-text red-text"></small>
             </label>
             </div>
@@ -127,10 +127,4 @@ const SignUpForm = (props) => {
       </div>
   )
 }
-
-//im gonna have to do samething as reddit, BUT, there must be a better way to do it. EX: instead of using a case/switch statement just use the name
-//of the input and make it correspond 1:1 with the function.
-
-//so basically the reddit way was good BUT i shouldnt use case staments, just use the name and make it correspond to the formerror/success
-//So the first time was good it just needs to be tweaked.
 export default SignUpForm;
