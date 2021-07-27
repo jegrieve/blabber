@@ -20,7 +20,7 @@ const SignInForm = (props) => {
     };
 
     const signInErrorHandling = () => {
-        document.getElementById("sign-in-username-error").innerHTML = "Invalid User/Pass"
+        document.getElementById("sign-in-username-error").innerHTML = "Invalid Username/Password"
         document.getElementById("sign-in-username").classList.add("is-invalid")
         document.getElementById("sign-in-password").classList.add("is-invalid")
     }
