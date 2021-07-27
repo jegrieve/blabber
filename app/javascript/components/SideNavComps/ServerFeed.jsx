@@ -50,13 +50,13 @@ console.log(offsetNum)
         <div className = "servers-title">
           Servers
         </div>
-         {loadedServers.map((serverData) => {
+        {loadedServers.length ? loadedServers.map((serverData) => {
            return (
              <div className = "server-item" key = {serverData.id}> 
                <Server data = {serverData} />
              </div>
            )
-         })}
+         }) : false}
           <div className = "server-feed-nav-elements">
             <div className = "chevron-btn" id = "server-decrement" onClick = {decrementOffsetNum}>
               <FontAwesomeIcon icon = {faChevronLeft} size = "2x"/> 

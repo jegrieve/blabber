@@ -26,7 +26,7 @@ const SignOut = (props) => {
 
 return (
 <div>
-    <button sign-out-btn className = "btn btn-danger" onClick = {signOutUser}>Sign Out</button>
+    <button className = "btn btn-danger" onClick = {signOutUser}>Sign Out</button>
 </div>
 )
 

@@ -1,5 +1,5 @@
 .side-nav-container {
-  border-right: 1px solid black;
+  border-right: 1px solid white;
   background-color: #2f3237; /* added this */
   /* 
   background-color: #3f3d56; 
@@ -32,13 +32,14 @@
 
 .servers-title,
 .channels-title {
-  border-bottom: 1px solid black;
+  color: white;
+  border-bottom: 1px solid white;
 }
 
 .server-item,
 .channel-item {
   padding-top: 4px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
   word-wrap: break-word;
 }
 
@@ -50,4 +51,10 @@
 .server-feed-nav-elements,
 .channel-feed-nav-elements {
   padding-top: 10px;
+}
+
+.server-sidenav-img {
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
 }
