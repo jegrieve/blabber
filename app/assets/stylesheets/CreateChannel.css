@@ -5,3 +5,6 @@
 .create-channel-image {
   padding-top: 60px;
 }
+.channel-colour-pick {
+  width: 50% !important;
+}

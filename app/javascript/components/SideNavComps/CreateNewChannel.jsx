@@ -72,7 +72,7 @@ const CreateNewChannel = (props) => {
             <form className = "create-channel-form form-group" onSubmit = {submitCreateChannelForm}>
               <div className = "form-group">
                 <label className = "channel-inputs" htmlFor = "channel-name-value">Channel Name:
-                  <input id = "channel-name-value" name = "channelName" className = "form-control form-control-lg channel-inputs" type = "text" onChange = {enterChannelInputs} value = {createChannelInputs["channelName"]} maxLength="17"/>
+                  <input id = "channel-name-value" name = "channelName" className = "form-control form-control-lg channel-inputs" type = "text" onChange = {enterChannelInputs} value = {createChannelInputs["channelName"]} minlength = "3" maxLength="16" placeholder = "3-16 characters" />
                   <small id= "channel-name-help" className="form-text red-text"></small>
                 </label>
                 </div>
@@ -81,7 +81,7 @@ const CreateNewChannel = (props) => {
                     <input type = "color" name = "channelColour" className = "form-control" value = {createChannelInputs["channelColour"]} onChange = {handleChannelColour} />
                   </label>
                 </div>
-              <button type = "submit" className = "btn btn-success">Create</button>
+                <button type = "submit" className = "btn btn-success">Create</button>
             </form>
           </div>
           <div className = "col-6 create-server-info">
