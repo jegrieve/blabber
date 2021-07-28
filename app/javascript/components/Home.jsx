@@ -60,12 +60,12 @@ const Home = (props) => {
           {/* <div className = "home-info">Data about app (servers/channels/users)</div> */}
           <div className = "row">
             <div className = "col-12 home-user">
-              <span>Please 
-                <NavLink history = {props.history} to = {"/sign-in"}> sign in</NavLink>
+              <span>Please&nbsp; 
+                <NavLink history = {props.history} to = {"/sign-in"}>sign in</NavLink>
               </span>
-              <span> or
-                <NavLink history = {props.history} to={"/sign-up"}> sign up </NavLink>
-                to begin chatting
+              <span> or&nbsp; 
+                <NavLink history = {props.history} to={"/sign-up"}>sign up</NavLink>
+                &nbsp;to begin chatting
               </span>
             </div>
           </div>       
