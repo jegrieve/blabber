@@ -155,7 +155,7 @@ const CreateNewServer = (props) => {
               </div>
           {submitType === "text" ? 
           <div>
-            <button className = "btn btn-primary" onClick = {toggleSubmitType}>Add Banner</button> 
+            <button className = "btn btn-primary" onClick = {toggleSubmitType}>Add Banner Image</button> 
           </div>
           :         
           <div>
