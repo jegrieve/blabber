@@ -71,36 +71,42 @@ const ChannelFeed = (props) => {
   return (
       <div>
         <div className = "channels-title">
-          <div>
-          <NavLink to = {`/`}>
-            <FontAwesomeIcon icon = {faArrowLeft} />
-          </NavLink>
+          <div className = "channel-back-arrow">
+            <NavLink to = {`/`}>
+              <FontAwesomeIcon icon = {faArrowLeft} color = {"white"}/>
+            </NavLink>
           </div>
-          <NavLink to = {`/server/${props.currentServer.id}`}>
-            {props.currentServer.name}'s channels
-          </NavLink>
+          <div>
+            <NavLink to = {`/server/${props.currentServer.id}`}>
+              <div className = "channels-title-name">
+                {props.currentServer.name}'s channels
+              </div>
+            </NavLink>
+          </div>
         </div>
         {serverChannels ? 
           <div>
           {serverChannels.map((channel) => {
            return (
              <div className = "channel-item" key = {"c" + channel.id}> 
-               <FontAwesomeIcon icon = {faCircleNotch} color = {`${channel.colour}`}/>
+               <FontAwesomeIcon icon = {faCircleNotch} color = {`${channel.colour}`} size = "lg" />
                <Channel data = {channel} />
              </div>
            )
          })}
           </div> : false}
           <div className = "channel-feed-nav-elements">
-            <div className = "chevron-btn" onClick = {decrementOffsetNum}>
+            <div className = "chevron-btn channel-increment" onClick = {decrementOffsetNum}>
               <FontAwesomeIcon icon = {faChevronLeft} size = "2x" /> 
             </div>
             <div className = "channel-feed-add-channel">
             <NavLink to = {"/create-new-channel"}>
-              <FontAwesomeIcon icon = {faPlus} size = "2x" /> 
+              <div className = "channel-add-btn">
+                <FontAwesomeIcon icon = {faPlus} size = "2x" /> 
+              </div>
             </NavLink>
             </div>
-            <div className = "chevron-btn" onClick = {incrementOffsetNum}>
+            <div className = "chevron-btn channel-decrement" onClick = {incrementOffsetNum}>
               <FontAwesomeIcon icon = {faChevronRight} size = "2x" /> 
             </div> 
           </div>

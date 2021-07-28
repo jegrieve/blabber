@@ -34,6 +34,7 @@
 .channels-title {
   color: white;
   border-bottom: 1px solid white;
+  font-size: 25px;
 }
 
 .server-item,
@@ -53,6 +54,10 @@
   padding-top: 10px;
 }
 
+.channel-feed-nav-elements {
+  font-size: 18px;
+}
+
 .server-sidenav-img {
   border-radius: 50%;
   border: 2px solid #f50057;
@@ -60,12 +65,28 @@
   height: 75px;
 }
 
-.server-img-container {
+.server-img-container,
+.channels-title-name {
   color: #f50057;
 }
 
-.server-name {
+.server-name,
+.channel-name {
   color: white;
+}
+
+.channel-back-arrow {
+  padding-top: 5px;
+  padding-bottom: 3px;
+}
+
+.channel-increment,
+.channel-decrement {
+  color: white;
+}
+
+.channel-add-btn {
+  color: #f50057;
 }
 
 /* .server-feed-item:hover {

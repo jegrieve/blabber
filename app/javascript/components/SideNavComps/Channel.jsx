@@ -3,9 +3,11 @@ import { NavLink } from "react-router-dom";
 const Channel = (props) => {
 
   return (
-      <div>
+      <div className = "channel-feed-item">
         <NavLink to = {`/channel/${props.data.id}`}>
+          <div className = "channel-name">
             {props.data.name}
+          </div>
         </NavLink>
       </div>
   )
