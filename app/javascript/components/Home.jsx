@@ -74,68 +74,61 @@ const Home = (props) => {
       <div>
         <div className = "page-title">Welcome&nbsp;             
           <NavLink to={`/user/${props.currentUser.id}`}>
+          <span className = "homepage-title-name">
             {props.currentUser.username}
+          </span>
           </NavLink> 
         </div>
         <div className = "home-page container align-items-center">
           <div className = "row top-row-homepage">
-            <div className = "col-6">
-              <div className = "home-info">Start chatting
-                <div className = "homepage-arrows">
-                  <span className = "arrow-left">
+            <div className = "col-6 border-right">
+              <div className = "homepage-chat">
+                Start chatting
+              </div>
+              <span className = "arrow-left">
                     <div>
                       <FontAwesomeIcon icon={faLongArrowAltLeft} size = "6x" />
                     </div>
-                    <div>
+                    <div className = "homepage-join">
                       Join a Server
                     </div>
-                  </span>
-                  <span>or</span>
-                  <span className = "arrow-right">
-                    <div>
-                      <FontAwesomeIcon icon={faLongArrowAltRight} size = "6x" />
-                    </div>
-                    <div>
-                      Create a Server
-                    </div>
-                  </span>
-                </div>
-              </div>
+              </span>
             </div>
             <div className = "col-6">
               <NavLink to={`/create-new-server`}>
                 <img src = {createServerPerson} width = {300} />
+                <div className = "create-server-homepage">Create a Server</div>
               </NavLink> 
             </div>
           </div>
-          <div className = "row med-padding-top align-items-center">
-            <div className = "col-4">
+          <div className = "row med-margin-top align-items-center border-top">
+            <div className = "col-4 small-margin-top">
               <div>
                 <NavLink to={`/user/${props.currentUser.id}`}>
-                  <FontAwesomeIcon icon = {faUser} size = "6x" title = "Profile" />
+                  <FontAwesomeIcon icon = {faUser} size = "6x" title = "Profile" color = "#f50057"/>
+                  <div className = "homepage-profile-text">
+                    Profile
+                  </div>
                 </NavLink>
               </div>
-              <div>
-                Profile
-              </div>
             </div>
-            <div className = "col-4">
+            <div className = "col-4 small-margin-top">
             {homepageInfo ? 
             <div className = "homepage-app-info">
               <div>Stats</div>
-              <div>{homepageInfo.servers} <FontAwesomeIcon icon = {faServer} title = "Servers" /></div>
-              <div>{homepageInfo.users} <FontAwesomeIcon icon = {faUsers} title = "Users"/></div>
+              <div>{homepageInfo.servers} <FontAwesomeIcon icon = {faServer} title = "Servers" color = "#f50057" /></div>
+              <div>{homepageInfo.users} <FontAwesomeIcon icon = {faUsers} title = "Users" color = "#f50057" /></div>
             </div>
             :false}
             </div>
-            <div className = "col-4">
+            <div className = "col-4 small-margin-top">
               <div>
                 <NavLink to={`/help`}>
-                  <FontAwesomeIcon icon = {faQuestionCircle}  size = "6x" title = "Help" />
+                  <FontAwesomeIcon icon = {faQuestionCircle}  size = "6x" title = "Help" color = "#f50057" />
+                  <div className = "homepage-help-text">
+                    Help
+                  </div>
                 </NavLink>
-              </div>
-              <div>
-                Help
               </div>
             </div> 
           </div>

@@ -7,18 +7,8 @@
   font-size: 20px;
 }
 
-.arrow-left {
-  padding-right: 40px;
-  display: inline-block;
-}
-
-.arrow-right {
-  padding-left: 40px;
-  display: inline-block;
-}
-
-.med-padding-top {
-  padding-top: 85px;
+.med-margin-top {
+  margin-top: 85px;
 }
 
 .homepage-app-info {
@@ -28,4 +18,33 @@
 
 .top-row-homepage {
   padding-top: 30px;
+}
+
+.homepage-title-name,
+.create-server-homepage,
+.homepage-help-text,
+.homepage-profile-text {
+  color: white;
+}
+
+.border-right {
+  border-right: 3px solid white;
+}
+
+.homepage-chat,
+.arrow-left {
+  font-size: 26px;
+}
+
+.homepage-join {
+  font-size: 16px;
+  padding-top: 16px;
+}
+
+.border-top {
+  border-top: 1px solid white;
+}
+
+.small-margin-top {
+  margin-top: 35px;
 }
