@@ -87,7 +87,7 @@ const Home = (props) => {
               </div>
               <span className = "arrow-left">
                     <div>
-                      <FontAwesomeIcon icon={faLongArrowAltLeft} size = "6x" />
+                      <FontAwesomeIcon icon={faLongArrowAltLeft} size = "6x" color = "#f50057" />
                     </div>
                     <div className = "homepage-join">
                       Join a Server
