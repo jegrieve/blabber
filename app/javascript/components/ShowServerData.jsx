@@ -8,7 +8,7 @@ const ShowServerData = (props) => {
       <div>
           <div className = "page-title">
             <span className = "title-icon">
-              <FontAwesomeIcon icon = {faServer}/>
+              <FontAwesomeIcon icon = {faServer} color = "#f50057"/>
             </span>
             {props.serverData.name}
             </div>
@@ -21,7 +21,7 @@ const ShowServerData = (props) => {
               </div> 
               :
               <div className = "server-placeholder-img">
-                <FontAwesomeIcon icon = {faComments} size = "6x"/>
+                <FontAwesomeIcon icon = {faComments} size = "6x" color = "#f50057"/>
               </div>
               }
               </div>
@@ -33,11 +33,11 @@ const ShowServerData = (props) => {
           <div className = "page-centered server-app-info">
             <div>
               {props.serverData.channels.length} 
-              <FontAwesomeIcon icon = {faCircleNotch} title = "Channels" />
+              <FontAwesomeIcon icon = {faCircleNotch} title = "Channels" color = "#f50057"/>
             </div>
             <div>
               {props.serverData.unique_users}
-              <FontAwesomeIcon icon = {faUsers} title = "Users" />
+              <FontAwesomeIcon icon = {faUsers} title = "Users" color = "#f50057"/>
             </div>
           </div>
       </div>

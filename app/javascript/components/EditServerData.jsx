@@ -114,7 +114,7 @@ const EditServerData = (props) => {
           <div>
               <div className = "page-title">
                 <span className = "title-icon">
-                  <FontAwesomeIcon icon = {faServer}/>
+                  <FontAwesomeIcon icon = {faServer} color = "#f50057"/>
                 </span>
                 {props.serverData.name}
                 </div>
@@ -126,7 +126,7 @@ const EditServerData = (props) => {
                   </div> 
                   :
                   <div className = "server-placeholder-img">
-                    <FontAwesomeIcon icon = {faComments} size = "6x"/>
+                    <FontAwesomeIcon icon = {faComments} size = "6x" color = "#f50057"/>
                   </div>
                   }
                    {editImage === true ? 
@@ -138,7 +138,7 @@ const EditServerData = (props) => {
                       <button className = "btn btn-danger cancel-btn" onClick = {exitEditImage}>Cancel</button>
                      </div> : 
                      <div>
-                       <span className = "server-edit" onClick = {handleImage}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Edit Image</span>
+                       <span className = "server-edit" onClick = {handleImage}><FontAwesomeIcon icon = {faEdit} size = "2x" color = "#f50057"/>Edit Image</span>
                       </div>}
                   </div>
                   <div className = "col-6">
@@ -153,18 +153,18 @@ const EditServerData = (props) => {
                 : 
                 <div>
                     {!props.serverData.info ? <div>This server has no info.</div> : <div className = "server-info">{props.serverData.info}</div>}
-                    <span className = "server-edit" onClick = {handleInfo}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Edit info</span>
+                    <span className = "server-edit" onClick = {handleInfo}><FontAwesomeIcon icon = {faEdit} size = "2x" color = "#f50057"/>Edit info</span>
                 </div>}
               </div>
                 </div>
               <div className = "page-centered server-app-info-edit">
                 <div>
                   {props.serverData.channels.length} 
-                  <FontAwesomeIcon icon = {faCircleNotch} title = "Channels" />
+                  <FontAwesomeIcon icon = {faCircleNotch} title = "Channels" color = "#f50057"/>
                 </div>
                 <div>
                   {props.serverData.unique_users} 
-                  <FontAwesomeIcon icon = {faUsers} title = "Users" />
+                  <FontAwesomeIcon icon = {faUsers} title = "Users" color = "#f50057"/>
                 </div>
               </div>
               <div>
