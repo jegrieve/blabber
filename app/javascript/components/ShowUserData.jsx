@@ -9,7 +9,7 @@ const ShowUserData = (props) => {
       <div className = "page-display page-centered">
           <div className = "user-username page-title">
               <span className = "title-icon">
-                <FontAwesomeIcon icon = {faUser}/>
+                <FontAwesomeIcon icon = {faUser} color = "#f50057"/>
               </span>
             {props.userData.username}
             </div>
@@ -24,7 +24,9 @@ const ShowUserData = (props) => {
               </div>
               }
           </div>
-          <div className = "user-bio user-margin-top">{props.userData.bio}</div>
+          <div className = "d-flex justify-content-center">
+            <div className = "user-bio user-margin-top">{props.userData.bio}</div>
+          </div>
           {props.userActivity ? 
           <div className = "user-activity user-margin-top">Recent activity in the <NavLink to={`/server/${props.userActivity.id}`}>{props.userActivity.name}</NavLink> server</div> 
           : 

@@ -116,7 +116,7 @@ const EditUserData = (props) => {
       <div className = "page-display page-centered">
           <div className = "page-title">
                 <span className = "title-icon">
-                  <FontAwesomeIcon icon = {faUser}/>
+                  <FontAwesomeIcon icon = {faUser} color = "#f50057" />
                 </span>
             {props.userData.username}
             </div>
@@ -132,14 +132,14 @@ const EditUserData = (props) => {
               }
                {editImage === true ? 
                  <div className = "user-margin-top">
-                  <div className = "form-group" >
-                    <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
+                  <div className = "form-group d-flex justify-content-center" >
+                    <input className = "form-control user-image-edit" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
                   </div>
                   <button className = "btn btn-success" onClick = {saveEditImage}>Save</button>
                   <button  className = "btn btn-danger cancel-btn" onClick = {exitEditImage}>Cancel</button>
                  </div> : 
                  <div className = "user-margin-top">
-                   <span className = "user-edit d-flex justify-content-center align-items-center" onClick = {handleImage}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Image</span>
+                   <span className = "user-edit d-flex justify-content-center align-items-center" onClick = {handleImage}><FontAwesomeIcon icon = {faEdit} size = "2x" color = "#f50057"/>Image</span>
                   </div>}
           </div>
           <div>
@@ -153,8 +153,10 @@ const EditUserData = (props) => {
             </div> 
             : 
             <div>
+                <div className = "d-flex justify-content-center">
                 {!props.userData.bio ? <div className = "user-bio">This user has not set a bio.</div> : <div className = "user-bio">{props.userData.bio}</div>}
-                <span className = "user-edit d-flex justify-content-center align-items-center user-margin-top" onClick = {handleBio}><FontAwesomeIcon icon = {faEdit} size = "2x"/>Bio</span>
+                </div>
+                <div className = "user-edit d-flex justify-content-center align-items-center user-margin-top" onClick = {handleBio}><FontAwesomeIcon icon = {faEdit} size = "2x" color = "#f50057"/>Bio</div>
             </div>}
           </div>
           {/* {props.userActivity ? <div className = "user-activity">Recent activity in <NavLink to={`/server/${props.userActivity.id}`}>{props.userActivity.name}</NavLink></div> : false} */}

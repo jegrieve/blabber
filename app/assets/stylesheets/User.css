@@ -1,4 +1,6 @@
 .user-bio {
+  text-align: left;
+  width: 90%;
   font-size: 24px;
 }
 
@@ -18,8 +20,9 @@
 }
 
 .user-bio-edit {
-  width: 50%;
+  width: 90%;
   height: 150px;
+  font-size: 23px !important;
 }
 
 .user-img {
@@ -39,4 +42,8 @@
 
 .user-margin-top {
   margin-top: 10px;
+}
+
+.user-image-edit {
+  width: 40% !important;
 }
