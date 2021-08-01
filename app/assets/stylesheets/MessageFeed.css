@@ -1,7 +1,18 @@
 .channel-message {
-  border: 1px solid black;
+  border: 1px solid white;
+  border-top: none;
+  background-color: #2f3237;
+}
+.message-page {
+  border-top: 1px solid white;
 }
 
 .message-avatar {
   font-size: 45px;
+}
+
+.load-more-messages-btn {
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

@@ -99,7 +99,7 @@ const MessageFeed = (props) => {
   const gf = new GiphyFetch('gB3rscHDQDNmLTvDhqUmWDw1sli5qesi')
 
   return (
-    <div>
+    <div className = "message-page">
         {props.channelMessageData.map((messageData) => {
           if (messageData.video_link) {
             messageData.video_link =  "https://www.youtube.com/embed/" + formatVideoUrl(messageData.video_link)

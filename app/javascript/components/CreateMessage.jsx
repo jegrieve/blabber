@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperPlane, faImage, faFileVideo, faSmileWink} from '@fortawesome/free-solid-svg-icons'
+import { faImage, faFileVideo, faSmileWink} from '@fortawesome/free-solid-svg-icons'
+import { faPaperPlane } from '@fortawesome/free-regular-svg-icons'
 import {faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { GiphyFetch } from '@giphy/js-fetch-api'
 import {
@@ -245,23 +246,23 @@ const CreateMessage = (props) => {
         <div className = "create-message container-fluid">
             <form className = "create-message-form row form-group d-flex align-items-start" onSubmit = {submitMessage}>
                 <div className = "main-input col-md-8 form-group">
-                    <textarea className = "message-text-input form-control form-control-lg" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} rows="3" maxLength = "750" />
+                    <textarea className = "message-text-input form-control form-control-lg" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} maxLength = "750" />
                 </div>
                 <span className = "extra-inputs col-md-4">
                     <button type = "submit" className = "message-post-btn">
-                        <FontAwesomeIcon icon={faPaperPlane} />
+                        <FontAwesomeIcon icon={faPaperPlane} title = "Send" />
                     </button>
                     <span id = "add-img-btn" className = "extra-input-btn" onClick = {addImgSubmit}>
-                        <FontAwesomeIcon icon={faImage} />
+                        <FontAwesomeIcon icon={faImage} color = "#f50057" title = "Image" />
                     </span>
                     <span id = "add-video-btn" className = "extra-input-btn" onClick = {addVideoSubmit}>
-                        <FontAwesomeIcon icon={faYoutube} />
+                        <FontAwesomeIcon icon={faYoutube} color = "#f50057" title = "YouTube" />
                     </span>
                     <span id = "add-gif-btn" className = "extra-input-btn" onClick = {addGifSubmit}>
-                        <FontAwesomeIcon icon={faFileVideo} />
+                        <FontAwesomeIcon icon={faFileVideo} color = "#f50057" title = "GIF" />
                     </span>
                     <span id = "add-emoji-btn" className = "extra-input-btn" onClick = {bringUpEmojiInput}>
-                        <FontAwesomeIcon icon={faSmileWink} />
+                        <FontAwesomeIcon icon={faSmileWink} color = "#f50057" title = "Emoji" />
                     </span>
                     <div className = "row">
                     {submitType === "image" ? 
