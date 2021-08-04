@@ -21,13 +21,17 @@ const ChannelFeed = (props) => {
     }
   }, [currentServer])
 
-  // useEffect(() => {
-  //   if (props.currentChannel !== currentChannel) {
-  //     setCurrentChannel(props.currentChannel);
-  //   } else if (currentChannel) {
-  //     getServerChannels();
-  //   }
-  // },[currentChannel])
+  useEffect(() => {
+    if (props.currentChannel !== currentChannel) {
+      setCurrentChannel(props.currentChannel);
+    }
+  })
+
+  useEffect(() => {
+    if (currentChannel && offsetNum === 0) {
+      getServerChannels();
+    }
+  },[currentChannel])
   
   const getCurrentServer = () => {
     const id = props.currentServer.id
