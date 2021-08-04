@@ -64,21 +64,21 @@ const ChannelFeed = (props) => {
       .then(response => {
         if (response.length > 0) {
           setServerChannels(response)
-        } else if (offsetNum >= 8){
-          setOffsetNum(offsetNum - 8);
+        } else if (offsetNum >= 7){
+          setOffsetNum(offsetNum - 7);
         }
       })
       .catch((error) => console.log(error.message));
   }
 
   const decrementOffsetNum = () => {
-    if (offsetNum >= 8) {
-      setOffsetNum(offsetNum - 8)
+    if (offsetNum >= 7) {
+      setOffsetNum(offsetNum - 7)
     } 
   }
 
   const incrementOffsetNum = () => {
-      setOffsetNum(offsetNum + 8)
+      setOffsetNum(offsetNum + 7)
   }
   
   return (
