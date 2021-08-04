@@ -101,6 +101,8 @@ const Routes = () => {
                     <ChannelPage
                       {...props}
                       currentUser={currentUser}
+                      currentServer = {currentServer}
+                      setCurrentServer = {setCurrentServer}
                       setCurrentChannel = {setCurrentChannel}
                     />
                   )}

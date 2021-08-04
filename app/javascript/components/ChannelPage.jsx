@@ -36,6 +36,12 @@ const ChannelPage = (props) => {
     }, [currentChannel])
 
     useEffect(() => {
+      if (!props.currentServer && currentChannel) {
+        getChannelFeed();
+      }
+    })
+
+    useEffect(() => {
       window.scrollTo(0,document.body.scrollHeight); //so the problem here is this is fine.. but when loadmore is clicked go up instead...
     }, [channelMessages])
     //so im thinking only when u create/edit/delete emssages u make it pop down/ on first messagepage load/channel change
@@ -48,6 +54,10 @@ const ChannelPage = (props) => {
     //       }, 15000);
     //       return () => clearTimeout(refresher);
     // })
+
+    const getChannelFeed = () => {
+      props.setCurrentServer(currentChannel.server)
+    }
 
     const loadMoreMessages = () => {
       setMessageLimit(messageLimit + 10);

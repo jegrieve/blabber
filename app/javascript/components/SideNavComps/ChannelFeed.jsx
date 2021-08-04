@@ -7,6 +7,7 @@ import { faChevronRight, faChevronLeft, faPlus, faArrowLeft, faCircleNotch } fro
 
 const ChannelFeed = (props) => {
   const [currentServer, setCurrentServer] = useState(null);
+  const [currentChannel, setCurrentChannel] = useState(null);
   const [serverChannels, setServerChannels] = useState(null); 
   const [offsetNum, setOffsetNum] = useState(0);
 
@@ -19,6 +20,14 @@ const ChannelFeed = (props) => {
       getServerChannels();
     }
   }, [currentServer])
+
+  // useEffect(() => {
+  //   if (props.currentChannel !== currentChannel) {
+  //     setCurrentChannel(props.currentChannel);
+  //   } else if (currentChannel) {
+  //     getServerChannels();
+  //   }
+  // },[currentChannel])
   
   const getCurrentServer = () => {
     const id = props.currentServer.id
