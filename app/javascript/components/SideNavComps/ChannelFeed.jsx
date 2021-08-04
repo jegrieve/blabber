@@ -28,7 +28,7 @@ const ChannelFeed = (props) => {
   })
 
   useEffect(() => {
-    if (currentChannel && offsetNum === 0) {
+    if (currentChannel) {
       getServerChannels();
     }
   },[currentChannel])
