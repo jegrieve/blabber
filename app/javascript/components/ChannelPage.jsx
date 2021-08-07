@@ -77,6 +77,10 @@ const ChannelPage = (props) => {
 
     const handleLoadBtnMsgs = () => {
       document.getElementById("new-messages-alert").innerHTML = "";
+      document.getElementById("load-messages-btn").style.visibility = "hidden";
+      setTimeout(() => {
+        document.getElementById("load-messages-btn").style.visibility = "visible";
+      }, 2000)
     }
 
     const getChannelFeed = () => {
@@ -131,7 +135,7 @@ const ChannelPage = (props) => {
           {/* so i need to load messagefeed with createmessage at the sametime cause im getting
           a weird looking page where the createmessage stuff loads before the messagefeed then its normal */}
           <div className = "load-more-messages-btn">
-            <button className = "btn btn-secondary" onClick = {loadMoreMessages}>Load More</button>
+            <button id = "load-messages-btn" className = "btn btn-secondary" onClick = {loadMoreMessages}>Load More</button>
             <small id = "new-messages-alert" className="form-text red-text"></small>
           </div>
           {channelMessages ? <MessageFeed currentUser= {props.currentUser} getChannelMessages = {getChannelMessages} channelMessageData = {channelMessages} /> : false }
