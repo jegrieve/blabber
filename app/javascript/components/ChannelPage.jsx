@@ -8,7 +8,7 @@ const ChannelPage = (props) => {
     const [messageLimit, setMessageLimit] = useState(10);
 
     useEffect(() => {
-      getChannelMessages(); 
+        getChannelMessages(); 
     }, [messageLimit])
 
     useEffect(() => {
@@ -42,8 +42,24 @@ const ChannelPage = (props) => {
     })
 
     useEffect(() => {
-      window.scrollTo(0,document.body.scrollHeight); //so the problem here is this is fine.. but when loadmore is clicked go up instead...
+      if (channelMessages && channelMessages.length !== messageLimit) {
+        if (channelMessages.length === messageLimit - 10) {
+          handleLoadBtnNoMsgs();
+          setMessageLimit(channelMessages.length);
+        } else {
+          setMessageLimit(channelMessages.length);
+        }
+      }
     }, [channelMessages])
+
+    //so basically only if you post a message should it go down, otherwise stay up...
+    // useEffect(() => {
+    //   window.scrollTo(0,document.body.scrollHeight); //***8/4/21 --> make this scrollup when loadmore is clicked. */
+    // }, [channelMessages])
+
+    // useEffect(() => {
+    //   window.scrollTo(0,document.body.scrollHeight); //so the problem here is this is fine.. but when loadmore is clicked go up instead...
+    // }, [channelMessages])
     //so im thinking only when u create/edit/delete emssages u make it pop down/ on first messagepage load/channel change
     //but then when u click load more dont do it.
 
@@ -51,16 +67,25 @@ const ChannelPage = (props) => {
     // useEffect(() => {
     //     const refresher = setTimeout(() => {
     //         getChannelMessages();
-    //       }, 15000);
+    //       }, 1000);
     //       return () => clearTimeout(refresher);
     // })
+
+    const handleLoadBtnNoMsgs = () => {
+      document.getElementById("new-messages-alert").innerHTML = "No new messages";
+    }
+
+    const handleLoadBtnMsgs = () => {
+      document.getElementById("new-messages-alert").innerHTML = "";
+    }
 
     const getChannelFeed = () => {
       props.setCurrentServer(currentChannel.server)
     }
 
-    const loadMoreMessages = () => {
-      setMessageLimit(messageLimit + 10);
+    const loadMoreMessages = () => { 
+      handleLoadBtnMsgs();
+      setMessageLimit(messageLimit + 10); 
     }
 
     const getCurrentChannel = () => {
@@ -107,6 +132,7 @@ const ChannelPage = (props) => {
           a weird looking page where the createmessage stuff loads before the messagefeed then its normal */}
           <div className = "load-more-messages-btn">
             <button className = "btn btn-secondary" onClick = {loadMoreMessages}>Load More</button>
+            <small id = "new-messages-alert" className="form-text red-text"></small>
           </div>
           {channelMessages ? <MessageFeed currentUser= {props.currentUser} getChannelMessages = {getChannelMessages} channelMessageData = {channelMessages} /> : false }
           {currentChannel ? <CreateMessage messageLimit = {messageLimit} setMessageLimit = {setMessageLimit} channelId = {currentChannel.id} getChannelMessages = {getChannelMessages} /> : false}
