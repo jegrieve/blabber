@@ -3,7 +3,7 @@ import MessageFeed from "./MessageFeed";
 import CreateMessage from "./CreateMessage";
 
 const ChannelPage = (props) => {
-    const [channelMessages, setChannelMessages] = useState(null);
+    const [channelMessages, setChannelMessages] = useState([]);
     const [currentChannel, setCurrentChannel] = useState(null);
     const [messageLimit, setMessageLimit] = useState(10);
 
@@ -42,14 +42,16 @@ const ChannelPage = (props) => {
     })
 
     useEffect(() => {
-      if (channelMessages && channelMessages.length !== messageLimit) {
+      if (channelMessages.length && channelMessages.length !== messageLimit) {
         if (channelMessages.length === messageLimit - 10) {
           handleLoadBtnNoMsgs();
           setMessageLimit(channelMessages.length);
+        } else if (channelMessages.length < 10) {
+          setMessageLimit(10 - channelMessages.length + channelMessages.length);
         } else {
-          setMessageLimit(channelMessages.length);
+          setMessageLimit(channelMessages.length); 
         }
-      }
+      } 
     }, [channelMessages])
 
     //so basically only if you post a message should it go down, otherwise stay up...
@@ -134,11 +136,13 @@ const ChannelPage = (props) => {
           {/* put the channelpage data here plus the messagefeed and create message*/}
           {/* so i need to load messagefeed with createmessage at the sametime cause im getting
           a weird looking page where the createmessage stuff loads before the messagefeed then its normal */}
-          <div className = "load-more-messages-btn">
-            <button id = "load-messages-btn" className = "btn btn-secondary" onClick = {loadMoreMessages}>Load More</button>
-            <small id = "new-messages-alert" className="form-text red-text"></small>
-          </div>
-          {channelMessages ? <MessageFeed currentUser= {props.currentUser} getChannelMessages = {getChannelMessages} channelMessageData = {channelMessages} /> : false }
+          {channelMessages.length >= 10 ? 
+              <div className = "load-more-messages-btn">
+                <button id = "load-messages-btn" className = "btn btn-secondary" onClick = {loadMoreMessages}>Load More</button>
+                <small id = "new-messages-alert" className="form-text red-text"></small>
+                </div> 
+              : false}
+          {channelMessages.length ? <MessageFeed currentUser= {props.currentUser} getChannelMessages = {getChannelMessages} channelMessageData = {channelMessages} /> : false }
           {currentChannel ? <CreateMessage messageLimit = {messageLimit} setMessageLimit = {setMessageLimit} channelId = {currentChannel.id} getChannelMessages = {getChannelMessages} /> : false}
       </div>
   )
