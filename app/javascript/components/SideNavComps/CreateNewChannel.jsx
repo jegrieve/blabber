@@ -1,11 +1,18 @@
 import React, {useState} from "react";
 import createChannelImage from 'images/create_channel_people.svg'
+import { useEffect } from "react/cjs/react.development";
 
 const CreateNewChannel = (props) => {
     const [createChannelInputs, setCreateChannelInputs] = useState({
       channelName: "",
       channelColour: "#000000"
     })
+
+    useEffect(() => {
+      if (!props.currentServer) {
+        props.history.push(`/`);
+      }
+    }, [])
   
     const enterChannelInputs = (e) => {
       setCreateChannelInputs((prev) => ({
@@ -24,7 +31,7 @@ const CreateNewChannel = (props) => {
             name: createChannelInputs["channelName"],
             colour: createChannelInputs["channelColour"]
         }
-        const url = `/api/v1/channels/create?server_id=${props.serverId}`
+        const url = `/api/v1/channels/create?server_id=${props.currentServer.id}`
         const token = document.querySelector('meta[name="csrf-token"]').content;
         fetch(url, {
         method: "POST",
