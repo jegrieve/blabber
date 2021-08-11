@@ -54,6 +54,7 @@ const ChannelPage = (props) => {
       } 
     }, [channelMessages])
 
+
     //so basically only if you post a message should it go down, otherwise stay up...
     // useEffect(() => {
     //   window.scrollTo(0,document.body.scrollHeight); //***8/4/21 --> make this scrollup when loadmore is clicked. */
