@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { NavLink } from "react-router-dom";
 import MessageFeed from "./MessageFeed";
 import CreateMessage from "./CreateMessage";
 
@@ -144,7 +145,15 @@ const ChannelPage = (props) => {
                 </div> 
               : false}
           {channelMessages.length ? <MessageFeed currentUser= {props.currentUser} getChannelMessages = {getChannelMessages} channelMessageData = {channelMessages} /> : false }
-          {currentChannel ? <CreateMessage messageLimit = {messageLimit} setMessageLimit = {setMessageLimit} channelId = {currentChannel.id} getChannelMessages = {getChannelMessages} /> : false}
+          {currentChannel && props.currentUser ? <CreateMessage messageLimit = {messageLimit} setMessageLimit = {setMessageLimit} channelId = {currentChannel.id} getChannelMessages = {getChannelMessages} /> : 
+            props.currentUser ? 
+            <button type = "submit" className = "btn btn-success">Create</button>:
+            <div className = "tiny-padding-top">Please 
+            <NavLink to = {`/sign-in`} > Sign In </NavLink>
+             or 
+            <NavLink to = {`/sign-up`} > Sign Up </NavLink>
+             to send messages.</div>         
+          }
       </div>
   )
 }
