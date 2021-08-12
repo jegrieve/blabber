@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { NavLink } from "react-router-dom";
 import createServerImage from 'images/create_server_img.svg'
 
 const CreateNewServer = (props) => {
@@ -165,7 +166,14 @@ const CreateNewServer = (props) => {
             </div>
             <button className = "btn btn-danger" onClick = {toggleSubmitType}>Cancel</button>
           </div>}
-          <button type = "submit" className = "btn btn-success server-create-btn">Create</button>
+          {props.currentUser ? 
+            <button type = "submit" className = "btn btn-success server-create-btn">Create</button> :
+            <div className = "tiny-padding-top">Please 
+            <NavLink to = {`/sign-in`} > Sign In </NavLink>
+             or 
+            <NavLink to = {`/sign-up`} > Sign Up </NavLink>
+            to create this server.</div> 
+          }
         </form>
           </div>
           <div className = "col-6 create-server-info">

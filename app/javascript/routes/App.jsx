@@ -113,6 +113,7 @@ const Routes = () => {
                   render={(props) => (
                     <CreateNewServer
                       {...props}
+                      currentUser = {currentUser}
                     />
                   )}
               />      
