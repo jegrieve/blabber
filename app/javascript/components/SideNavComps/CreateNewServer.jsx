@@ -168,11 +168,11 @@ const CreateNewServer = (props) => {
           </div>}
           {props.currentUser ? 
             <button type = "submit" className = "btn btn-success server-create-btn">Create</button> :
-            <div className = "tiny-padding-top">Please 
-            <NavLink to = {`/sign-in`} > Sign In </NavLink>
-             or 
-            <NavLink to = {`/sign-up`} > Sign Up </NavLink>
-            to create this server.</div> 
+            <div className = "tiny-padding-top">Please&nbsp; 
+            <NavLink to = {`/sign-in`} >Sign In</NavLink>
+            &nbsp;or&nbsp;
+            <NavLink to = {`/sign-up`} >Sign Up</NavLink>
+            &nbsp;to create this server.</div> 
           }
         </form>
           </div>
