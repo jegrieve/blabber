@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { NavLink } from "react-router-dom";
 import createChannelImage from 'images/create_channel_people.svg'
 import { useEffect } from "react/cjs/react.development";
 
@@ -88,7 +89,14 @@ const CreateNewChannel = (props) => {
                     <input type = "color" name = "channelColour" className = "form-control" value = {createChannelInputs["channelColour"]} onChange = {handleChannelColour} />
                   </label>
                 </div>
-                <button type = "submit" className = "btn btn-success">Create</button>
+                {props.currentUser ? 
+                  <button type = "submit" className = "btn btn-success">Create</button>:
+                  <div className = "tiny-padding-top">Please 
+                  <NavLink to = {`/sign-in`} > Sign In </NavLink>
+                  or 
+                  <NavLink to = {`/sign-up`} > Sign Up </NavLink>
+                  to create this channel.</div> 
+                }
             </form>
           </div>
           <div className = "col-6 create-server-info">

@@ -123,6 +123,7 @@ const Routes = () => {
                   render={(props) => (
                     <CreateNewChannel
                       {...props}
+                      currentUser = {currentUser}
                       currentServer = {currentServer}
                     />
                   )}
