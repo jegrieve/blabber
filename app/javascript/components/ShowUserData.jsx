@@ -25,7 +25,10 @@ const ShowUserData = (props) => {
               }
           </div>
           <div className = "d-flex justify-content-center">
-            <div className = "user-bio user-margin-top">{props.userData.bio}</div>
+            <div className = "user-bio user-margin-top">
+              <div className = "user-title">User Bio</div>
+              {props.userData.bio}
+            </div>
           </div>
           {props.userActivity ? 
           <div className = "user-activity user-margin-top">Recent activity in the <NavLink to={`/server/${props.userActivity.id}`}>{props.userActivity.name}</NavLink> server</div> 

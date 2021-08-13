@@ -145,6 +145,7 @@ const EditServerData = (props) => {
                 {editInfo === true ? 
                 <div>
                   <div>
+                    <div className = "server-title">Info</div>
                     <textarea className = "server-info-edit" value = {infoText} onChange = {onInfoInputChange} maxLength = "400"/>
                   </div>
                     <button className = "btn btn-success" onClick = {saveEditInfo}>Save</button>
@@ -152,7 +153,11 @@ const EditServerData = (props) => {
                 </div> 
                 : 
                 <div>
-                    {!props.serverData.info ? <div>This server has no info.</div> : <div className = "server-info">{props.serverData.info}</div>}
+                    {!props.serverData.info ? <div>This server has no info.</div> : 
+                      <div>
+                        <div className = "server-title">Info</div>
+                        <div className = "server-info">{props.serverData.info}</div>
+                      </div>}
                     <span className = "server-edit" onClick = {handleInfo}><FontAwesomeIcon icon = {faEdit} size = "2x" color = "#f50057"/>Edit info</span>
                 </div>}
               </div>

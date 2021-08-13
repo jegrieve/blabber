@@ -27,6 +27,7 @@ const ShowServerData = (props) => {
               </div>
             </div>
             <div className = "col-6">
+              <div className = "server-title">Info</div>
               <div className = "server-info">{props.serverData.info}</div>
             </div>
           </div>

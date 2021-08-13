@@ -36,4 +36,10 @@
 
 .server-info-edit {
   font-size: 30px;
+  max-height: 450px;
+}
+
+.server-title {
+  font-size: 34px;
+  text-decoration: underline;
 }

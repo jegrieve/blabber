@@ -146,6 +146,7 @@ const EditUserData = (props) => {
             {editBio === true ? 
             <div className = "user-margin-top">
               <div>
+                <div className = "user-title">User Bio</div>
                 <textarea className = "user-bio-edit" value = {bioText} onChange = {onBioInputChange} maxLength = "400" />
               </div>
                 <button className = "btn btn-success" onClick = {saveEditBio}>Save</button>
@@ -153,8 +154,12 @@ const EditUserData = (props) => {
             </div> 
             : 
             <div>
-                <div className = "d-flex justify-content-center">
-                {!props.userData.bio ? <div className = "user-bio">This user has not set a bio.</div> : <div className = "user-bio">{props.userData.bio}</div>}
+                <div>
+                {!props.userData.bio ? <div className = "user-bio">This user has not set a bio.</div> : 
+                <div className = "user-info">
+                  <div className = "user-title">User Bio</div>
+                  <div className = "user-bio">{props.userData.bio}</div>
+                </div>}
                 </div>
                 <div className = "user-edit d-flex justify-content-center align-items-center user-margin-top" onClick = {handleBio}><FontAwesomeIcon icon = {faEdit} size = "2x" color = "#f50057"/>Bio</div>
             </div>}

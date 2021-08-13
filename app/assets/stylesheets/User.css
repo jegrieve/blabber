@@ -22,7 +22,7 @@
 .user-bio-edit {
   width: 90%;
   height: 150px;
-  font-size: 23px !important;
+  font-size: 24px !important;
 }
 
 .user-img {
@@ -46,4 +46,13 @@
 
 .user-image-edit {
   width: 40% !important;
+}
+
+.user-title {
+  font-size: 34px;
+  text-decoration: underline;
+}
+
+.user-info {
+  margin-left: 25px;
 }
