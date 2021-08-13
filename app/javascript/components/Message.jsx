@@ -117,7 +117,7 @@ const handleGifClick = (gif, e) => {
       </div>
       <div className = "message-body"> 
         {editMessage  === true ? 
-          <input type = "text" name = "body" value = {editMessageData["body"]} onChange = {handleEditMessage} />
+          <textarea className = "massage-body-edit" type = "text" name = "body" value = {editMessageData["body"]} onChange = {handleEditMessage} />
              : 
           <div>
             {props.messageData.body}
