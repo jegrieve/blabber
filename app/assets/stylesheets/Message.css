@@ -18,6 +18,13 @@
   font-size: 35px;
 }
 
+.delete-msg-btn:hover,
+.edit-msg-btn:hover,
+.confirm-edit-btn:hover,
+.cancel-edit-btn:hover {
+  opacity: 0.8;
+}
+
 .message-avatar,
 .message-username,
 .message-time,
@@ -54,4 +61,8 @@
   width: 45px;
   height: 45px;
   border-radius: 30px;
+}
+
+.message-avatar-img:hover {
+  opacity: 0.8;
 }

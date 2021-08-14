@@ -30,3 +30,8 @@
 .tiny-padding-top {
   padding-top: 10px;
 }
+
+.server-feed-add-server:hover,
+.chevron-btn:hover {
+  opacity: 0.8;
+}

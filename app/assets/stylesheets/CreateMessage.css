@@ -32,6 +32,11 @@
   font-size: 40px;
 }
 
+.extra-input-btn:hover,
+.message-post-btn:hover {
+  opacity: 0.8;
+}
+
 .extra-inputs {
   padding-top: 15px;
   margin-bottom: 12px;

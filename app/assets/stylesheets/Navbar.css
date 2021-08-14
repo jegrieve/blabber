@@ -25,6 +25,11 @@
   padding-top: 3px;
 }
 
+.nav-user:hover,
+.nav-help:hover {
+  opacity: 0.8;
+}
+
 .navbar-logo {
   height: 200px;
   padding-bottom: 20px;
@@ -34,4 +39,9 @@
 #sign-up-btn {
   color: white;
   background-color: #36393f;
+}
+
+#sign-in-btn:hover,
+#sign-up-btn:hover {
+  opacity: 0.9;
 }

@@ -5,3 +5,7 @@
 .create-channel-image {
   padding-top: 60px;
 }
+
+.channel-add-btn:hover {
+  opacity: 0.8;
+}
