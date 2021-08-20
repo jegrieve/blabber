@@ -60,8 +60,8 @@
   margin-top: 1px;
 }
 
-/* .create-message {
-  position: sticky;
-  bottom: 0;
+.create-message {
+  position: sticky !important;
+  bottom: 0 !important;
   overflow: hidden;
-} */
+}

@@ -5,6 +5,7 @@
 }
 .message-page {
   border-top: 1px solid white;
+  min-height: 579px;
 }
 
 .message-avatar {

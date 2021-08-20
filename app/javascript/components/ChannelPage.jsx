@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import MessageFeed from "./MessageFeed";
 import CreateMessage from "./CreateMessage";
+import noMessagesImg from 'images/no_messages.svg'
 
 const ChannelPage = (props) => {
     const [channelMessages, setChannelMessages] = useState([]);
@@ -144,7 +145,15 @@ const ChannelPage = (props) => {
                 <small id = "new-messages-alert" className="form-text red-text"></small>
                 </div> 
               : false}
-          {channelMessages.length ? <MessageFeed currentUser= {props.currentUser} getChannelMessages = {getChannelMessages} channelMessageData = {channelMessages} /> : false }
+          {channelMessages.length ? <MessageFeed currentUser= {props.currentUser} getChannelMessages = {getChannelMessages} channelMessageData = {channelMessages} /> 
+          : <div className = "message-page d-flex align-items-center justify-content-center">
+              <div>
+                <img className = "message-page-empty-img" src = {noMessagesImg} width = {300} />
+                <div className = "d-flex justify-content-center">
+                  No Messages, start chatting!
+                </div>
+              </div>
+            </div>} 
           {currentChannel && props.currentUser ? <CreateMessage messageLimit = {messageLimit} setMessageLimit = {setMessageLimit} channelId = {currentChannel.id} getChannelMessages = {getChannelMessages} /> : 
             props.currentUser ? 
             <button type = "submit" className = "btn btn-success">Create</button>:
