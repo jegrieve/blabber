@@ -10,7 +10,7 @@ const ChannelPage = (props) => {
     const [messageLimit, setMessageLimit] = useState(10);
 
     useEffect(() => {
-        getChannelMessages(); 
+        getChannelMessages(true); 
     }, [messageLimit])
 
     useEffect(() => {
@@ -56,25 +56,13 @@ const ChannelPage = (props) => {
       } 
     }, [channelMessages])
 
-
-    //so basically only if you post a message should it go down, otherwise stay up...
-    // useEffect(() => {
-    //   window.scrollTo(0,document.body.scrollHeight); //***8/4/21 --> make this scrollup when loadmore is clicked. */
-    // }, [channelMessages])
-
-    // useEffect(() => {
-    //   window.scrollTo(0,document.body.scrollHeight); //so the problem here is this is fine.. but when loadmore is clicked go up instead...
-    // }, [channelMessages])
-    //so im thinking only when u create/edit/delete emssages u make it pop down/ on first messagepage load/channel change
-    //but then when u click load more dont do it.
-
-    // this will keep refreshing messagefeed for new messages
-    // useEffect(() => {
-    //     const refresher = setTimeout(() => {
-    //         getChannelMessages();
-    //       }, 1000);
-    //       return () => clearTimeout(refresher);
-    // })
+    useEffect(() => {
+        const refresher = setTimeout(() => {
+          console.log("refreshed")
+            getChannelMessages(true);
+          }, 3000);
+          return () => clearTimeout(refresher);
+    })
 
     const handleLoadBtnNoMsgs = () => {
       document.getElementById("new-messages-alert").innerHTML = "No new messages";
@@ -115,7 +103,7 @@ const ChannelPage = (props) => {
         .catch((error) => console.log(error.message));
     }
 
-    const getChannelMessages = () => {
+    const getChannelMessages = (noScroll) => {
         const id = props.match.params.id
         const url = `/api/v1/messages/index?channel_id=${id}&limit=${messageLimit}`;
     
@@ -127,8 +115,10 @@ const ChannelPage = (props) => {
             throw new Error("Network response was not ok.");
           })
           .then(response => {
-            console.log(response)
-            setChannelMessages(response)
+            setChannelMessages(response);
+            if (noScroll !== true) {
+              window.scrollTo(0,document.body.scrollHeight); 
+            }
           }
             )
           .catch((error) => console.log(error.message));

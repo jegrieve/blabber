@@ -30,7 +30,7 @@ const MessageFeed = (props) => {
         throw new Error("Network response was not ok.");
       })
       .then((response) => {
-        props.getChannelMessages();
+        props.getChannelMessages(true);
       })
       .catch(error => console.log(error.message));
   }
@@ -55,7 +55,7 @@ const MessageFeed = (props) => {
         throw new Error("Network response was not ok.");
     })
     .then(response => {
-        props.getChannelMessages()
+        props.getChannelMessages(true)
     })
     .catch(error => console.log(error.message))
   }
@@ -82,7 +82,7 @@ const MessageFeed = (props) => {
       throw new Error("Network response was not ok.");
   })
   .then(response => {
-      props.getChannelMessages()
+      props.getChannelMessages(true)
   })
   .catch(error => console.log(error.message))
   }
