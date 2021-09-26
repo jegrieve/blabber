@@ -28,41 +28,44 @@ const ChannelPage = (props) => {
     useEffect(() => {
       if (currentChannel) {
         props.setCurrentChannel(currentChannel)
-      }
-    }, [currentChannel])
-
-    useEffect(() => {
-      if (currentChannel) {
         getChannelMessages();
-      }
-    }, [currentChannel])
-
-    useEffect(() => {
-      if (!props.currentServer && currentChannel) {
         getChannelFeed();
       }
-    })
+    }, [currentChannel])
 
-    useEffect(() => {
-      if (channelMessages.length && channelMessages.length !== messageLimit) {
-        if (channelMessages.length === messageLimit - 10) {
-          handleLoadBtnNoMsgs();
-          setMessageLimit(channelMessages.length);
-        } else if (channelMessages.length < 10) {
-          setMessageLimit(10 - channelMessages.length + channelMessages.length);
-        } else {
-          setMessageLimit(channelMessages.length); 
-        }
-      } 
-    }, [channelMessages])
+    // useEffect(() => {
+    //   if (currentChannel) {
+    //     getChannelMessages();
+    //     getChannelFeed();
+    //   }
+    // }, [currentChannel])
 
-    useEffect(() => {
-        const refresher = setTimeout(() => {
-          console.log("refreshed")
-            getChannelMessages(true);
-          }, 3000);
-          return () => clearTimeout(refresher);
-    })
+    // useEffect(() => {
+    //   if (!props.currentServer && currentChannel) {
+    //     getChannelFeed();
+    //   }
+    // })
+
+    // useEffect(() => {
+    //   if (channelMessages.length && channelMessages.length !== messageLimit) {
+    //     if (channelMessages.length === messageLimit - 10) {
+    //       handleLoadBtnNoMsgs();
+    //       setMessageLimit(channelMessages.length);
+    //     } else if (channelMessages.length < 10) {
+    //       setMessageLimit(10 - channelMessages.length + channelMessages.length);
+    //     } else {
+    //       setMessageLimit(channelMessages.length); 
+    //     }
+    //   } 
+    // }, [channelMessages])
+
+    // useEffect(() => {
+    //     const refresher = setTimeout(() => {
+    //       console.log("refreshed")
+    //         getChannelMessages(true);
+    //       }, 1000);
+    //       return () => clearTimeout(refresher);
+    // })
 
     const handleLoadBtnNoMsgs = () => {
       document.getElementById("new-messages-alert").innerHTML = "No new messages";
@@ -126,13 +129,10 @@ const ChannelPage = (props) => {
     
   return (
       <div>
-          {/* put the channelpage data here plus the messagefeed and create message*/}
-          {/* so i need to load messagefeed with createmessage at the sametime cause im getting
-          a weird looking page where the createmessage stuff loads before the messagefeed then its normal */}
           {channelMessages.length >= 10 ? 
               <div className = "load-more-messages-btn">
                 <button id = "load-messages-btn" className = "btn btn-secondary" onClick = {loadMoreMessages}>Load More</button>
-                <small id = "new-messages-alert" className="form-text red-text"></small>
+                <small id = "new-messages-alert" className="form-text red-text"></small> {/*need to fix */}
                 </div> 
               : false}
           {channelMessages.length ? <MessageFeed currentUser= {props.currentUser} getChannelMessages = {getChannelMessages} channelMessageData = {channelMessages} /> 
