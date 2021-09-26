@@ -31,8 +31,8 @@
 }
 
 .navbar-logo {
-  height: 200px;
-  padding-bottom: 20px;
+  width: 90% !important;
+  height: 90% !important;
 }
 
 #sign-in-btn,
