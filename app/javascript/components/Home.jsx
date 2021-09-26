@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
 import homepageUsers from 'images/homepage_users.svg'
-import homepageUser from 'images/homepage_user.svg'
 import createServerPerson from 'images/create_server_person.svg'
 import homepagePerson from 'images/homepage_person.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLongArrowAltRight, faLongArrowAltLeft, faUser, faQuestionCircle, faServer, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faLongArrowAltLeft, faUser, faQuestionCircle, faServer, faUsers } from '@fortawesome/free-solid-svg-icons'
 
 
 const Home = (props) => {
