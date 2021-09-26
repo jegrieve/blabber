@@ -57,7 +57,6 @@ const Home = (props) => {
               <div className = "home-info">Join or create a server, and chat publicly or privately.</div>
             </div>
           </div>
-          {/* <div className = "home-info">Data about app (servers/channels/users)</div> */}
           <div className = "row">
             <div className = "col-12 home-user">
               <span>Please&nbsp; 
