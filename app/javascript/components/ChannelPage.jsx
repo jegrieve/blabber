@@ -146,7 +146,7 @@ const ChannelPage = (props) => {
             </div>} 
           {currentChannel && props.currentUser ? <CreateMessage messageLimit = {messageLimit} setMessageLimit = {setMessageLimit} channelId = {currentChannel.id} getChannelMessages = {getChannelMessages} /> : 
             props.currentUser ? 
-            <button type = "submit" className = "btn btn-success">Create</button>:
+            false :
             <div className = "tiny-padding-top">Please&nbsp; 
             <NavLink to = {`/sign-in`} >Sign In</NavLink>
             &nbsp;or&nbsp; 

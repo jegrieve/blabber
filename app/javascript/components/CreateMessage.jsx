@@ -246,7 +246,7 @@ const CreateMessage = (props) => {
         <div className = "create-message container-fluid">
             <form className = "create-message-form row form-group d-flex align-items-start" onSubmit = {submitMessage}>
                 <div className = "main-input col-md-8 form-group">
-                    <textarea className = "message-text-input form-control form-control-lg" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} maxLength = "750" />
+                    <textarea className = "message-text-input form-control form-control-lg" onChange = {handleMessageBody} name = "body" type = "text" value = {messageData["body"]} maxLength = "750" required />
                 </div>
                 <span className = "extra-inputs col-md-4">
                     <button type = "submit" className = "message-post-btn">
@@ -267,12 +267,12 @@ const CreateMessage = (props) => {
                     <div className = "row">
                     {submitType === "image" ? 
                         <div className = "form-group col-md-12">
-                            <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> 
+                            <input className = "form-control" name = "image" type="file" accept="image/*" multiple={false} onChange={onImageChange} required/> 
                             <button className = "remove-link-btn btn btn-danger"  onClick = {addTextSubmit} > Cancel </button>
                         </div> 
                     : submitType === "video" ? 
                         <div className = "form-group col-md-12">
-                            <input className = "form-control" name = "video" type="text" onChange={onVideoLinkChange} placeholder = {"Post a valid youtube link"} value = {messageData['video']}/>
+                            <input className = "form-control" name = "video" type="text" onChange={onVideoLinkChange} placeholder = {"Post a valid youtube link"} value = {messageData['video']} required/>
                             <button className = "remove-link-btn btn btn-danger" onClick = {addTextSubmit} > Cancel </button>  
                         </div> 
                     : submitType === "gif" ?
