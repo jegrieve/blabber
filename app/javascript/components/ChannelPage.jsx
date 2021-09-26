@@ -16,6 +16,7 @@ const ChannelPage = (props) => {
     useEffect(() => {
       if (!currentChannel || Number(props.match.params.id) !== currentChannel.id) {
           getCurrentChannel();
+          setMessageLimit(10);
       }
     })
 
