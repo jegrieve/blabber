@@ -115,6 +115,9 @@ const EditServerData = (props) => {
               <div className = "page-title">
                 <span className = "title-icon">
                   <FontAwesomeIcon icon = {faServer} color = "#f50057"/>
+                  {!props.favouriteServer ?
+                    <button onClick = {props.likeServer}>Like</button> : <button onClick = {props.unLikeServer}>Unlike</button>
+                  } 
                 </span>
                 {props.serverData.name}
                 </div>

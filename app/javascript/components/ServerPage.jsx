@@ -5,10 +5,17 @@ import EditServerData from "./EditServerData";
 const ServerPage = (props) => {
   const [serverData, setServerData] = useState(null);
   const [serverPageId, setServerPageId] = useState(null);
-
+  const [favouriteServer, setFavouriteServer] = useState(false);
+  console.log("favourite server: " + favouriteServer)
   useEffect(() => {
     getServerData();
   },[])
+
+  useEffect(() => {
+    if (serverData && props.currentUser) {
+      serverData.liking_users.some((ele) => ele.id === props.currentUser.id) ? setFavouriteServer(true) : false;
+    }
+  }, [serverData])
 
   useEffect(() => {
     if (serverData) {
@@ -94,7 +101,7 @@ const ServerPage = (props) => {
     .catch(error => console.log(error.message))
     }
 
-    const likeServer = () => { // change this to the fav server/like server  then build the controller actions.
+    const likeServer = () => { 
       const body = {
           server_id: serverData.id,
       }
@@ -115,8 +122,7 @@ const ServerPage = (props) => {
           throw new Error("Network response was not ok.");
       })
       .then(response => {
-          // props.getPosts();
-          console.log(response);
+        setFavouriteServer(true);
       })
       .catch(error => console.log(error.message))
   }
@@ -139,8 +145,7 @@ const ServerPage = (props) => {
               throw new Error("Network response was not ok.");
             })
             .then((response) => {
-              // props.getPosts();
-              console.log(response);
+              setFavouriteServer(false);
             })
             .catch(error => console.log(error.message));
   }
@@ -153,9 +158,10 @@ const ServerPage = (props) => {
     serverData && 
     props.currentUser.id === serverData.user.id
     ? 
-    <EditServerData history = {props.history} serverData = {serverData} updateServerImage = {updateServerImage} updateServerInfo = {updateServerInfo} currentUser = {props.currentUser} />
+    <EditServerData history = {props.history} serverData = {serverData} updateServerImage = {updateServerImage}
+     updateServerInfo = {updateServerInfo} currentUser = {props.currentUser} likeServer = {likeServer} unLikeServer = {unLikeServer} favouriteServer = {favouriteServer} />
     : serverData ? 
-    <ShowServerData serverData = {serverData} />
+    <ShowServerData serverData = {serverData} likeServer = {likeServer} unLikeServer = {unLikeServer} favouriteServer = {favouriteServer} />
     :
     <div>
       This server could not be found.
