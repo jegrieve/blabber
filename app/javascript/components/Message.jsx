@@ -46,7 +46,8 @@ const Message = (props) => {
     .catch(error => console.log(error.message))
   }
 
-  const submitEditMessageData = () => {
+  const submitEditMessageData = (e) => {
+    e.preventDefault();
     setEditMessage("submitted");
   }
 
@@ -70,6 +71,7 @@ const handleGifClick = (gif, e) => {
 
   return (
     <div className = "message-contents">
+      <form onSubmit = {submitEditMessageData}>
       <div className = "message-header d-flex justify-content-between">
           <div className = "message-info d-flex align-items-center">
               <div className = "message-avatar">
@@ -96,9 +98,9 @@ const handleGifClick = (gif, e) => {
         {props.currentUser && props.messageData.user_id === props.currentUser.id ?       
           <div className = "message-modifiers">
             {editMessage === true ? 
-                <span className = "confirm-edit-btn" onClick = {submitEditMessageData}>
+                <button type = "submit" className = "confirm-edit-btn">
                   <FontAwesomeIcon icon={faCheck} />
-                </span>
+                </button>
                :
               <span className = "edit-msg-btn" onClick = {toggleEditMessage}>
                 <FontAwesomeIcon icon={faEdit} />
@@ -111,12 +113,13 @@ const handleGifClick = (gif, e) => {
               <span className = "delete-msg-btn" onClick = {deleteMessage}>
                 <FontAwesomeIcon icon={faTrashAlt} />
               </span>  }
-
          </div> : false}
       </div>
       <div className = "message-body"> 
         {editMessage  === true ? 
-          <textarea className = "message-body-edit" type = "text" name = "body" value = {editMessageData["body"]} onChange = {handleEditMessage} maxLength = "750" required/>
+          <div className = "form-group">
+            <textarea className = "message-body-edit form-control" type = "text" name = "body" value = {editMessageData["body"]} onChange = {handleEditMessage} maxLength = "750" rows = "4" required/>
+          </div>
              : 
           <div>
             {props.messageData.body}
@@ -125,18 +128,19 @@ const handleGifClick = (gif, e) => {
         {props.messageData.message_image ? 
         <div className = "message-img">
           <img className = "message-img-file" src = {props.messageData.message_image.url} />
-          {editMessage === true ? <div><input className = "form-control" name = "message_image" type="file" accept="image/*" multiple={false} onChange={onImageChange} required/> </div> : false}
+          {editMessage === true ? <div className = "form-group"><input className = "form-control" name = "message_image" type="file" accept="image/*" multiple={false} onChange={onImageChange} required/> </div> : false}
         </div> : false}
         {props.messageData.video_link ? 
         <div className = "message-video">
           <iframe className = "message-video-iframe" src={props.messageData.video_link} />
-          {editMessage  === true ? <div>New Vid <input className = "form-control" name = "video_link" type="text" onChange={handleEditMessage} placeholder = {"Post a valid youtube link"} required/></div> : false}
+          {editMessage  === true ? <div className = "form-group">New Vid <input className = "form-control" name = "video_link" type="text" onChange={handleEditMessage} placeholder = {"Post a valid youtube link"} required/></div> : false}
         </div> : false}
         {gifData ? 
         <div className = "message-gif">
           <Gif gif={gifData.data} width = {280} onGifClick = {handleGifClick}/>
         </div> 
         : false}
+        </form>
     </div>
   )
 }

@@ -25,6 +25,12 @@
   opacity: 0.8;
 }
 
+.confirm-edit-btn {
+  background: none;
+  border: none;
+  color: white;
+}
+
 .message-avatar,
 .message-username,
 .message-time,
@@ -65,4 +71,8 @@
 
 .message-avatar-img:hover {
   opacity: 0.8;
+}
+
+.message-body-edit {
+  width: 100%;
 }
