@@ -30,6 +30,9 @@ Rails.application.routes.draw do
       patch 'users/update/:id', to: 'users#update'
 
       get 'pages/show', to: 'pages_info#show'
+
+      post "likes/create", to: 'likes#create'
+      delete 'likes/destroy/:id', to: 'likes#destroy'
     end
   end
   root 'homepage#index'
