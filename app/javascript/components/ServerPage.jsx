@@ -94,6 +94,59 @@ const ServerPage = (props) => {
     .catch(error => console.log(error.message))
     }
 
+    const likeServer = () => { // change this to the fav server/like server  then build the controller actions.
+      const body = {
+          server_id: serverData.id,
+      }
+      const url = '/api/v1/likes/create';
+      const token = document.querySelector('meta[name="csrf-token"]').content;
+      fetch(url, {
+      method: "POST",
+      headers: {
+      "X-CSRF-Token": token, 
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  })
+      .then(response => {
+          if (response.ok) {
+              return response.json()
+          }
+          throw new Error("Network response was not ok.");
+      })
+      .then(response => {
+          // props.getPosts();
+          console.log(response);
+      })
+      .catch(error => console.log(error.message))
+  }
+
+  const unLikeServer = () => {
+          const url = `/api/v1/likes/destroy/${serverData.id}`;
+          const token = document.querySelector('meta[name="csrf-token"]').content;
+      
+          fetch(url, {
+            method: "DELETE",
+            headers: {
+              "X-CSRF-Token": token,
+              "Content-Type": "application/json"
+            }
+          })
+            .then(response => {
+              if (response.ok) {
+                return response.json();
+              }
+              throw new Error("Network response was not ok.");
+            })
+            .then((response) => {
+              // props.getPosts();
+              console.log(response);
+            })
+            .catch(error => console.log(error.message));
+  }
+
+    
+
   return (
     <div className = "page-display">
     {props.currentUser && 

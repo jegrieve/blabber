@@ -91,6 +91,7 @@ const Routes = () => {
                       {...props}
                       currentUser={currentUser}
                       setCurrentServer= {setCurrentServer}
+                      serverPage = {currentServer}
                     />
                   )}
               />
