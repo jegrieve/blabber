@@ -35,6 +35,7 @@ const Message = (props) => {
       setEditMessage(true);
     } else {
       setEditMessage(false);
+      setEditMessageData({...props.messageData})
     }
   }
 
@@ -133,7 +134,7 @@ const handleGifClick = (gif, e) => {
         {props.messageData.video_link ? 
         <div className = "message-video">
           <iframe className = "message-video-iframe" src={props.messageData.video_link} />
-          {editMessage  === true ? <div className = "form-group">New Vid <input className = "form-control" name = "video_link" type="text" onChange={handleEditMessage} placeholder = {"Post a valid youtube link"} required/></div> : false}
+          {editMessage  === true ? <div className = "form-group">New Vid <input className = "form-control" name = "video_link" type="text" onChange={handleEditMessage} value = {editMessageData["video_link"]} placeholder = {"Post a valid youtube link"} required/></div> : false}
         </div> : false}
         {gifData ? 
         <div className = "message-gif">
