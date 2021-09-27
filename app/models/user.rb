@@ -2,6 +2,8 @@ class User < ApplicationRecord
     has_secure_password
     has_many :messages, dependent: :destroy
     has_many :servers, dependent: :destroy
+    has_many :likes, dependent: :destroy
+    has_many :liked_servers, :through => :likes, :source => :server, dependent: :destroy
     has_one_attached :user_image
     
     validates :email, presence: true, uniqueness: true
