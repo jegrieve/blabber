@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import Home from "../components/Home";
-import Navbar from "../components/Navbar";
+import Home from "../components/Home/Home";
+import Navbar from "../components/Navbar/Navbar";
 import SideNav from "../components/SideNavComps/SideNav";
 import SignIn from "../components/UserRegistration/SignIn";
 import SignUp from "../components/UserRegistration/SignUp";
-import ServerPage from "../components/ServerPage";
-import ChannelPage from "../components/ChannelPage";
+import ServerPage from "../components/ServerPage/ServerPage";
+import ChannelPage from "../components/ChannelPage/ChannelPage";
 import CreateNewServer from "../components/SideNavComps/CreateNewServer";
 import CreateNewChannel from "../components/SideNavComps/CreateNewChannel";
-import UserPage from "../components/UserPage";
-import HelpPage from "../components/HelpPage";
+import UserPage from "../components/UserPage/UserPage";
+import HelpPage from "../components/HelpPage/HelpPage";
 
 const Routes = () => {
   const [currentUser, setCurrentUser] = useState(null);

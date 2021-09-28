@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import SignOut from "./UserRegistration/SignOut";
+import SignOut from "../UserRegistration/SignOut";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faQuestionCircle } from '@fortawesome/free-regular-svg-icons'
 import logo from 'images/blabberlogo.png'
