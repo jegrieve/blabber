@@ -2,8 +2,11 @@ class Api::V1::ServersController < ApplicationController
     #use serializer later when using image attachment
     def index
         servers = Server.all.order(created_at: :asc).offset(params[:offset_num]).limit(5)
-        if servers
-        render json: servers
+        user = User.find_by(id: session[:user_id])
+        if user && params[:favourite_servers] == "true"
+            render json: user.liked_servers.order(created_at: :asc).offset(params[:offset_num]).limit(5)
+        else 
+            render json: servers
         end
     end
 

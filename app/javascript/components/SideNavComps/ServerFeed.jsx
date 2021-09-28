@@ -8,6 +8,7 @@ import { faChevronRight, faChevronLeft, faPlusCircle} from '@fortawesome/free-so
 const ServerFeed = (props) => {
   const [loadedServers, setLoadedServers] = useState([]);
   const [offsetNum, setOffsetNum] = useState(0);
+  const [loadFavouriteServers, setLoadFavouriteServers] = useState(false);
 
 console.log(loadedServers)
 console.log(offsetNum)
@@ -16,8 +17,16 @@ console.log(offsetNum)
     getServers();
   }, [offsetNum])
 
+  useEffect(() => {
+      if (offsetNum === 0) {
+        getServers();
+      } else {
+        setOffsetNum(0);
+      }
+  }, [loadFavouriteServers])
+
   const getServers = () => {
-    const url = `/api/v1/servers/index?offset_num=${offsetNum}`;
+    const url = `/api/v1/servers/index?offset_num=${offsetNum}&favourite_servers=${loadFavouriteServers}`;
     fetch(url)
       .then(response => {
         if (response.ok) {
@@ -45,10 +54,15 @@ console.log(offsetNum)
       setOffsetNum(offsetNum + 5)
   }
 
+  const toggleFavourites = () => {
+    setLoadFavouriteServers(!loadFavouriteServers)
+  }
+
   return (
       <div>
         <div className = "servers-title">
           Servers
+          {!loadFavouriteServers ? <button onClick = {toggleFavourites}>Show Favourites</button> : <button onClick = {toggleFavourites}>Show Normal</button>}
         </div>
         {loadedServers.length ? loadedServers.map((serverData) => {
            return (
