@@ -23,6 +23,22 @@ class Api::V1::ChannelsController < ApplicationController
         end
     end
 
+    def update
+        channel = Channel.find(params[:id])
+        if channel
+            channel.update(name: params[:name], colour: params[:colour])
+            render json: channel
+        end
+    end
+
+    def destroy
+        channel = Channel.find(params[:id])
+        if (session[:user_id] && session[:user_id] === channel.server.user_id)
+            channel.destroy
+            render json: {message: "Channel deleted"}
+        end
+    end
+
     private
     def channel_params
         params.permit(:name, :colour)
