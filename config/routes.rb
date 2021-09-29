@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       get 'channels/index', to: 'channels#index';
       get 'channels/show/:id', to: 'channels#show';
       post 'channels/create', to: 'channels#create';
+      delete 'channels/destroy/:id', to: 'chanels#destroy';
+      patch 'channels/update/:id', to: 'channels#update'
 
       get "messages/index", to: "messages#index"
       post 'messages/create/:id', to: 'messages#create';
@@ -44,6 +46,7 @@ Rails.application.routes.draw do
   get '/sign-up' => 'homepage#index'
   get '/user/*path' => 'homepage#index'
   get '/help' => 'homepage#index'
+  get '/edit-channel/*path' => 'homepage#index'
   # get '/*path' => 'homepage#index'
   #When using /*path the image GET doesnt work
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
