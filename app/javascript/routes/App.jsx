@@ -11,6 +11,7 @@ import CreateNewServer from "../components/SideNavComps/CreateNewServer";
 import CreateNewChannel from "../components/SideNavComps/CreateNewChannel";
 import UserPage from "../components/UserPage/UserPage";
 import HelpPage from "../components/HelpPage/HelpPage";
+import EditChannel from "../components/SideNavComps/EditChannel";
 
 const Routes = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -144,6 +145,16 @@ const Routes = () => {
               <Route exact path="/help">
                     <HelpPage />
               </Route>
+              <Route
+                  exact
+                  path="/edit-channel/:id"
+                  render={(props) => (
+                    <EditChannel
+                      {...props}
+                      currentUser={currentUser}
+                    />
+                  )}
+              />
             </Switch>
           </div>
         </div>

@@ -103,6 +103,9 @@ const ChannelFeed = (props) => {
            return (
              <div className = "channel-item" key = {"c" + channel.id}> 
                <FontAwesomeIcon icon = {faCircleNotch} color = {`${channel.colour}`} size = "lg" />
+               <NavLink to = {`/edit-channel/${channel.id}`}>
+                 Edit
+               </NavLink>
                <Channel data = {channel} />
              </div>
            )

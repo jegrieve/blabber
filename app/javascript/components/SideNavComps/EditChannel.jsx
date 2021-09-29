@@ -4,7 +4,7 @@ const EditChannel = (props) => {
 
   return (
       <div>
-          
+          Edit Channel Stuff.
       </div>
   )
 }
