@@ -139,14 +139,14 @@ const EditUserData = (props) => {
                   <button  className = "btn btn-danger cancel-btn" onClick = {exitEditImage}>Cancel</button>
                  </div> : 
                  <div className = "user-margin-top">
-                   <span className = "user-edit d-flex justify-content-center align-items-center" onClick = {handleImage}><FontAwesomeIcon icon = {faEdit} size = "2x" color = "#f50057"/>Image</span>
+                   <span className = "user-edit d-flex justify-content-center align-items-center" onClick = {handleImage}><FontAwesomeIcon icon = {faEdit} color = "#f50057"/>Image</span>
                   </div>}
           </div>
           <div>
             {editBio === true ? 
             <div className = "user-margin-top">
               <div>
-                <div className = "user-title">User Bio</div>
+                <div className = "user-title">Bio</div>
                 <textarea className = "user-bio-edit" value = {bioText} onChange = {onBioInputChange} maxLength = "400" />
               </div>
                 <button className = "btn btn-success" onClick = {saveEditBio}>Save</button>
@@ -157,14 +157,13 @@ const EditUserData = (props) => {
                 <div>
                 {!props.userData.bio ? <div className = "user-bio">This user has not set a bio.</div> : 
                 <div className = "user-info">
-                  <div className = "user-title">User Bio</div>
+                  <div className = "user-title">Bio</div>
                   <div className = "user-bio">{props.userData.bio}</div>
                 </div>}
                 </div>
-                <div className = "user-edit d-flex justify-content-center align-items-center user-margin-top" onClick = {handleBio}><FontAwesomeIcon icon = {faEdit} size = "2x" color = "#f50057"/>Bio</div>
+                <div className = "user-edit d-flex justify-content-center align-items-center user-margin-top" onClick = {handleBio}><FontAwesomeIcon icon = {faEdit} color = "#f50057"/>Bio</div>
             </div>}
           </div>
-          {/* {props.userActivity ? <div className = "user-activity">Recent activity in <NavLink to={`/server/${props.userActivity.id}`}>{props.userActivity.name}</NavLink></div> : false} */}
           {!confirmDelete ? 
                   <div className = "delete-user-btn">
                     <button className = "btn btn-warning" onClick = {toggleConfirmDelete}>Delete User</button>
