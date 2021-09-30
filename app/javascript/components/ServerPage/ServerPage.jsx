@@ -161,7 +161,7 @@ const ServerPage = (props) => {
     <EditServerData history = {props.history} serverData = {serverData} updateServerImage = {updateServerImage}
      updateServerInfo = {updateServerInfo} currentUser = {props.currentUser} likeServer = {likeServer} unLikeServer = {unLikeServer} favouriteServer = {favouriteServer} />
     : serverData ? 
-    <ShowServerData serverData = {serverData} likeServer = {likeServer} unLikeServer = {unLikeServer} favouriteServer = {favouriteServer} />
+    <ShowServerData serverData = {serverData} likeServer = {likeServer} unLikeServer = {unLikeServer} favouriteServer = {favouriteServer} currentUser = {props.currentUser} />
     :
     <div>
       This server could not be found.

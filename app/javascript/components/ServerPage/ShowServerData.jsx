@@ -14,7 +14,7 @@ const ShowServerData = (props) => {
                 </span>
                 <span>
                   {props.currentUser ? 
-                  <div className = "favourite-server-btn">
+                  <span className = "favourite-server-btn">
                     {!props.favouriteServer ?
                     <span onClick = {props.likeServer}>
                       <FontAwesomeIcon icon = {faStar} color = "yellow"/>
@@ -26,7 +26,7 @@ const ShowServerData = (props) => {
                       <span className = "fav-icon-title">Fav</span>
                     </span>
                       }
-                  </div> : false} 
+                  </span> : false} 
                   </span>
             </span>
             </div>
