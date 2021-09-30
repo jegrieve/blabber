@@ -10,8 +10,13 @@
   z-index: 1;
 }
 
-.nav-tracker {
+.nav-tracker,
+.nav-trackers {
   color: white;
+}
+
+.nav-tracker:hover {
+  color: inherit;
 }
 
 .nav-items {
@@ -35,8 +40,8 @@
 }
 
 .navbar-logo {
-  width: 90% !important;
-  height: 90% !important;
+  width: 180px !important;
+  height: 45px !important;
 }
 
 #sign-in-btn,

@@ -14,9 +14,9 @@ const Navbar = (props) => {
           <div className = "nav-logo">
             <NavLink to={`/`}><img className = "navbar-logo" src = {logo}/></NavLink>
           </div>
-          <div className = "nav-tracker">
-            {props.currentServer ? <span>Current Server: <NavLink to = {`/server/${props.currentServer.id}`}> {props.currentServer.name} </NavLink> </span> : false}
-            {props.currentChannel ? <span> <FontAwesomeIcon icon = {faCaretRight} color = "white" /> <NavLink to = {`/channel/${props.currentChannel.id}`}> {props.currentChannel.name} </NavLink> </span> : false}
+          <div className = "nav-trackers">
+            {props.currentServer ? <span>Current Server: <NavLink className = "nav-tracker" to = {`/server/${props.currentServer.id}`}> {props.currentServer.name}</NavLink> </span> : false}
+            {props.currentChannel ? <span> <FontAwesomeIcon icon = {faCaretRight} color = "white" /> <NavLink className = "nav-tracker" to = {`/channel/${props.currentChannel.id}`}> {props.currentChannel.name} </NavLink> </span> : false}
           </div>
         </div>
 
