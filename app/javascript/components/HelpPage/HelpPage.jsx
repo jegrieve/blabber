@@ -10,11 +10,11 @@ const HelpPage = (props) => {
           <div className = "row">
             <div className = "col-6 d-flex align-items-center">
               <div className = "help-info">
-              <strong>blabber</strong> is an online messaging app that lets you chat with others.
+               <span className = "logo-colour">blabber</span> is an online messaging app that lets you chat with others.
               </div>
             </div>
             <div className = "col-6 d-flex justify-content-center">
-              <img src = {helpImg} width = {300} />
+              <img src = {helpImg} width = {200} />
             </div>
           </div>
           <div className = "row">
