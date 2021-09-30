@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import Server from "./Server";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faChevronLeft, faPlusCircle} from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight, faChevronLeft, faPlusCircle, faStar as faStarSolid} from '@fortawesome/free-solid-svg-icons'
+import { faStar } from '@fortawesome/free-regular-svg-icons'
 
 const ServerFeed = (props) => {
   const [loadedServers, setLoadedServers] = useState([]);
@@ -61,8 +62,11 @@ console.log(offsetNum)
   return (
       <div>
         <div className = "servers-title">
-          Servers
-          {!loadFavouriteServers ? <button onClick = {toggleFavourites}>Show Favourites</button> : <button onClick = {toggleFavourites}>Show Normal</button>}
+          <span className = "title-padded">
+            Servers
+          </span>
+          {!loadFavouriteServers ? <span className = "toggle-fav-btn" onClick = {toggleFavourites}> <FontAwesomeIcon icon = {faStar} color = "yellow"/></span> 
+          : <span className = "toggle-fav-btn" onClick = {toggleFavourites}> <FontAwesomeIcon icon = {faStarSolid} color = "yellow"/></span>}
         </div>
         {loadedServers.length ? loadedServers.map((serverData) => {
            return (

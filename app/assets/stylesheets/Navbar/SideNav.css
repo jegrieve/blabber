@@ -89,6 +89,16 @@
   color: #f50057;
 }
 
+.title-padded {
+  padding-left: 35px;
+}
+
+.toggle-fav-btn {
+  margin-left: 10px;
+}
+.toggle-fav-btn:hover {
+  cursor: pointer;
+}
 /* .server-feed-item:hover {
   color: white !important;
   background-color: white !important;
