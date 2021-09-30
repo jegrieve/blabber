@@ -47,7 +47,7 @@ const Routes = () => {
       <div className = "container-fluid">
         <div className = "row">
             <div className = "d-none d-lg-block col-lg-2 side-nav-container">
-              <SideNav currentServer = {currentServer} currentChannel = {currentChannel} />
+              <SideNav currentServer = {currentServer} currentChannel = {currentChannel} currentUser = {currentUser}/>
             </div>
           <div className = "app-page col-lg-10 col-md-12">
             <Switch>
