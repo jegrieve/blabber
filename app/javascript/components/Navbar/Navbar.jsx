@@ -4,14 +4,22 @@ import SignOut from "../UserRegistration/SignOut";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faQuestionCircle } from '@fortawesome/free-regular-svg-icons'
 import logo from 'images/blabberlogo.png'
+import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = (props) => {
   return (
     <div className = "site-navbar">
       <div className = "nav-items d-flex align-items-center justify-content-between">
-        <div className = "nav-logo">
-          <NavLink to={`/`}><img className = "navbar-logo" src = {logo}/></NavLink>
+        <div>
+          <div className = "nav-logo">
+            <NavLink to={`/`}><img className = "navbar-logo" src = {logo}/></NavLink>
+          </div>
+          <div className = "nav-tracker">
+            {props.currentServer ? <span>Current Server: <NavLink to = {`/server/${props.currentServer.id}`}> {props.currentServer.name} </NavLink> </span> : false}
+            {props.currentChannel ? <span> <FontAwesomeIcon icon = {faCaretRight} color = "white" /> <NavLink to = {`/channel/${props.currentChannel.id}`}> {props.currentChannel.name} </NavLink> </span> : false}
+          </div>
         </div>
+
         {props.currentUser ?       
         <div className = "nav-elements d-flex justify-content-around">
           <div className = "nav-user">

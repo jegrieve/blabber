@@ -42,7 +42,8 @@ const Routes = () => {
 
   return (
     <Router>
-      <Navbar history = {history} currentUser = {currentUser} setCurrentUser = {setCurrentUser} />
+      <Navbar history = {history} currentUser = {currentUser} setCurrentUser = {setCurrentUser} currentChannel = {currentChannel} 
+      currentServer = {currentServer}/>
       <div className = "container-fluid">
         <div className = "row">
             <div className = "d-none d-lg-block col-lg-2 side-nav-container">

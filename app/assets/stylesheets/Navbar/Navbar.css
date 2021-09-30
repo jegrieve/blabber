@@ -10,6 +10,10 @@
   z-index: 1;
 }
 
+.nav-tracker {
+  color: white;
+}
+
 .nav-items {
   margin-left: 25px;
   width: 95%;
