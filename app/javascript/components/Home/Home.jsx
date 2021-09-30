@@ -42,7 +42,7 @@ const Home = (props) => {
         <div className = "home-page container">
           <div className = "row align-items-center">
             <div className = "col-6">
-              <div className = "home-info">Chat with others, join different servers. <br/> Send pictures, videos, gifs and more.</div>
+              <div className = "home-info">Chat with others, join different servers. <br/> Send pictures, videos and GIFs.</div>
             </div>
             <div className = "col-6">
               <img src = {homepageUsers} width = {300} />
@@ -53,16 +53,16 @@ const Home = (props) => {
               <img src = {homepagePerson} width = {300} />
             </div>
             <div className = "col-6">
-              <div className = "home-info">Join or create a server, and chat publicly or privately.</div>
+              <div className = "home-info">Join or create a server, and begin chatting.</div>
             </div>
           </div>
           <div className = "row">
             <div className = "col-12 home-user">
               <span>Please&nbsp; 
-                <NavLink history = {props.history} to = {"/sign-in"}>sign in</NavLink>
+                <NavLink className = "white-link" history = {props.history} to = {"/sign-in"}><strong>sign in</strong></NavLink>
               </span>
               <span> or&nbsp; 
-                <NavLink history = {props.history} to={"/sign-up"}>sign up</NavLink>
+                <NavLink className = "white-link" history = {props.history} to={"/sign-up"}><strong>sign up</strong></NavLink>
                 &nbsp;to begin chatting
               </span>
             </div>
@@ -71,7 +71,7 @@ const Home = (props) => {
       </div> : 
       <div>
         <div className = "page-title">Welcome&nbsp;             
-          <NavLink to={`/user/${props.currentUser.id}`}>
+          <NavLink className = "white-link" to={`/user/${props.currentUser.id}`}>
           <span className = "homepage-title-name">
             {props.currentUser.username}
           </span>
@@ -93,7 +93,7 @@ const Home = (props) => {
               </span>
             </div>
             <div className = "col-6">
-              <NavLink to={`/create-new-server`}>
+              <NavLink  className = "white-link" to={`/create-new-server`}>
                 <img src = {createServerPerson} width = {300} />
                 <div className = "create-server-homepage">Create a Server</div>
               </NavLink> 
@@ -102,7 +102,7 @@ const Home = (props) => {
           <div className = "row med-margin-top align-items-center border-top">
             <div className = "col-4 small-margin-top">
               <div>
-                <NavLink to={`/user/${props.currentUser.id}`}>
+                <NavLink  className = "white-link" to={`/user/${props.currentUser.id}`}>
                   <FontAwesomeIcon icon = {faUser} size = "6x" title = "Profile" color = "#f50057"/>
                   <div className = "homepage-profile-text">
                     Profile
@@ -121,7 +121,7 @@ const Home = (props) => {
             </div>
             <div className = "col-4 small-margin-top">
               <div>
-                <NavLink to={`/help`}>
+                <NavLink  className = "white-link" to={`/help`}>
                   <FontAwesomeIcon icon = {faQuestionCircle}  size = "6x" title = "Help" color = "#f50057" />
                   <div className = "homepage-help-text">
                     Help
