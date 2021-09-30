@@ -99,7 +99,7 @@
 .toggle-fav-btn:hover {
   cursor: pointer;
 }
-/* .server-feed-item:hover {
-  color: white !important;
-  background-color: white !important;
-} */
+
+.serverfeed-spinner {
+  margin-top: 20px;
+}

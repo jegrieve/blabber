@@ -5,9 +5,10 @@ import Server from "./Server";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faChevronLeft, faPlusCircle, faStar as faStarSolid} from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const ServerFeed = (props) => {
-  const [loadedServers, setLoadedServers] = useState([]);
+  const [loadedServers, setLoadedServers] = useState(null);
   const [offsetNum, setOffsetNum] = useState(0);
   const [loadFavouriteServers, setLoadFavouriteServers] = useState(false);
 
@@ -19,6 +20,7 @@ console.log(offsetNum)
   }, [offsetNum])
 
   useEffect(() => {
+      setLoadedServers(null);
       if (offsetNum === 0) {
         getServers();
       } else {
@@ -40,6 +42,8 @@ console.log(offsetNum)
           setLoadedServers(response)
         } else if (offsetNum >= 5) {
           setOffsetNum(offsetNum - 5);
+        } else if (response.length === 0 ) {
+          setLoadedServers([])
         }
       })
       .catch((error) => console.log(error.message));
@@ -56,7 +60,9 @@ console.log(offsetNum)
   }
 
   const toggleFavourites = () => {
-    setLoadFavouriteServers(!loadFavouriteServers)
+    if (props.currentUser) {
+      setLoadFavouriteServers(!loadFavouriteServers)
+    }
   }
 
   return (
@@ -68,13 +74,16 @@ console.log(offsetNum)
           {!loadFavouriteServers ? <span className = "toggle-fav-btn" onClick = {toggleFavourites}> <FontAwesomeIcon icon = {faStar} color = "yellow"/></span> 
           : <span className = "toggle-fav-btn" onClick = {toggleFavourites}> <FontAwesomeIcon icon = {faStarSolid} color = "yellow"/></span>}
         </div>
-        {loadedServers.length ? loadedServers.map((serverData) => {
+        {loadedServers && loadedServers.length ? loadedServers.map((serverData) => {
            return (
-             <div className = "server-item" key = {serverData.id}> 
+             <div className = "server-item" key = {"s" + serverData.id}> 
                <Server data = {serverData} />
              </div>
            )
-         }) : false}
+         }) : loadedServers === null ?
+          <div className = "serverfeed-spinner">
+            <FontAwesomeIcon icon = {faSpinner} className = "fa-pulse" size = "3x" />
+          </div> : <div>No servers.</div>}
           <div className = "server-feed-nav-elements">
             <div className = "chevron-btn" id = "server-decrement" onClick = {decrementOffsetNum}>
               <FontAwesomeIcon icon = {faChevronLeft} size = "2x" color = {"white"} /> 

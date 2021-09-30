@@ -14,7 +14,7 @@ const SideNav = (props) => {
 
   return (
       <div className = "side-nav">
-        {props.currentServer ? <ChannelFeed currentServer = {props.currentServer} currentChannel = {props.currentChannel} /> : <ServerFeed /> }
+        {props.currentServer ? <ChannelFeed currentServer = {props.currentServer} currentChannel = {props.currentChannel} /> : <ServerFeed currentUser = {props.currentUser} /> }
       </div>
   )
 }
