@@ -5,6 +5,7 @@ const EditChannel = (props) => {
   const [channelData, setChannelData] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [channelId, setChannelId] = useState(null);
+  const [confirmDeleteChannel, setConfirmDeleteChannel] = useState(false);
   console.log(editChannelData)
 
   useEffect(() => {
@@ -13,8 +14,13 @@ const EditChannel = (props) => {
 
   useEffect(() => {
       getChannelData();
-      setEditChannelData({...channelData})
   }, [channelId])
+
+  useEffect(() => {
+    if (channelData) {
+      setEditChannelData({...channelData})
+    }
+  }, [channelData])
 
   useEffect(() => {
     if (props.match.params.id !== channelId) {
@@ -59,7 +65,8 @@ const EditChannel = (props) => {
   };
 
   
-  const submitEditChannelForm = () => {
+  const submitEditChannelForm = (e) => {
+    e.preventDefault();
     const body = {
       name: editChannelData["name"],
       colour: editChannelData["colour"]
@@ -81,11 +88,43 @@ const EditChannel = (props) => {
       throw new Error("Network response was not ok.");
   })
   .then(response => {
-      props.getChannelData();
+      getChannelData();
+      setEditMode(false);
+      props.history.push(`/channel/${response.id}`)
   })
   .catch(error => console.log(error.message))
   }
 
+  const confirmDelete = () => {
+    setConfirmDeleteChannel(true);
+  }
+
+  const cancelDelete = () => {
+    setConfirmDeleteChannel(false);
+  }
+
+  const deleteChannel = () => {
+    const url = `/api/v1/channels/destroy/${channelData.id}`;
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+  
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "X-CSRF-Token": token,
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .then((response) => {
+        props.history.push("/")
+      })
+      .catch(error => console.log(error.message));    
+  }
 
   return (
     <div className = "page-display">
@@ -102,7 +141,6 @@ const EditChannel = (props) => {
               <div className = "form-group">
                 <label className = "channel-inputs" htmlFor = "channel-name-value">Channel Name:
                 <input id = "channel-name-value" name = "name" className = "form-control form-control-lg channel-inputs" type = "text" onChange = {enterChannelInputs} value = {editChannelData["name"]} minLength = "3" maxLength="16" placeholder = "3-16 characters" />
-                <small id= "channel-name-help" className="form-text red-text"></small>
                 </label>
               </div>
               <div className = "form-group">
@@ -122,9 +160,19 @@ const EditChannel = (props) => {
           </div>}
             {props.currentUser && props.currentUser.id === channelData.server.user_id && editMode ? 
               <div>
-                <button type = "submit" className = "btn btn-success">Save Changes</button>
+                <button type = "submit" className = "btn btn-success">Save and Go</button>
                 <button onClick = {toggleEdit} className = "btn btn-danger">Cancel</button>
               </div> : false
+            }
+            {confirmDeleteChannel ? 
+              <div>
+                  <div>
+                    <div className = "red-text">Warning: delete channel and all associated messages.</div>
+                    <button className = "btn btn-danger" onClick = {deleteChannel}>Confirm Delete</button>
+                    <button className = "btn btn-primary cancel-btn" onClick = {cancelDelete}>Cancel</button>
+                  </div>
+              </div> :
+              <button onClick = {confirmDelete}>Delete Channel</button>
             }
         </form>
       </div>
@@ -144,23 +192,3 @@ const EditChannel = (props) => {
 }
 
 export default EditChannel;
-
-// Channel Name: <input type = "text" />
-// Channel Colour <input type = "color" />
-// <button type = "submit">Submit</button>
-// <button>Delete Channel</button>
-// Unique Users:
-// Messages In channel: 
-// Channel Creator:
-// Server its on:
-
-// Use create channel as template
-//Basically, show everything but add the ability to click an edit btn for name or colour.
-//Then on the right side, show some info about the app state, and below it, if you created the server you can delete this channel/everything in it.
-
-// {channelData ? 
-//   <form>
-//       <div>{channelData.name}</div>
-//       {props.currentUser.id === channelData.server.user_id ? <button>Edit</button> : false}
-//   </form>
-// : false}
