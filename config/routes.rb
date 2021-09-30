@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       get 'channels/index', to: 'channels#index';
       get 'channels/show/:id', to: 'channels#show';
       post 'channels/create', to: 'channels#create';
-      delete 'channels/destroy/:id', to: 'chanels#destroy';
+      delete 'channels/destroy/:id', to: 'channels#destroy';
       patch 'channels/update/:id', to: 'channels#update'
 
       get "messages/index", to: "messages#index"
