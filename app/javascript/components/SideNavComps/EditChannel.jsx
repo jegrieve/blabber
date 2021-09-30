@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faServer, faUsers } from '@fortawesome/free-solid-svg-icons'
+import createChannelImage from 'images/create_channel_people.svg'
+import { faComment, faEdit } from "@fortawesome/free-regular-svg-icons";
 
 const EditChannel = (props) => {
   const [editChannelData, setEditChannelData] = useState(null);
@@ -139,49 +143,56 @@ const EditChannel = (props) => {
             {editMode ? 
             <div>
               <div className = "form-group">
-                <label className = "channel-inputs" htmlFor = "channel-name-value">Channel Name:
+                <label className = "channel-inputs" htmlFor = "channel-name-value">Name:
                 <input id = "channel-name-value" name = "name" className = "form-control form-control-lg channel-inputs" type = "text" onChange = {enterChannelInputs} value = {editChannelData["name"]} minLength = "3" maxLength="16" placeholder = "3-16 characters" />
                 </label>
               </div>
               <div className = "form-group">
-                <label className = "channel-inputs" htmlFor = "channel-colour-value">Channel Colour:
+                <label className = "channel-inputs" htmlFor = "channel-colour-value">Colour:
                 <input type = "color" name = "colour" className = "form-control" value = {editChannelData["colour"]} onChange = {handleChannelColour} />
                 </label>
               </div>
             </div> : 
             <div>
-              <div>Name: {channelData.name}</div>
-              <div><button onClick = {toggleEdit}>Edit Channel</button></div>
+              <div>
+                <span className = "channel-info">
+                  {channelData.name}
+                </span>
+                <span onClick = {toggleEdit}> <FontAwesomeIcon icon = {faEdit} size = "2x" color = "#f50057"/></span>
+                </div>
+                <div className = "channel-info">
+                  {channelData.server.name} <FontAwesomeIcon icon = {faServer} title = "Server" color = "#f50057" />
+                </div>
             </div>}
           </div> : 
           <div>
-              <div>Name: {channelData.name}</div>
-              <div>Server: {channelData.server.name}</div>
+              <div className = "channel-info">{channelData.name}</div>
+              <div className = "channel-info">{channelData.server.name} <FontAwesomeIcon icon = {faServer} title = "Server" color = "#f50057" /></div>
           </div>}
             {props.currentUser && props.currentUser.id === channelData.server.user_id && editMode ? 
               <div>
-                <button type = "submit" className = "btn btn-success">Save and Go</button>
-                <button onClick = {toggleEdit} className = "btn btn-danger">Cancel</button>
+                <button type = "submit" className = "btn btn-success">Submit</button>
+                <button onClick = {toggleEdit} className = "btn btn-danger cancel-btn">Cancel</button>
               </div> : false
             }
-            {confirmDeleteChannel ? 
+        </form>
+        {props.currentUser && props.currentUser.id === channelData.server.user_id 
+        && confirmDeleteChannel ? 
               <div>
                   <div>
                     <div className = "red-text">Warning: delete channel and all associated messages.</div>
                     <button className = "btn btn-danger" onClick = {deleteChannel}>Confirm Delete</button>
                     <button className = "btn btn-primary cancel-btn" onClick = {cancelDelete}>Cancel</button>
                   </div>
-              </div> :
-              <button onClick = {confirmDelete}>Delete Channel</button>
+              </div> : props.currentUser && props.currentUser.id === channelData.server.user_id ? 
+              <button className = "btn btn-warning" onClick = {confirmDelete}>Delete Channel</button> : false
             }
-        </form>
       </div>
-      <div className = "col-6 create-server-info">
-          <div>Channel Info here</div>
-          <div>Channel Info here</div>
+      <div className = "col-6 edit-channel-info">
+          <div>{channelData.unique_users} <FontAwesomeIcon icon = {faUsers} title = "Users" color = "#f50057" /></div>
+          <div>{channelData.messages.length} <FontAwesomeIcon icon = {faComment} title = "Messages" color = "#f50057" /></div>
         <div className = "create-server-image">
-          Optional image or something else
-          {/* <img src = {createChannelImage} width = {300} /> */}
+          <img src = {createChannelImage} width = {300} />
         </div>
       </div>
     </div>
