@@ -1,16 +1,34 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComments } from '@fortawesome/free-regular-svg-icons'
-import { faServer, faCircleNotch, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faComments, faStar  } from '@fortawesome/free-regular-svg-icons'
+import { faServer, faCircleNotch, faUsers, faStar as faStarSolid  } from '@fortawesome/free-solid-svg-icons'
 
 const ShowServerData = (props) => {
   return (
       <div>
           <div className = "page-title">
             <span className = "title-icon">
-              <FontAwesomeIcon icon = {faServer} color = "#f50057"/>
+                <span>
+                  <FontAwesomeIcon icon = {faServer} color = "#f50057"/>&nbsp; 
+                  {props.serverData.name}
+                </span>
+                <span>
+                  {props.currentUser ? 
+                  <div className = "favourite-server-btn">
+                    {!props.favouriteServer ?
+                    <span onClick = {props.likeServer}>
+                      <FontAwesomeIcon icon = {faStar} color = "yellow"/>
+                      <span className = "fav-icon-title">Fav</span>
+                    </span>
+                     :
+                    <span onClick = {props.unLikeServer}>
+                      <FontAwesomeIcon icon = {faStarSolid} color = "yellow"/>
+                      <span className = "fav-icon-title">Fav</span>
+                    </span>
+                      }
+                  </div> : false} 
+                  </span>
             </span>
-            {props.serverData.name}
             </div>
             <div className = "row server-padding-top">
               <div className = "col-6 page-centered">

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { faEdit, faComments } from '@fortawesome/free-regular-svg-icons'
-import { faServer, faCircleNotch, faUsers  } from '@fortawesome/free-solid-svg-icons'
+import { faServer, faCircleNotch, faUsers, faStar as faStarSolid  } from '@fortawesome/free-solid-svg-icons'
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const EditServerData = (props) => {
@@ -114,12 +115,24 @@ const EditServerData = (props) => {
           <div>
               <div className = "page-title">
                 <span className = "title-icon">
-                  <FontAwesomeIcon icon = {faServer} color = "#f50057"/>
-                  {!props.favouriteServer ?
-                    <button onClick = {props.likeServer}>Like</button> : <button onClick = {props.unLikeServer}>Unlike</button>
+                  <span>
+                    <FontAwesomeIcon icon = {faServer} color = "#f50057"/>&nbsp; 
+                    {props.serverData.name}
+                  </span>
+                  <span className = "favourite-server-btn">
+                  {!props.favouriteServer && props.currentUser ?
+                    <span onClick = {props.likeServer}>
+                      <FontAwesomeIcon icon = {faStarSolid} color = "yellow"/>
+                      <span className = "fav-icon-title">Fav</span>
+                    </span>
+                     :
+                    <span onClick = {props.unLikeServer}>
+                      <FontAwesomeIcon icon = {faStar} color = "yellow"/>
+                      <span className = "fav-icon-title">Fav</span>
+                    </span>
                   } 
+                  </span>
                 </span>
-                {props.serverData.name}
                 </div>
                 <div className = "row server-padding-top">
                 <div className = "col-6 page-centered">

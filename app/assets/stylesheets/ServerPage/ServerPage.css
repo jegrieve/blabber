@@ -47,3 +47,15 @@
   font-size: 34px;
   text-decoration: underline;
 }
+
+.favourite-server-btn {
+  margin-left: 200px;
+}
+
+.favourite-server-btn:hover {
+  cursor: pointer;
+}
+
+.fav-icon-title {
+  font-size: 26px;
+}
