@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  default_url_options :host => "localhost:3000"
+  default_url_options :host => "https://glacial-forest-72988.herokuapp.com/"
   #change before pushing to production
   #missing host to linkto! error when GET images
   namespace :api do 
