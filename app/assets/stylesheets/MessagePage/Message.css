@@ -76,3 +76,7 @@
 .message-body-edit {
   width: 100%;
 }
+
+.placeholder-avatar-img:hover {
+  opacity: 0.5;
+}

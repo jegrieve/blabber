@@ -81,8 +81,8 @@ const handleGifClick = (gif, e) => {
                     <img className = "message-avatar-img" src = {props.messageData.user.user_image.url}/>
                   </NavLink>
                     : 
-                  <NavLink to = {`/user/${props.messageData.user.id}`}>
-                    <FontAwesomeIcon icon={faUserCircle} />
+                  <NavLink className = "placeholder-avatar-img" to = {`/user/${props.messageData.user.id}`}>
+                    <FontAwesomeIcon icon={faUserCircle} color = "white"/>
                   </NavLink>
                   } 
               </div>
