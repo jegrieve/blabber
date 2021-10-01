@@ -122,12 +122,12 @@ const EditServerData = (props) => {
                   <span className = "favourite-server-btn">
                   {!props.favouriteServer && props.currentUser ?
                     <span onClick = {props.likeServer}>
-                      <FontAwesomeIcon icon = {faStarSolid} color = "yellow"/>
+                      <FontAwesomeIcon icon = {faStar} color = "yellow"/>
                       <span className = "fav-icon-title">Fav</span>
                     </span>
                      :
                     <span onClick = {props.unLikeServer}>
-                      <FontAwesomeIcon icon = {faStar} color = "yellow"/>
+                      <FontAwesomeIcon icon = {faStarSolid} color = "yellow"/>
                       <span className = "fav-icon-title">Fav</span>
                     </span>
                   } 

@@ -33,9 +33,6 @@ const HelpPage = (props) => {
             </div>
           </div>
         </div>
-        {/* <div className = "help-info">
-          <div></div> 
-        </div> */}
       </div>
   )
 }

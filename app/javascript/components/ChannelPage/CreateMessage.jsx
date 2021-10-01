@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImage, faFileVideo, faSmileWink} from '@fortawesome/free-solid-svg-icons'
+import { faImage, faFileVideo, faSmileWink, faSyncAlt} from '@fortawesome/free-solid-svg-icons'
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons'
 import {faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { GiphyFetch } from '@giphy/js-fetch-api'
@@ -241,6 +241,10 @@ const CreateMessage = (props) => {
             </>
         )
     }
+
+    const getNewMessages = () => {
+        props.getChannelMessages(true);
+    }
   
     return (
         <div className = "create-message container-fluid">
@@ -263,6 +267,9 @@ const CreateMessage = (props) => {
                     </span>
                     <span id = "add-emoji-btn" className = "extra-input-btn" onClick = {bringUpEmojiInput}>
                         <FontAwesomeIcon icon={faSmileWink} color = "#f50057" title = "Emoji" />
+                    </span>
+                    <span id = "refresh-messages-btn" className = "extra-input-btn" onClick = {getNewMessages}>
+                        <FontAwesomeIcon icon={faSyncAlt} color = "#f50057" title = "Refresh Messages" />
                     </span>
                     <div className = "row">
                     {submitType === "image" ? 

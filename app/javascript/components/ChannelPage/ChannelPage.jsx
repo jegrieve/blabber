@@ -37,34 +37,7 @@ const ChannelPage = (props) => {
     }, [currentChannel])
 
     // useEffect(() => {
-    //   if (currentChannel) {
-    //     getChannelMessages();
-    //     getChannelFeed();
-    //   }
-    // }, [currentChannel])
-
-    // useEffect(() => {
-    //   if (!props.currentServer && currentChannel) {
-    //     getChannelFeed();
-    //   }
-    // })
-
-    // useEffect(() => {
-    //   if (channelMessages.length && channelMessages.length !== messageLimit) {
-    //     if (channelMessages.length === messageLimit - 10) {
-    //       handleLoadBtnNoMsgs();
-    //       setMessageLimit(channelMessages.length);
-    //     } else if (channelMessages.length < 10) {
-    //       setMessageLimit(10 - channelMessages.length + channelMessages.length);
-    //     } else {
-    //       setMessageLimit(channelMessages.length); 
-    //     }
-    //   } 
-    // }, [channelMessages])
-
-    // useEffect(() => {
     //     const refresher = setTimeout(() => {
-    //       console.log("refreshed")
     //         getChannelMessages(true);
     //       }, 1000);
     //       return () => clearTimeout(refresher);
