@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import Channel from "./Channel"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faChevronLeft, faPlus, faArrowLeft, faCircleNotch } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight, faChevronLeft, faPlus, faArrowLeft, faCircleNotch, faInfoCircle, faInfo } from '@fortawesome/free-solid-svg-icons'
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const ChannelFeed = (props) => {
@@ -100,14 +100,12 @@ const ChannelFeed = (props) => {
             </NavLink>
           </div>
         </div>
-        {/* {serverChannels ? 
-          <div> */}
           {serverChannels && serverChannels.length ? serverChannels.map((channel) => {
            return (
              <div className = "channel-item" key = {"c" + channel.id}> 
                <FontAwesomeIcon icon = {faCircleNotch} color = {`${channel.colour}`} size = "lg" />
-               <NavLink to = {`/edit-channel/${channel.id}`}>
-                 Edit
+               <NavLink className = "feed-channel-edit" to = {`/edit-channel/${channel.id}`}>
+                 <FontAwesomeIcon icon = {faInfo} colour = {"white"}/>
                </NavLink>
                <Channel data = {channel} />
              </div>
@@ -116,7 +114,6 @@ const ChannelFeed = (props) => {
          <div className = "serverfeed-spinner">
            <FontAwesomeIcon icon = {faSpinner} className = "fa-pulse" size = "3x" color = {"#f50057"}/>
          </div> : <div className = "white-text">No channels.</div>}
-          {/* </div> : false} */}
           <div className = "channel-feed-nav-elements">
             <div className = "chevron-btn channel-increment" onClick = {decrementOffsetNum}>
               <FontAwesomeIcon icon = {faChevronLeft} size = "2x" /> 

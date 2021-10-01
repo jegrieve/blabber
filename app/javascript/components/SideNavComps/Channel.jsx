@@ -4,7 +4,7 @@ const Channel = (props) => {
 
   return (
       <div className = "channel-feed-item">
-        <NavLink to = {`/channel/${props.data.id}`}>
+        <NavLink className = "channel-link-nav" to = {`/channel/${props.data.id}`}>
           <div className = "channel-name">
             {props.data.name}
           </div>

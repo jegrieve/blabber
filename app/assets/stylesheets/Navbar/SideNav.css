@@ -107,3 +107,16 @@
 .white-text {
   color: white;
 }
+
+.feed-channel-edit {
+  margin-left: 15px;
+  color: white;
+}
+.feed-channel-edit:hover {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline;
+}
+
+.channel-link-nav:hover {
+  color: white;
+}
