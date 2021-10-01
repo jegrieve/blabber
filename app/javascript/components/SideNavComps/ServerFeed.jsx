@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
 import Server from "./Server";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faChevronLeft, faPlusCircle, faStar as faStarSolid} from '@fortawesome/free-solid-svg-icons'
@@ -11,9 +11,6 @@ const ServerFeed = (props) => {
   const [loadedServers, setLoadedServers] = useState(null);
   const [offsetNum, setOffsetNum] = useState(0);
   const [loadFavouriteServers, setLoadFavouriteServers] = useState(false);
-
-console.log(loadedServers)
-console.log(offsetNum)
 
   useEffect(() => {
     getServers();

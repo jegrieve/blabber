@@ -11,7 +11,6 @@ const EditChannel = (props) => {
   const [editMode, setEditMode] = useState(false);
   const [channelId, setChannelId] = useState(null);
   const [confirmDeleteChannel, setConfirmDeleteChannel] = useState(false);
-  console.log(editChannelData)
 
   useEffect(() => {
     getChannelData();
@@ -45,7 +44,6 @@ const EditChannel = (props) => {
         throw new Error("Network response was not ok.");
       })
       .then(response => {
-        console.log(response)
         setChannelData(response)
     })
       .catch(() => console.log("error"));

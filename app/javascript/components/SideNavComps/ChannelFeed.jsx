@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
 import Channel from "./Channel"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faChevronLeft, faPlus, faArrowLeft, faCircleNotch, faInfoCircle, faInfo } from '@fortawesome/free-solid-svg-icons'

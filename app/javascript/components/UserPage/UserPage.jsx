@@ -50,7 +50,6 @@ const UserPage = (props) => {
             throw new Error("Network response was not ok.");
           })
           .then(response => {
-            console.log(response)
             setUserData(response)
         })
           .catch(() => console.log("error"));
@@ -68,7 +67,6 @@ const UserPage = (props) => {
             throw new Error("Network response was not ok.");
           })
           .then(response => {
-            console.log(response);
             setUserActivity(response);
         })
           .catch(() => console.log("error"));

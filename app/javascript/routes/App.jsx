@@ -17,12 +17,7 @@ const Routes = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [currentServer, setCurrentServer] = useState(null); 
   const [currentChannel, setCurrentChannel] = useState(null); 
-
-
-  console.log(currentUser)
-  console.log(currentServer)
-  console.log(currentChannel)
-
+  
   useEffect(() => {
     getUserSession();
   }, [])

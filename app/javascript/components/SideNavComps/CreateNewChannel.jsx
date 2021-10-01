@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { NavLink } from "react-router-dom";
 import createChannelImage from 'images/create_channel_people.svg'
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 
 const CreateNewChannel = (props) => {
     const [createChannelInputs, setCreateChannelInputs] = useState({
@@ -60,7 +60,6 @@ const CreateNewChannel = (props) => {
     }
 
     const handleFormError = (formError) => {
-      console.log(formError)
       document.getElementById(`channel-name-value`).classList.add("is-invalid")
       document.getElementById(`channel-name-help`).innerHTML = formError["name"];
     }

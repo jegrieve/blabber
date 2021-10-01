@@ -8,7 +8,7 @@ const ServerPage = (props) => {
   const [serverData, setServerData] = useState(null);
   const [serverPageId, setServerPageId] = useState(null);
   const [favouriteServer, setFavouriteServer] = useState(false);
-  console.log("favourite server: " + favouriteServer)
+
   useEffect(() => {
     getServerData();
   },[])
@@ -47,7 +47,6 @@ const ServerPage = (props) => {
           throw new Error("Network response was not ok.");
         })
         .then(response => {
-          console.log(response)
           setServerData(response)
       })
         .catch(() => console.log("error"));

@@ -29,7 +29,6 @@ const CreateMessage = (props) => {
 
     useEffect(() => {
         if (emojiInput && emojiInput !== true) {
-            console.log(messageData.body)
             setMessageData((prev) => ({
                 ...prev,
                 body: messageData.body + emojiInput.emoji
@@ -243,7 +242,7 @@ const CreateMessage = (props) => {
     }
 
     const getNewMessages = () => {
-        props.getChannelMessages(true);
+        props.getChannelMessages();
     }
   
     return (
