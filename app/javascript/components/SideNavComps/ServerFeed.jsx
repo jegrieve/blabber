@@ -82,8 +82,8 @@ console.log(offsetNum)
            )
          }) : loadedServers === null ?
           <div className = "serverfeed-spinner">
-            <FontAwesomeIcon icon = {faSpinner} className = "fa-pulse" size = "3x" />
-          </div> : <div>No servers.</div>}
+            <FontAwesomeIcon icon = {faSpinner} className = "fa-pulse" size = "3x" color = {"#f50057"}/>
+          </div> : <div className = "white-text">No servers.</div>}
           <div className = "server-feed-nav-elements">
             <div className = "chevron-btn" id = "server-decrement" onClick = {decrementOffsetNum}>
               <FontAwesomeIcon icon = {faChevronLeft} size = "2x" color = {"white"} /> 
