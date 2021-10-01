@@ -81,7 +81,7 @@ console.log(offsetNum)
              </div>
            )
          }) : loadedServers === null ?
-          <div className = "channelfeed-spinner">
+          <div className = "serverfeed-spinner">
             <FontAwesomeIcon icon = {faSpinner} className = "fa-pulse" size = "3x" color = {"#f50057"}/>
           </div> : <div className = "white-text">No servers.</div>}
           <div className = "server-feed-nav-elements">

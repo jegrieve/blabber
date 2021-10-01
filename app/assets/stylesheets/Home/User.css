@@ -2,12 +2,14 @@
   text-align: left;
   width: 90%;
   font-size: 24px;
+  word-wrap: break-word;
 }
 
 .user-edit {
   font-size: 25px;
   font-weight: bold;
   cursor: pointer;
+  word-wrap: break-word;
 }
 
 .cancel-btn {
@@ -51,6 +53,7 @@
 .user-title {
   font-size: 34px;
   text-decoration: underline;
+  text-align: left;
 }
 
 .user-info {
