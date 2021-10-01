@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComments, faStar  } from '@fortawesome/free-regular-svg-icons'
 import { faServer, faCircleNotch, faUsers, faStar as faStarSolid  } from '@fortawesome/free-solid-svg-icons'
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const ShowServerData = (props) => {
   return (
