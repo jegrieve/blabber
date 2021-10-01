@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import EditUserData from "./EditUserData"
 import ShowUserData from "./ShowUserData"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const UserPage = (props) => {
     const [userData, setUserData] = useState(null);
@@ -132,7 +134,9 @@ const UserPage = (props) => {
         : userData ? 
         <ShowUserData userData = {userData} userActivity = {userActivity}/>
         :
-        <div>User does not exist or was deleted.</div>
+        <div className = "page-spinner">
+          <FontAwesomeIcon icon = {faSpinner} className = "fa-pulse" size = "9x" color = {"#f50057"}/>
+        </div>
         }
       </div>
   )

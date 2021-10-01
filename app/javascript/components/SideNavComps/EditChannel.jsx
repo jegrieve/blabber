@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faServer, faUsers } from '@fortawesome/free-solid-svg-icons'
 import createChannelImage from 'images/create_channel_people.svg'
 import { faComment, faEdit } from "@fortawesome/free-regular-svg-icons";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const EditChannel = (props) => {
   const [editChannelData, setEditChannelData] = useState(null);
@@ -197,7 +198,10 @@ const EditChannel = (props) => {
       </div>
     </div>
         </div> 
-        : <div>No channel exists.</div>}
+        :     
+      <div className = "page-spinner">
+        <FontAwesomeIcon icon = {faSpinner} className = "fa-pulse" size = "9x" color = {"#f50057"}/>
+      </div>}
   </div>  
   )
 }

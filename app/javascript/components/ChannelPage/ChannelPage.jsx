@@ -3,9 +3,11 @@ import { NavLink } from "react-router-dom";
 import MessageFeed from "./MessageFeed";
 import CreateMessage from "./CreateMessage";
 import noMessagesImg from 'images/no_messages.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const ChannelPage = (props) => {
-    const [channelMessages, setChannelMessages] = useState([]);
+    const [channelMessages, setChannelMessages] = useState(null);
     const [currentChannel, setCurrentChannel] = useState(null);
     const [messageLimit, setMessageLimit] = useState(10);
 
@@ -119,7 +121,11 @@ const ChannelPage = (props) => {
             throw new Error("Network response was not ok.");
           })
           .then(response => {
-            setChannelMessages(response);
+            if (response.length > 0) {
+              setChannelMessages(response);
+            } else {
+              setChannelMessages([]);
+            }
             if (noScroll !== true) {
               window.scrollTo(0,document.body.scrollHeight); 
             }
@@ -130,21 +136,27 @@ const ChannelPage = (props) => {
     
   return (
       <div>
-          {channelMessages.length >= 10 ? 
+          {channelMessages && channelMessages.length >= 10 ? 
               <div className = "load-more-messages-btn">
                 <button id = "load-messages-btn" className = "btn btn-secondary" onClick = {loadMoreMessages}>Load More</button>
-                <small id = "new-messages-alert" className="form-text red-text"></small> {/*need to fix */}
+                <small id = "new-messages-alert" className="form-text red-text"></small>
                 </div> 
               : false}
-          {channelMessages.length ? <MessageFeed currentUser= {props.currentUser} getChannelMessages = {getChannelMessages} channelMessageData = {channelMessages} /> 
-          : <div className = "message-page d-flex align-items-center justify-content-center">
+          {channelMessages && channelMessages.length > 0 ? 
+            <MessageFeed currentUser= {props.currentUser} getChannelMessages = {getChannelMessages} channelMessageData = {channelMessages} /> 
+          : channelMessages && channelMessages.length === 0 ? 
+            <div className = "message-page d-flex align-items-center justify-content-center">
               <div>
                 <img className = "message-page-empty-img" src = {noMessagesImg} width = {300} />
                 <div className = "d-flex justify-content-center">
                   No Messages, start chatting!
                 </div>
               </div>
-            </div>} 
+            </div> : 
+              <div className = "channelpage-spinner">
+                <FontAwesomeIcon icon = {faSpinner} className = "fa-pulse" size = "9x" color = {"#f50057"}/>
+              </div>
+            } 
           {currentChannel && props.currentUser ? <CreateMessage messageLimit = {messageLimit} setMessageLimit = {setMessageLimit} channelId = {currentChannel.id} getChannelMessages = {getChannelMessages} /> : 
             props.currentUser ? 
             false :

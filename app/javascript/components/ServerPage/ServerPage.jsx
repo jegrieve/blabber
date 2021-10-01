@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import ShowServerData from "./ShowServerData";
 import EditServerData from "./EditServerData";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const ServerPage = (props) => {
   const [serverData, setServerData] = useState(null);
@@ -163,8 +165,8 @@ const ServerPage = (props) => {
     : serverData ? 
     <ShowServerData serverData = {serverData} likeServer = {likeServer} unLikeServer = {unLikeServer} favouriteServer = {favouriteServer} currentUser = {props.currentUser} />
     :
-    <div>
-      This server could not be found.
+    <div className = "page-spinner">
+      <FontAwesomeIcon icon = {faSpinner} className = "fa-pulse" size = "9x" color = {"#f50057"}/>
     </div>
     }
   </div>
