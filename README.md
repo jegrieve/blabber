@@ -1,4 +1,4 @@
-# TheHut
+# blabber
 
 View the live app <a href = "https://blab-ber.herokuapp.com/" target="_blank">here</a>
 
