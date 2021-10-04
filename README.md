@@ -7,10 +7,13 @@ blabber is a community messaging app, where users can send messages to others, i
 # Features
 <ul>
   <li>
+    User sign in and sign up with server-side authentication.
+  </li>
+  <li>
     Create/Edit/Delete servers, channels, messages, users.
   </li>
   <li>
-    Messages can contain text, images, emojis, videos and GIFs.
+    Messages can contain text, images, emojis, videos and GIFs. Active storage and AWS used to store images.
   </li>
   <li>
     Servers can be favourited and then the server feed can be sorted-by favourites.
@@ -25,7 +28,7 @@ blabber is a community messaging app, where users can send messages to others, i
     Navbar displays the server and the channel you are currently in.
   </li>
    <li>
-     Responsive website.
+     Responsive website, uses bootstrap grid system.
   </li>
 </ul>
 
@@ -43,10 +46,10 @@ blabber is a community messaging app, where users can send messages to others, i
   API: GIPHY API
 </div>
 <div>
-  Icons: Fontawesome
+  Icons: Font Awesome
 </div>
 <div>
-  SVGs: Undraw
+  SVGs: undraw.co (open-source SVGs)
 </div>
   
 # Screenshots
