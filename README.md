@@ -65,7 +65,7 @@ blabber is a community messaging app, where users can send messages to others, i
 
 ![blabber3](https://user-images.githubusercontent.com/28887182/135739663-aeb9dbd2-9461-4d42-911c-4e006e3397f4.PNG)
 
-<div>Creating a Server</div>
+<div>Creating a server</div>
 
 ![blabber4](https://user-images.githubusercontent.com/28887182/135739670-fa2a3b58-cfa7-4da5-aafb-1520574df1e3.PNG)
 
