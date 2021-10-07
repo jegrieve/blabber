@@ -28,7 +28,7 @@ blabber is a community messaging app, where users can send messages to others, i
     Navbar displays the server and the channel you are currently in.
   </li>
    <li>
-     Responsive website, uses bootstrap grid system.
+     Responsive website design, uses bootstrap grid system.
   </li>
 </ul>
 
